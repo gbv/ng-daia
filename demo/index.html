@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>ng-daia demo</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="app.css" rel="stylesheet" />
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+  <script src="../src/ngDAIA.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="myController">
+  <header class="hero-unit" id="overview">
+    <div class="container">
+      <h1>
+        AngularJS module for DAIA-Services
+      </h1>
+      <!--p>...subtitle...</p-->
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>daia-api <small>automatically query DAIA-Server</small></h1>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <form role="form">
+          <div class="form-group">
+            <label>daia-api</label>
+            <input ng-model="myAPI" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>daia-id</label>
+            <input ng-model="myID" class="form-control" />
+          </div>
+        </form>
+      </div>
+      <div class="col-md-12">
+
+<script type="text/ng-template" id="myDaiaTemplate.html">
+api: {{api}}<br>
+id: {{id}}<br>
+daia: {{daia | json}}
+</script>
+
+        <h3>DAIA response via AngularJS template</h3>
+        <div class="well">
+          <div daia-api="{{myAPI}}" daia-id="{{myID}}"
+               daia-loading="daiaLoading" />
+          <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
