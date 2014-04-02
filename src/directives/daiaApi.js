@@ -1,18 +1,13 @@
 'use strict';
 /**
- * @ngdoc module
- */
-
-angular.module('ngDAIA',[])
-/**
  * @ngdoc directive
- * @name ng-daia.directive:daia-api
+ * @name ng-daia.directive:daiaApi
  * @restrict A
  * @description
  * 
  * ...
  */
-.directive('daiaApi',function($http){
+ngDAIA.directive('daiaApi',function($http){
     return {
         restrict: 'A',
         templateUrl: 'myDaiaTemplate.html',
