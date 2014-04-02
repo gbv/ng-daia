@@ -38,20 +38,40 @@
         </form>
       </div>
       <div class="col-md-12">
-
+				<span class="lbl"><a href="{{myAPI}}?id={{myID}}&format=xml">DAIA-Link</a>
 <script type="text/ng-template" id="myDaiaTemplate.html">
+<h3>Extracted Result</h3>
+<div class="res">
+	<div>
+	<span class="lbl">Queried institution:  <a href="{{daia.institution.href}}">{{daia.institution.content}}</a></span><br>
+	<span class="lbl">Catalogue entry:  </span><a href="{{daia.document[0].href}}">Link</a><br>
+	<hr>
+		<div ng-repeat="i in daia.document[0].item" class="item">
+			<div ng-if="i.department.href.length" class="lbl"> Department: <a ng-if="i.department.href.length" href="{{i.department.href}}">{{i.department.content}}</a></div>
+			<span class="lbl">Shelf mark:  </span>{{i.label}}<br>
+			<p class="lbl">Availability:</p>
+			<span ng-if="!i.available.length && !i.unavailable.length">Availability unknown</span>
+			<ul class="ab">
+				<li ng-if="i.unavailable[0].expected.length" class="ab ab-lim"><span class="ab ab-lim">currently lent until: {{i.unavailable[0].expected}}</span></li>
+				<li ng-if="i.unavailable[0].expected.length"><a href="{{i.unavailable[0].href}}">place reservation</a></li><br>
+				<li ng-if="i.available.length" ng-repeat="a in i.available"><span ng-if="i.unavailable[0].expected.length" class="ab ab-ex">{{a.service}}</span><span ng-if="!i.unavailable[0].expected.length" class="ab ab-av">{{a.service}}</span><span class="ab ab-lim" ng-if="a.limitation.length"> ({{a.limitation[0].content}})</span></li>
+				<li ng-if="i.unavailable.length" ng-repeat="u in i.unavailable"><span ng-if="u.expected.length" class="ab ab-ex">{{u.service}}</span><span ng-if="!u.expected.length" class="ab ab-un">{{u.service}}</span><span class="ab ab-lim" ng-if="u.limitation.length"> ({{u.limitation[0].content}})</span></li>
+			</ul>
+			<hr>
+		</div>
+	</div>
+</div>
+<h3>DAIA response via AngularJS template </h3>
+<div class="well">
 api: {{api}}<br>
 id: {{id}}<br>
 daia: {{daia | json}}
+</div>
 </script>
-
-        <h3>DAIA response via AngularJS template</h3>
-        <div class="well">
-          <div daia-api="{{myAPI}}" daia-id="{{myID}}"
+          <div  class="item" daia-api="{{myAPI}}" daia-id="{{myID}}"
                daia-loading="daiaLoading" />
           <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
-
-        </div>
+          </div>
       </div>
     </div>
   </div>

@@ -1,2 +1,32 @@
 // as documented at http://angular-ui.github.io/bootstrap/#/getting_started
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.res{
+	display:inline-block;
+	border:1px solid #E1E1E1;
+	border-radius:4px;
+	background:#FAFAFA;
+	padding:15px;
+}
+.lbl{
+	font-weight:bold;
+}
+.item{
+	font-weight:normal;
+}
+.ab li{
+	list-style-type:none;
+}
+.ab-av{
+	color:green;
+}
+.ab-ex{
+	color:#E6CA5F;
+}
+.ab-un{
+	color:red;
+}
+.ab-lim{
+	font-style:italic;
+	color:black;
+}
