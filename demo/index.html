@@ -8,6 +8,8 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
   <script src="../src/ng-daia.js"></script>
   <script src="../src/directives/daiaApi.js"></script>
+  <script src="../src/directives/daiaItem.js"></script>
+  <script src="../src/directives/daiaAvailability.js"></script>
   <script src="app.js"></script>
 </head>
 <body ng-controller="myController">
@@ -39,26 +41,27 @@
         </form>
       </div>
       <div class="col-md-12">
-				<span class="lbl"><a href="{{myAPI}}?id={{myID}}&format=xml">DAIA-Link</a>
-<script type="text/ng-template" id="myDaiaTemplate.html">
+        <label>DAIA query URL</label>
+        <div><a href="{{myAPI}}?id={{myID}}&format=xml">{{myAPI}}?id={{myID}}</a></div>
+
+        <div class="daia-result" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
+          <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
+        </div>
+
+<script type="text/ng-template" id="template/daia-response.html">
 <h3>Extracted Result</h3>
-<div class="res">
+<div class="daia-result">
+    <div>
+        <span class="lbl">Queried institution:</span>  
+        <a href="{{daia.institution.href}}">{{daia.institution.content}}</a>
+    </div>
 	<div>
-	<span class="lbl">Queried institution:  <a href="{{daia.institution.href}}">{{daia.institution.content}}</a></span><br>
-	<span class="lbl">Catalogue entry:  </span><a href="{{daia.document[0].href}}">Link</a><br>
-	<hr>
+        <span class="lbl">Catalogue entry:</span>
+        <a href="{{daia.document[0].href}}">Link</a>
+    </div>
+    <div daia-documents="daia.document">
 		<div ng-repeat="i in daia.document[0].item" class="item">
-			<div ng-if="i.department.href.length" class="lbl"> Department: <a ng-if="i.department.href.length" href="{{i.department.href}}">{{i.department.content}}</a></div>
-			<span class="lbl">Shelf mark:  </span>{{i.label}}<br>
-			<p class="lbl">Availability:</p>
-			<span ng-if="!i.available.length && !i.unavailable.length">Availability unknown</span>
-			<ul class="ab">
-				<li ng-if="i.unavailable[0].expected.length" class="ab ab-lim"><span class="ab ab-lim">currently lent until: {{i.unavailable[0].expected}}</span></li>
-				<li ng-if="i.unavailable[0].expected.length"><a href="{{i.unavailable[0].href}}">place reservation</a></li><br>
-				<li ng-if="i.available.length" ng-repeat="a in i.available"><span ng-if="i.unavailable[0].expected.length" class="ab ab-ex">{{a.service}}</span><span ng-if="!i.unavailable[0].expected.length" class="ab ab-av">{{a.service}}</span><span class="ab ab-lim" ng-if="a.limitation.length"> ({{a.limitation[0].content}})</span></li>
-				<li ng-if="i.unavailable.length" ng-repeat="u in i.unavailable"><span ng-if="u.expected.length" class="ab ab-ex">{{u.service}}</span><span ng-if="!u.expected.length" class="ab ab-un">{{u.service}}</span><span class="ab ab-lim" ng-if="u.limitation.length"> ({{u.limitation[0].content}})</span></li>
-			</ul>
-			<hr>
+          <div daia-item="i"></div>
 		</div>
 	</div>
 </div>
@@ -69,10 +72,38 @@ id: {{id}}<br>
 daia: {{daia | json}}
 </div>
 </script>
-          <div  class="item" daia-api="{{myAPI}}" daia-id="{{myID}}"
-               daia-loading="daiaLoading" />
-          <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
-          </div>
+
+<script type="text/ng-template" id="template/daia-item.html">
+    <div ng-if="item.department.href.length" class="lbl">
+        Department: <a href="{{item.department.href}}">{{item.department.content}}</a>
+    </div>
+    <span class="lbl">Shelf mark:  </span>{{item.label}}<br>
+    <p class="lbl">Availability:</p>
+    <div daia-availability="item"></div>
+</script>
+
+<script type="text/ng-template" id="template/daia-availability.html">
+    <span ng-if="!available && !unavailable">Availability unknown</span>
+    <ul class="ab" ng-if="available || unavailable">
+        <li ng-if="unavailable[0].expected.length" class="ab ab-lim">
+            <span class="ab ab-lim">currently lent until: {{unavailable[0].expected}}</span>
+        </li>
+        <li ng-if="unavailable[0].expected.length">
+            <a href="{{unavailable[0].href}}">place reservation</a>
+        </li>
+        <li ng-if="available.length" ng-repeat="a in available">
+            <span ng-if="unavailable[0].expected.length" class="ab ab-ex">{{a.service}}</span>
+            <span ng-if="!unavailable[0].expected.length" class="ab ab-av">{{a.service}}</span>
+            <span class="ab ab-lim" ng-if="a.limitation.length"> ({{a.limitation[0].content}})</span>
+        </li>
+        <li ng-if="unavailable.length" ng-repeat="u in unavailable">
+            <span ng-if="u.expected.length" class="ab ab-ex">{{u.service}}</span>
+            <span ng-if="!u.expected.length" class="ab ab-un">{{u.service}}</span>
+            <span class="ab ab-lim" ng-if="u.limitation.length"> ({{u.limitation[0].content}})</span>
+        </li>
+    </ul>
+</script>
+
       </div>
     </div>
   </div>

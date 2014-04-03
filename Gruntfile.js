@@ -11,8 +11,7 @@ module.exports = function(grunt) {
         ngdocs: {
             options: {
                 html5Mode: false,
-                navTemplate: 'html/nav.html',
-                startPage: '/api',
+                startPage: '/api/ng-daia',
                 scripts: [
                     'angular.js',
                     'ng-daia.js',

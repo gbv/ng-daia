@@ -1,19 +1,23 @@
 // as documented at http://angular-ui.github.io/bootstrap/#/getting_started
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-.res{
+// Full response of daiaAPI directive
+.daia-result { 
+}
+
+// used in daiaAPI template
+.daia-response {
 	display:inline-block;
 	border:1px solid #E1E1E1;
 	border-radius:4px;
 	background:#FAFAFA;
 	padding:15px;
 }
+
 .lbl{
 	font-weight:bold;
 }
-.item{
-	font-weight:normal;
-}
+
 .ab li{
 	list-style-type:none;
 }
