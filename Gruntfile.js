@@ -11,14 +11,14 @@ module.exports = function(grunt) {
         ngdocs: {
             options: {
                 html5Mode: false,
-                startPage: '/api/ng-daia',
+                startPage: '/api',
                 scripts: [
                     'angular.js',
                     'ng-daia.js',
                 ]
             },
             api: {
-                title: 'API Reference',
+                title: 'Documentation',
                 src: [
                     'src/*.js',
                     'src/**/*.js',

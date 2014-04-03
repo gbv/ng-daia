@@ -1,0 +1,18 @@
+@ngdoc overview
+@name Documentation 
+@id index
+@description
+
+# ng-daia - Documentation
+
+<b>ng-daia</b> is an {@link http://angularjs.org/ AngularJS} module to
+facilitate access to {@link http://purl.org/NET/DAIA Document Availability
+Information API} (DAIA) services and to display the responses given by a DAIA
+server. See {@link ng-daia ng-daia} for an introduction of usage.
+
+## Source code and development
+
+The module is managed in a public git repository at
+<https://github.com/gbv/ng-daia>. Please use
+<https://github.com/gbv/ng-daia/issues> for bug reports and feature requests.
+
