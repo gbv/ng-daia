@@ -1,8 +1,17 @@
 NG_DOCS={
   "sections": {
-    "api": "API Reference"
+    "api": "Documentation"
   },
   "pages": [
+    {
+      "section": "api",
+      "id": "index",
+      "shortName": "Documentation",
+      "type": "overview",
+      "moduleName": "Documentation",
+      "shortDescription": "ng-daia - Documentation",
+      "keywords": "access angularjs api availability bug code daia development display document documentation facilitate feature git http introduction managed module ng-daia org overview public reports repository requests responses server services source usage"
+    },
     {
       "section": "api",
       "id": "ng-daia",
@@ -10,7 +19,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "ng-daia",
       "shortDescription": "The ngDAIA module for AngularJS facilitates access to ",
-      "keywords": "access angularjs api availability daia display document facilitates http module ng-daia org overview response server services"
+      "keywords": "access angularjs api availability daia daiaapi daiaavailability daiaitem directive directives display document facilitates http module ng-daia org overview responses server services three"
     },
     {
       "section": "api",
@@ -44,7 +53,7 @@ NG_DOCS={
     "api": true
   },
   "html5Mode": false,
-  "startPage": "/api/ng-daia",
+  "startPage": "/api",
   "scripts": [
     "angular.min.js",
     "ng-daia.js"
