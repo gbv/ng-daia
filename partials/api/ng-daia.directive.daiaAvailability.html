@@ -1,0 +1,25 @@
+<h1><code ng:non-bindable="">daiaAvailability</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">ng-daia</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-daia-directive-page ng-daia-directive-daiaavailability-page"><p>This directive displays the availability of a DAIA item, given as JSON 
+object with parameter <code>daia-availability</code>. The template 
+<code>template/daia-availability.html</code> can be changed with the 
+<code>template-url</code> parameter.</p>
+<p>The item is injected into the template&#39;s scope as <code>item</code>. 
+For easier access, its members <code>available</code> and 
+<code>unavailable</code> are provided as well, unless they are empty.</p>
+<p>See also <a href="#/api/ng-daia.directive:daiaItem">daiaItem</a> directive.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY daia-availability
+     daia-item="{string}"
+     template-url="{string}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>daia-item</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaavailability-page"><p>The DAIA item to display</p>
+</div></td></tr><tr><td>template-url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaavailability-page"><p>Custom template URL to display daia result</p>
+</div></td></tr></tbody></table></div>
+</div>
