@@ -1,36 +1,43 @@
 // as documented at http://angular-ui.github.io/bootstrap/#/getting_started
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-// Full response of daiaAPI directive
-.daia-result { 
-}
-
-// used in daiaAPI template
-.daia-response {
+/* Full response of daiaAPI directive
+ */
+.result {
 	display:inline-block;
 	border:1px solid #E1E1E1;
 	border-radius:4px;
-	background:#FAFAFA;
+	background:#f5f5f5;
 	padding:15px;
 }
 
-.lbl{
+/* used in daiaAPI template
+ * */
+.daia-response {
+}
+.document{
+	margin-top:10px;
+	border:1px solid #E1E1E1;
+	padding:10px;
+	background:#f8f8f8;
+}
+.bold{
 	font-weight:bold;
 }
 
-.ab li{
+.availability li{
 	list-style-type:none;
 }
-.ab-av{
+.availability-available{
 	color:green;
 }
-.ab-ex{
+.availability-expected{
 	color:#E6CA5F;
 }
-.ab-un{
+.availability-unavailable{
 	color:red;
 }
-.ab-lim{
+.availability-limitation{
 	font-style:italic;
 	color:black;
 }
