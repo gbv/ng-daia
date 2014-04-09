@@ -60,7 +60,15 @@
         <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
           <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
         </div>
-
+				<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
+<script type="text/ng-template" id="debug">
+	<h3>DAIA response via AngularJS template </h3>
+	<div class="well">
+		api: {{api}}<br>
+		id: {{id}}<br>
+		daia: {{daia | json}}
+	</div>	
+</script>
       </div>
     </div>
   </div>

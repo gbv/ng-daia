@@ -155,7 +155,7 @@ angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/daia-response.html',
-    "<h3>Extracted Result</h3><div class=\"daia-result\"><div><span class=\"daia-label\">Queried institution:</span> <a href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span class=\"daia-label\">Copies:</span></div><div daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div><h3>DAIA response via AngularJS template</h3><div class=\"well\">api: {{api}}<br>id: {{id}}<br>daia: {{daia | json}}</div>"
+    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.href.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a> <span ng-if=\"daia.institution.content.length & !daia.institution.href.length\">{{daia.institution.content}}</span></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span class=\"daia-label\">Copies:</span><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
   );
 
 }]);
