@@ -15,6 +15,7 @@
     "grunt-ngdocs": "~0.2.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-karma": "~0.6.2",
+    "grunt-angular-templates": "~0.5.4",
     "grunt-contrib-concat": "~0.3.0"
   }
 }

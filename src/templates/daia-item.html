@@ -1,0 +1,9 @@
+<!-- default template used by daiaItem directive in module ng-daia -->
+
+<div ng-if="item.department.href.length">
+  <span class="bold">Department:</span> <a href="{{item.department.href}}">{{item.department.content}}</a>
+</div>
+<span class="bold">Shelf mark:  </span>{{item.label}}<br>
+<p class="bold">Availability:</p>
+<div daia-availability="item"></div>
+

@@ -1,0 +1,26 @@
+<h3>Extracted Result</h3>
+<div class="result">
+	<div>
+		<span class="bold">Queried institution:</span>  
+		<a href="{{daia.institution.href}}">{{daia.institution.content}}</a>
+	</div>
+	<div>
+		<span class="bold">Catalogue entry:</span>
+		<a href="{{daia.document[0].href}}">Link</a>
+	</div>
+	<div>
+		<span class="bold">Copies:</span>
+	</div>
+	<div daia-documents="daia.document">
+		<div class="document" ng-repeat="i in daia.document[0].item">
+			<div daia-item="i">
+			</div>
+		</div>
+	</div>
+</div>
+<h3>DAIA response via AngularJS template </h3>
+<div class="well">
+api: {{api}}<br>
+id: {{id}}<br>
+daia: {{daia | json}}
+</div>
