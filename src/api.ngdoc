@@ -41,6 +41,17 @@ The default template files, included in `ng-daia.js`, can be styled with CSS cla
 Try [`ng-daia.css`](https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css) for a
 default layout.
 
+The templates are using the following classes:
+
+* `daia-result`: the whole result
+* `daia-document`: each copy of the result 
+* `daia-label`: style of descriptions
+* `availability`: overall style for display of availability
+* `availability-available`: style for display of available services
+* `availability-unavailable`: style for display of unavailable services
+* `availability-expected`: style for message concerning expected availability
+* `availability-limitation`: style for limitations (in brackets after the corresponding availability status)
+
 The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
 source code repository contains a more detailed sample application that makes
 use of ng-daia. The demo should be run from a server (e.g. localhost).

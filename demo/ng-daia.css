@@ -1,7 +1,7 @@
 /* Standard stylesheet for ng-daia module templates */
 
 /* Full response of daiaAPI directive */
-.result {
+.daia-result {
 	display:inline-block;
 	border:1px solid #E1E1E1;
 	border-radius:4px;
@@ -12,13 +12,13 @@
 /* used in daia-response template * */
 .daia-response {
 }
-.document{
+.daia-document{
 	margin-top:10px;
 	border:1px solid #E1E1E1;
 	padding:10px;
 	background:#f8f8f8;
 }
-.bold{
+.daia-label{
 	font-weight:bold;
 }
 

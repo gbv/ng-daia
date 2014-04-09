@@ -2,12 +2,7 @@
 
 <span ng-if="!available && !unavailable">Availability unknown</span>
 <ul class="availability" ng-if="available || unavailable">
-    <li ng-if="unavailable[0].expected.length" class="availability availability-limitation">
-        <span class="availability availability-limitation">currently lent until: {{unavailable[0].expected}}</span>
-    </li>
-    <li ng-if="unavailable[0].expected.length">
-        <a href="{{unavailable[0].href}}">place reservation</a>
-    </li>
+
     <li ng-if="available.length" ng-repeat="a in available">
         <span ng-if="unavailable[0].expected.length" class="availability availability-expected">{{a.service}}</span>
         <span ng-if="!unavailable[0].expected.length" class="availability availability-available">{{a.service}}</span>
@@ -18,4 +13,12 @@
         <span ng-if="!u.expected.length" class="availability availability-unavailable">{{u.service}}</span>
         <span class="availability availability-limitation" ng-if="u.limitation.length"> ({{u.limitation[0].content}})</span>
     </li>
+		<p>
+    <li ng-if="unavailable[0].expected.length" class="availability availability-limitation">
+        <span class="availability availability-limitation">currently lent until: {{unavailable[0].expected}}</span>
+    </li>
+    <li ng-if="unavailable[0].href.length && unavailable[0].expected.length">
+        <a href="{{unavailable[0].href}}">place reservation</a>
+    </li>
+    </p>
 </ul>
