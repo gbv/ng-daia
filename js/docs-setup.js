@@ -1,6 +1,6 @@
 NG_DOCS={
   "sections": {
-    "api": "Documentation"
+    "api": "API documentation"
   },
   "pages": [
     {
@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "Documentation",
       "shortDescription": "ng-daia - Documentation",
-      "keywords": "access angularjs api availability bug code daia development display document documentation facilitate feature git http introduction managed module ng-daia org overview public reports repository requests responses server services source usage"
+      "keywords": "access agpl angular angularjs api application availability bug classes code css current daia daia-api daia-id default demo detailed development directives directory display document documentation early example facilitate feature files git help href http include included introduction js layout licensed localhost managed min minmal module myapp ng-app ng-daia ngdaia org overview provided public rel release reports repository requests responses sample server services source src stage started styled stylesheet template usage website your-document-id"
     },
     {
       "section": "api",

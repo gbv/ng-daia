@@ -5,9 +5,37 @@
 <div><div class="documentation-page"><h2 id="ng-daia---documentation">ng-daia - Documentation</h2>
 <p><b>ng-daia</b> is an <a href="http://angularjs.org/">AngularJS</a> module to
 facilitate access to <a href="http://purl.org/NET/DAIA">Document Availability Information API</a> (DAIA) services and to display the responses given by a DAIA
-server. See <a href="#/api/ng-daia">ng-daia</a> for an introduction of usage.</p>
+server.
+See  for an introduction of usage.</p>
+<h3 id="ng-daia---documentation_getting-started">Getting started</h3>
+<p>The current release of ng-daia (version 0.0.1) can be <a href="grunt-scripts/ng-daia.js">downloaded from this
+page</a>. </p>
+<p> The module is in a very early stage of
+development. To get started have a look at the documentation of the AngularJS
+directives provided by <a href="#/api/ng-daia">module ng-daia</a>.  </p>
+<p>The following minmal example might help to include ng-daia into your website:</p>
+<pre class="prettyprint linenums">
+&lt;html ng-app="myApp"&gt;
+&lt;head&gt;
+  &lt;script src="angular.min.js"&gt;&lt;/script&gt;
+  &lt;script src="ng-daia.js"&gt;&lt;/script&gt;
+  &lt;script&gt;angular.module('myApp', ['ngDAIA']);&lt;/script&gt;
+  &lt;link href="ng-daia.css" rel="stylesheet" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div daia-api="http://your-daia-base-url" daia-id="your-document-id"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>The default template files, included in <code>ng-daia.js</code>, can be styled with CSS classes.
+Try <a href="https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css"><code>ng-daia.css</code></a> for a
+default layout.</p>
+<p>The <a href="https://github.com/gbv/ng-daia/tree/master/demo">demo directory</a> of the
+source code repository contains a more detailed sample application that makes
+use of ng-daia. The demo should be run from a server (e.g. localhost).</p>
 <h3 id="ng-daia---documentation_source-code-and-development">Source code and development</h3>
 <p>The module is managed in a public git repository at
-<a href="https://github.com/gbv/ng-daia">https://github.com/gbv/ng-daia</a>. Please use
-<a href="https://github.com/gbv/ng-daia/issues">https://github.com/gbv/ng-daia/issues</a> for bug reports and feature requests.</p>
+<a href="https://github.com/gbv/ng-daia">https://github.com/gbv/ng-daia</a>, licensed under AGPL. </p>
+<p>Please use <a href="https://github.com/gbv/ng-daia/issues">https://github.com/gbv/ng-daia/issues</a> for bug reports and feature
+requests.</p>
 </div></div>
