@@ -4,12 +4,19 @@
   <meta charset="utf-8">
   <title>ng-daia demo</title>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+  <link href="ng-daia.css" rel="stylesheet" />
   <link href="app.css" rel="stylesheet" />
+
+  <!-- first load angularjs -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+
+  <!-- include ng-daia module from multiple files. Better use a single-file release for production! -->
   <script src="../src/ng-daia.js"></script>
   <script src="../src/directives/daiaApi.js"></script>
   <script src="../src/directives/daiaItem.js"></script>
   <script src="../src/directives/daiaAvailability.js"></script>
+
+  <!-- short JavaScript snippet to active ng-daia -->
   <script src="app.js"></script>
 </head>
 <body ng-controller="myController">

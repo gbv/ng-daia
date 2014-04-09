@@ -8,10 +8,11 @@
  * {@link http://purl.org/NET/DAIA Document Availability Information API}
  * (DAIA) services and to display the responses given by a DAIA server.
  *
- * The module provides three directives:
- * {@link ng-daia.directive:daiaItem daiaApi},
- * {@link ng-daia.directive:daiaItem daiaItem}, and
- * {@link ng-daia.directive:daiaAvailability daiaAvailability}.
+ * The module provides three AngularJS directives:
+ *
+ * * {@link ng-daia.directive:daiaItem daiaApi}
+ * * {@link ng-daia.directive:daiaItem daiaItem}
+ * * {@link ng-daia.directive:daiaAvailability daiaAvailability}
  *
  */
 var ngDAIA = angular.module('ngDAIA',[]);
