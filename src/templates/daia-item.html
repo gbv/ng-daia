@@ -3,7 +3,9 @@
 <div ng-if="item.department.href.length">
   <span class="daia-label">Department:</span> <a href="{{item.department.href}}">{{item.department.content}}</a>
 </div>
-<span class="daia-label">Shelf mark:  </span>{{item.label}}<br>
+<div>
+<span class="daia-label">Shelf mark:  </span>{{item.label}}
+</div>
 <p class="daia-label">Availability:</p>
 <div daia-availability="item"></div>
 

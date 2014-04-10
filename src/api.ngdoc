@@ -51,6 +51,7 @@ The templates are using the following classes:
 * `availability-unavailable`: style for display of unavailable services
 * `availability-expected`: style for message concerning expected availability
 * `availability-limitation`: style for limitations (in brackets after the corresponding availability status)
+* `returning`: style for message concerning expected return and link for preordering
 
 The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
 source code repository contains a more detailed sample application that makes
