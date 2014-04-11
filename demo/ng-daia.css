@@ -25,9 +25,8 @@
   float:left;
   width:100px;
 }
-.availability ul{
-  margin:0px;
-  padding:0px;
+.availability{
+  margin-bottom:-8px;
 }
 .availability li{
 	list-style-type:none;
