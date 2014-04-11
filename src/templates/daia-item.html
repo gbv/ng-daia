@@ -6,6 +6,6 @@
 <div>
 <span class="daia-label">Shelf mark:  </span>{{item.label}}
 </div>
-<p class="daia-label">Availability:</p>
+<span ng-if="!item.available && !item.unavailable" class="daia-label">Availability: </span><span ng-if="!item.available && !item.unavailable">unknown</span></p>
 <div daia-availability="item"></div>
 
