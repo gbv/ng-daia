@@ -10,7 +10,7 @@
 		<a href="{{daia.document[0].href}}">Link</a>
 	</div>
 	<div>
-		<span class="daia-label">Copies:</span><span ng-if="!daia.document.length"> no records found</span>
+		<span ng-if="!daia.document.length">no records found</span>
 	</div>
 	<div ng-if="daia.document.length" daia-documents="daia.document">
 		<div class="daia-document" ng-repeat="i in daia.document[0].item">

@@ -56,8 +56,7 @@
       <div class="col-md-12">
         <label>DAIA query URL</label>
         <div><a href="{{myAPI}}?id={{myID}}&format=xml">{{myAPI}}?id={{myID}}</a></div>
-
-        <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
+        <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
           <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
         </div>
 				<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>

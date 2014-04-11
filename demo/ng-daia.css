@@ -21,32 +21,28 @@
 .daia-label{
 	font-weight:bold;
 }
-.availability ul{
-  margin:0px;
-  padding:0px;
+.service-label{
+  float:left;
+  width:100px;
+}
+.availability{
+  margin-bottom:-8px;
 }
 .availability li{
 	list-style-type:none;
   margin-left:-40px;
 }
 .availability-available{
-  position:absolute;
 	color:green;
   left:140px;
 }
 .availability-expected{
-  position:absolute;
 	color:red;
   left:140px;
 }
 .availability-unavailable{
-  position:absolute;
 	color:red;
   left:140px;
-}
-.availability-return{
-  position:absolute;
-  left:225px;
 }
 .availability-limitation{
 	font-style:italic;
@@ -54,4 +50,9 @@
 }
 .returning{
 	margin:8px 0px 8px 0px;
+}
+.returning-expected{
+  margin-bottom:0px;
+}
+.access{
 }
