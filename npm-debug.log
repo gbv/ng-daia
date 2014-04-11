@@ -1,0 +1,196 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.2.18
+3 info using node@v0.10.15
+4 verbose read json /home/moritz/Rep/ng-daia/package.json
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/home/moritz/Rep/ng-daia',
+6 verbose install   [ 'karma',
+6 verbose install     'karma-jasmine',
+6 verbose install     'grunt',
+6 verbose install     'grunt-ngdocs',
+6 verbose install     'grunt-contrib-clean',
+6 verbose install     'grunt-karma',
+6 verbose install     'grunt-angular-templates',
+6 verbose install     'grunt-contrib-concat',
+6 verbose install     'grunt-version' ] ]
+7 verbose from cache /home/moritz/Rep/ng-daia/package.json
+8 info preinstall ng-daia@0.0.1
+9 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt/package.json
+10 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-angular-templates/package.json
+11 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-contrib-clean/package.json
+12 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-contrib-concat/package.json
+13 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-karma/package.json
+14 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-ngdocs/package.json
+15 verbose read json /home/moritz/Rep/ng-daia/node_modules/grunt-version/package.json
+16 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma/package.json
+17 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-chrome-launcher/package.json
+18 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-coffee-preprocessor/package.json
+19 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-firefox-launcher/package.json
+20 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-html2js-preprocessor/package.json
+21 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-jasmine/package.json
+22 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-phantomjs-launcher/package.json
+23 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-requirejs/package.json
+24 verbose read json /home/moritz/Rep/ng-daia/node_modules/karma-script-launcher/package.json
+25 verbose read json /home/moritz/Rep/ng-daia/node_modules/requirejs/package.json
+26 verbose from cache /home/moritz/Rep/ng-daia/package.json
+27 verbose readDependencies using package.json deps
+28 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt/package.json
+29 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-angular-templates/package.json
+30 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-contrib-clean/package.json
+31 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-contrib-concat/package.json
+32 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-karma/package.json
+33 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-ngdocs/package.json
+34 verbose from cache /home/moritz/Rep/ng-daia/node_modules/grunt-version/package.json
+35 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma/package.json
+36 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-chrome-launcher/package.json
+37 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-coffee-preprocessor/package.json
+38 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-firefox-launcher/package.json
+39 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-html2js-preprocessor/package.json
+40 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-jasmine/package.json
+41 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-phantomjs-launcher/package.json
+42 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-requirejs/package.json
+43 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-script-launcher/package.json
+44 verbose from cache /home/moritz/Rep/ng-daia/node_modules/requirejs/package.json
+45 verbose already installed skipping grunt-ngdocs@~0.2.1 /home/moritz/Rep/ng-daia
+46 verbose already installed skipping karma-jasmine@~0.1.5 /home/moritz/Rep/ng-daia
+47 verbose already installed skipping grunt-contrib-clean@~0.5.0 /home/moritz/Rep/ng-daia
+48 verbose already installed skipping grunt@~0.4.2 /home/moritz/Rep/ng-daia
+49 verbose already installed skipping grunt-karma@~0.6.2 /home/moritz/Rep/ng-daia
+50 verbose already installed skipping grunt-angular-templates@~0.5.4 /home/moritz/Rep/ng-daia
+51 verbose already installed skipping grunt-contrib-concat@~0.3.0 /home/moritz/Rep/ng-daia
+52 verbose already installed skipping grunt-version@~0.3.0 /home/moritz/Rep/ng-daia
+53 verbose already installed skipping karma@~0.10.9 /home/moritz/Rep/ng-daia
+54 silly resolved []
+55 info build /home/moritz/Rep/ng-daia
+56 verbose from cache /home/moritz/Rep/ng-daia/package.json
+57 verbose linkStuff [ false, false, false, '/home/moritz/Rep' ]
+58 info linkStuff ng-daia@0.0.1
+59 verbose linkBins ng-daia@0.0.1
+60 verbose linkMans ng-daia@0.0.1
+61 verbose rebuildBundles ng-daia@0.0.1
+62 verbose rebuildBundles [ '.bin',
+62 verbose rebuildBundles   'grunt',
+62 verbose rebuildBundles   'grunt-angular-templates',
+62 verbose rebuildBundles   'grunt-contrib-clean',
+62 verbose rebuildBundles   'grunt-contrib-concat',
+62 verbose rebuildBundles   'grunt-karma',
+62 verbose rebuildBundles   'grunt-ngdocs',
+62 verbose rebuildBundles   'grunt-version',
+62 verbose rebuildBundles   'karma',
+62 verbose rebuildBundles   'karma-chrome-launcher',
+62 verbose rebuildBundles   'karma-coffee-preprocessor',
+62 verbose rebuildBundles   'karma-firefox-launcher',
+62 verbose rebuildBundles   'karma-html2js-preprocessor',
+62 verbose rebuildBundles   'karma-jasmine',
+62 verbose rebuildBundles   'karma-phantomjs-launcher',
+62 verbose rebuildBundles   'karma-requirejs',
+62 verbose rebuildBundles   'karma-script-launcher',
+62 verbose rebuildBundles   'requirejs' ]
+63 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-chrome-launcher
+64 info build /home/moritz/Rep/ng-daia/node_modules/karma-chrome-launcher
+65 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-chrome-launcher/package.json
+66 info preinstall karma-chrome-launcher@0.1.3
+67 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+68 info linkStuff karma-chrome-launcher@0.1.3
+69 verbose linkBins karma-chrome-launcher@0.1.3
+70 verbose linkMans karma-chrome-launcher@0.1.3
+71 verbose rebuildBundles karma-chrome-launcher@0.1.3
+72 info install karma-chrome-launcher@0.1.3
+73 info postinstall karma-chrome-launcher@0.1.3
+74 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-coffee-preprocessor
+75 info build /home/moritz/Rep/ng-daia/node_modules/karma-coffee-preprocessor
+76 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-coffee-preprocessor/package.json
+77 info preinstall karma-coffee-preprocessor@0.1.3
+78 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+79 info linkStuff karma-coffee-preprocessor@0.1.3
+80 verbose linkBins karma-coffee-preprocessor@0.1.3
+81 verbose linkMans karma-coffee-preprocessor@0.1.3
+82 verbose rebuildBundles karma-coffee-preprocessor@0.1.3
+83 verbose rebuildBundles [ '.bin', 'coffee-script' ]
+84 info install karma-coffee-preprocessor@0.1.3
+85 info postinstall karma-coffee-preprocessor@0.1.3
+86 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-firefox-launcher
+87 info build /home/moritz/Rep/ng-daia/node_modules/karma-firefox-launcher
+88 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-firefox-launcher/package.json
+89 info preinstall karma-firefox-launcher@0.1.3
+90 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+91 info linkStuff karma-firefox-launcher@0.1.3
+92 verbose linkBins karma-firefox-launcher@0.1.3
+93 verbose linkMans karma-firefox-launcher@0.1.3
+94 verbose rebuildBundles karma-firefox-launcher@0.1.3
+95 info install karma-firefox-launcher@0.1.3
+96 info postinstall karma-firefox-launcher@0.1.3
+97 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-html2js-preprocessor
+98 info build /home/moritz/Rep/ng-daia/node_modules/karma-html2js-preprocessor
+99 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-html2js-preprocessor/package.json
+100 info preinstall karma-html2js-preprocessor@0.1.0
+101 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+102 info linkStuff karma-html2js-preprocessor@0.1.0
+103 verbose linkBins karma-html2js-preprocessor@0.1.0
+104 verbose linkMans karma-html2js-preprocessor@0.1.0
+105 verbose rebuildBundles karma-html2js-preprocessor@0.1.0
+106 info install karma-html2js-preprocessor@0.1.0
+107 info postinstall karma-html2js-preprocessor@0.1.0
+108 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-phantomjs-launcher
+109 info build /home/moritz/Rep/ng-daia/node_modules/karma-phantomjs-launcher
+110 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-phantomjs-launcher/package.json
+111 info preinstall karma-phantomjs-launcher@0.1.4
+112 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+113 info linkStuff karma-phantomjs-launcher@0.1.4
+114 verbose linkBins karma-phantomjs-launcher@0.1.4
+115 verbose linkMans karma-phantomjs-launcher@0.1.4
+116 verbose rebuildBundles karma-phantomjs-launcher@0.1.4
+117 verbose rebuildBundles [ '.bin', 'phantomjs' ]
+118 info install karma-phantomjs-launcher@0.1.4
+119 info postinstall karma-phantomjs-launcher@0.1.4
+120 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-requirejs
+121 info build /home/moritz/Rep/ng-daia/node_modules/karma-requirejs
+122 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-requirejs/package.json
+123 info preinstall karma-requirejs@0.2.1
+124 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+125 info linkStuff karma-requirejs@0.2.1
+126 verbose linkBins karma-requirejs@0.2.1
+127 verbose linkMans karma-requirejs@0.2.1
+128 verbose rebuildBundles karma-requirejs@0.2.1
+129 info install karma-requirejs@0.2.1
+130 info postinstall karma-requirejs@0.2.1
+131 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/karma-script-launcher
+132 info build /home/moritz/Rep/ng-daia/node_modules/karma-script-launcher
+133 verbose from cache /home/moritz/Rep/ng-daia/node_modules/karma-script-launcher/package.json
+134 info preinstall karma-script-launcher@0.1.0
+135 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+136 info linkStuff karma-script-launcher@0.1.0
+137 verbose linkBins karma-script-launcher@0.1.0
+138 verbose linkMans karma-script-launcher@0.1.0
+139 verbose rebuildBundles karma-script-launcher@0.1.0
+140 info install karma-script-launcher@0.1.0
+141 info postinstall karma-script-launcher@0.1.0
+142 verbose rebuild bundle /home/moritz/Rep/ng-daia/node_modules/requirejs
+143 info build /home/moritz/Rep/ng-daia/node_modules/requirejs
+144 verbose from cache /home/moritz/Rep/ng-daia/node_modules/requirejs/package.json
+145 info preinstall requirejs@2.1.11
+146 verbose linkStuff [ false, false, false, '/home/moritz/Rep/ng-daia/node_modules' ]
+147 info linkStuff requirejs@2.1.11
+148 verbose linkBins requirejs@2.1.11
+149 verbose link bins [ { 'r.js': './bin/r.js' },
+149 verbose link bins   '/home/moritz/Rep/ng-daia/node_modules/.bin',
+149 verbose link bins   false ]
+150 verbose linkMans requirejs@2.1.11
+151 verbose rebuildBundles requirejs@2.1.11
+152 error Error: EACCES, unlink '/home/moritz/Rep/ng-daia/node_modules/.bin/r.js'
+152 error  { [Error: EACCES, unlink '/home/moritz/Rep/ng-daia/node_modules/.bin/r.js']
+152 error   errno: 3,
+152 error   code: 'EACCES',
+152 error   path: '/home/moritz/Rep/ng-daia/node_modules/.bin/r.js' }
+153 error Please try running this command again as root/Administrator.
+154 error System Linux 3.11.0-19-generic
+155 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+156 error cwd /home/moritz/Rep/ng-daia
+157 error node -v v0.10.15
+158 error npm -v 1.2.18
+159 error path /home/moritz/Rep/ng-daia/node_modules/.bin/r.js
+160 error code EACCES
+161 error errno 3
+162 error stack Error: EACCES, unlink '/home/moritz/Rep/ng-daia/node_modules/.bin/r.js'
+163 verbose exit [ 3, true ]
