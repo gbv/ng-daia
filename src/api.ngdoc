@@ -42,6 +42,7 @@ Try [`ng-daia.css`](https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css) 
 default layout.
 
 The templates are using the following classes:
+
 * `daia-response`: the whole response
 * `daia-result`: the whole result
 * `daia-document`: each copy of the result 
