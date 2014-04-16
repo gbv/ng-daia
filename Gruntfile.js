@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-angular-templates');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.initConfig({
         foo: 123,
@@ -84,10 +85,16 @@ module.exports = function(grunt) {
                     removeComments: true
                 } 
             }
+        },
+        shell: {
+            site: {
+                command: "rm -rf site && mkdir site && cp -r docs/* site"
+            }
         }
     });
 
     grunt.registerTask('default',['docs']); // TODO: test
+    grunt.registerTask('site', ['docs','shell:site']);
     grunt.registerTask('ng-daia',['version','ngtemplates','concat']);
     grunt.registerTask('docs',['clean','ng-daia','ngdocs']);
     grunt.registerTask('test',['karma:unit']);
