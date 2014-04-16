@@ -13,28 +13,34 @@
  *
  * Possible return values:
  *
- * * available
- * * no-loan
- * * ...
+ * * `{ status: "openaccess" }`
+ * * `{ status: "loan" }`
+ * * `{ status: "presentation" }`
+ * * `{ status: "expected" }`
+ * * `{ status: "expected", expected: "..." }`
  *
  * To customize the message, use **angular-translate** and the `translate` 
- * directive. For instance a German translation table:
- *
- *     {
- *         'available': 'verfügbar',
- *         ...
- *     }
- *
+ * directive. 
  */
 ngDAIA.filter('daiaSimple',function(){
   return function(input, option) {
-    // {{ document | daiaSimple:loan }} // prefer 'loan' service
-    // {{ document | daiaSimple:interloan }} // prefer 'loan' service
 
-    // order of preferences: daiaSimple:loan-presentation
+    // extract list of items from input
+    var items = [];
+    if (angular.isObject(input)) {
+        if (input.document) {
+            items = input.document.item;
+        } else if(input.item) {
+            items = input.item;
+        }
+    }
 
-    // input.items
-    //
+    var response = {
+        status: "none"
+    };
 
+    // check...
+
+    return response;
   }
 });

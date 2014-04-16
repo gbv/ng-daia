@@ -15,6 +15,7 @@
   <script src="../src/directives/daiaApi.js"></script>
   <script src="../src/directives/daiaItem.js"></script>
   <script src="../src/directives/daiaAvailability.js"></script>
+  <script src="../src/filters/daia-simple.js"></script>
 
   <!-- short JavaScript snippet to active ng-daia -->
   <script src="app.js"></script>
@@ -62,6 +63,7 @@
 				<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
 <script type="text/ng-template" id="debug">
 	<h3>DAIA response via AngularJS template </h3>
+    <p>Short status: {{daia | daiaSimple}}</p>
 	<div class="well">
 		api: {{api}}<br>
 		id: {{id}}<br>
