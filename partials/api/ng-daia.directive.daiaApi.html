@@ -5,23 +5,26 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="ng-daia-directive-page ng-daia-directive-daiaapi-page"><p>This directive queries a DAIA server, each time one of its parameters
-<code>daia-api</code> or <code>daia-id</code> is changed. The DAIA 
-response is injected into the template scope as <code>daia</code>. 
-The template <code>template/daia-response.html</code> can be changed
-with the <code>template-url</code> parameter.</p>
-<p>The default template makes use of the directives 
-<a href="#/api/ng-daia.directive:daiaItem">daiaItem</a> and
-<a href="#/api/ng-daia.directive:daiaAvailability">daiaAvailability</a>.</p>
+<code>daia-api</code> or <code>daia-id</code> is changed. The DAIA response (optionally filtered
+by a filter such as <a href="#/api/ng-daia.filter:daiaSimple">daiaSimple</a>) is injected 
+into the template&#39;s scope as variable <code>daia</code>. </p>
+<p>The default template <a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html">template/daia-response.html</a>
+makes use of the directives <a href="#/api/ng-daia.directive:daiaItem">daiaItem</a>
+and <a href="#/api/ng-daia.directive:daiaAvailability">daiaAvailability</a>. The 
+template can be changed with the <code>template-url</code> parameter.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY daia-api
      daia-api="{string}"
      daia-id="{string}"
+     daia-filter="{string}"
      template-url="{string}"&gt;
    ...
 &lt;/ANY&gt;</pre>
 <h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>daia-api</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaapi-page"><p>Base URL of DAIA server to query from</p>
 </div></td></tr><tr><td>daia-id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaapi-page"><p>Document identifier to query for</p>
+</div></td></tr><tr><td>daia-filter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaapi-page"><p>AngularJS filter to process daia response, e.g.
+<a href="#/api/ng-daia.filter:daiaSimple">daiaSimple</a></p>
 </div></td></tr><tr><td>template-url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiaapi-page"><p>Custom template to display DAIA result</p>
 </div></td></tr></tbody></table></div>
 </div>

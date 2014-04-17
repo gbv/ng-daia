@@ -1,0 +1,33 @@
+<h1><code ng:non-bindable="">daiaSimple</code>
+<div><span class="hint">filter in module <code ng:non-bindable="">ng-daia</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-daia-filter-page ng-daia-filter-daiasimple-page"><p>This filter can be used to transform a DAIA response, document, or item 
+into simple availability status (<a href="http://gbv.github.io/daiaspec/daia.html#daia-simple">DAIA 
+Simple</a>). The filter
+returns a simple object with simple key-value pairs, such as:</p>
+<pre class="prettyprint linenums" class="prettyprint linenums">
+{ status: "openaccess" }
+{ status: "loan" }
+{ status: "presentation" }
+{ status: "expected" }
+{ status: "expected", expected: "2014-12-07" }
+{ status: "openaccess", href: "http://dx.doi.org/10.1901%2Fjaba.1974.7-497a" }
+{ status: "none" }
+</pre>
+<p>The filter can also be used with parameter <code>daia-filter</code> at directive
+<a href="#/api/ng-daia.directive:daiaApi">daiaApi</a>.</p>
+<p>To customize the message, use <strong>angular-translate</strong> and the <code>translate</code> 
+directive. </p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><h3 id="usage_in-html-template-binding">In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable=""><span>{{</span> daiaSimple_expression | daiaSimple <span>}}</span></code>
+</div>
+<h3 id="usage_in-javascript">In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">$filter('daiaSimple')()</code>
+</div>
+</div>
+</div>

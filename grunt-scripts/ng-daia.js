@@ -26,39 +26,43 @@ ngDAIA.value('version', '0.0.1');
  * @description
  * 
  * This directive queries a DAIA server, each time one of its parameters
- * <code>daia-api</code> or <code>daia-id</code> is changed. The DAIA 
- * response is injected into the template scope as <code>daia</code>. 
- * The template <code>template/daia-response.html</code> can be changed
- * with the <code>template-url</code> parameter.
+ * `daia-api` or `daia-id` is changed. The DAIA response (optionally filtered
+ * by a filter such as {@link ng-daia.filter:daiaSimple daiaSimple}) is injected 
+ * into the template's scope as variable `daia`. 
  *
- * The default template makes use of the directives 
- * {@link ng-daia.directive:daiaItem daiaItem} and
- * {@link ng-daia.directive:daiaAvailability daiaAvailability}.
+ * The default template [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
+ * makes use of the directives {@link ng-daia.directive:daiaItem daiaItem}
+ * and {@link ng-daia.directive:daiaAvailability daiaAvailability}. The 
+ * template can be changed with the `template-url` parameter.
  *
  * @param {string} daia-api Base URL of DAIA server to query from
  * @param {string} daia-id Document identifier to query for
+ * @param {string} daia-filter AngularJS filter to process daia response, e.g.
+ *     {@link ng-daia.filter:daiaSimple daiaSimple}
  * @param {string} template-url Custom template to display DAIA result
  */
-ngDAIA.directive('daiaApi',function($http){
+ngDAIA.directive('daiaApi',function($http,$filter){
     return {
         restrict: 'A',
         scope: {
             api: '@daiaApi',
             id: '@daiaId',
+                        filter: '@daiaFilter',
         },
         templateUrl: function(elem, attrs) {
             return attrs.templateUrl ? 
                    attrs.templateUrl : 'template/daia-response.html';
         },
         link: function link(scope, element, attr, controller, transclude) {
-
             scope.daiaRequest = function() {
-                console.log(scope.api);
                 $http.jsonp( scope.api, {
                     params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }
                 ).success(function(response) {
-                    //console.log(response);
-                    scope.daia = response;
+                    if (scope.filter) {
+                        scope.daia = $filter(scope.filter)(response);
+                    } else {
+                        scope.daia = response;
+                    }
                 });
             };
 
@@ -77,13 +81,13 @@ ngDAIA.directive('daiaApi',function($http){
  * @description
  * 
  * This directive displays the availability of a DAIA item, given as JSON 
- * object with parameter <code>daia-availability</code>. The template 
- * <code>template/daia-availability.html</code> can be changed with the 
- * <code>template-url</code> parameter.
+ * object with parameter `daia-availability`. The default template 
+ * [template/daia-availability.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html)
+ * can be changed with the `template-url` parameter.
  *
- * The item is injected into the template's scope as <code>item</code>. 
- * For easier access, its members <code>available</code> and 
- * <code>unavailable</code> are provided as well, unless they are empty.
+ * The item is injected into the template's scope as `item`. 
+ * For easier access, its members `available` and 
+ * `unavailable` are provided as well, unless they are empty.
  *
  * See also {@link ng-daia.directive:daiaItem daiaItem} directive.
  *
@@ -119,11 +123,11 @@ ngDAIA.directive('daiaAvailability',function(){
  * @description
  * 
  * This directive displays a DAIA item, given as JSON object with parameter
- * <code>daia-item</code>. The item is injected into the template's scope
- * as <code>item</code>. The template <code>template/daia-item.html</code>
- * can be changed with the <code>template-url</code> parameter.
- *
- * See also {@link ng-daia.directive:daiaAvailability daiaAvailability} directive.
+ * `daia-item`. The item is injected into the template's scope as variable 
+ * `item`. The default template 
+ * [template/daia-item.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-item.html)
+ * makes use of directive {@link ng-daia.directive:daiaAvailability daiaAvailability}.
+ * The template can be changed with the `template-url` parameter.
  *
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
@@ -141,6 +145,175 @@ ngDAIA.directive('daiaItem',function(){
     }
 });
 
+'use strict';
+/**
+ * @ngdoc directive
+ * @name ng-daia.directive:daiaSimple
+ * @restrict A
+ * @description
+ * 
+ * This directive displays a DAIA response, document, or item in simplified
+ * form, as filtered by {@link ng-daia.filter:daiaSimple daiaSimple}). The
+ * default template [template/daia-simple.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html)
+ * can be changed with the `template-url` parameter. The template's scope
+ * gets the variables
+ *
+ * * `daia`: DAIA response, document, or item as passed to the directive
+ * * `status`: simplified status (set to `none` by default)
+ * * `expected`, `delay`, `href`, `limitation`: optional additional information
+ *
+ * @param {string} daia-item DAIA response, document, or item to display
+ * @param {string} template-url Custom template URL to display daia result
+ */
+ngDAIA.directive('daiaSimple',function($filter){
+    return {
+        restrict: 'A',
+        scope: {
+            daia: '=daiaSimple',
+        },
+        templateUrl: function(elem, attrs) {
+            return attrs.templateUrl ? 
+                   attrs.templateUrl : 'template/daia-simple.html';
+        },
+        link: function(scope, elem, attrs) {
+            var simple = $filter('daiaSimple')(scope.daia);
+
+            angular.forEach(
+                ['status','expected','delay','href','limitation'],
+                function(key) { scope[key] = simple[key]; }
+            );
+
+            var s = scope.status;
+            if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
+                scope.status = 'none';
+            }
+        }
+    }
+});
+
+'use strict';
+/**
+ * @ngdoc filter
+ * @name ng-daia.filter:daiaSimple
+ * @function
+ * @description
+ * 
+ * This filter can be used to transform a DAIA response, document, or item 
+ * into simple availability status ([DAIA 
+ * Simple](http://gbv.github.io/daiaspec/daia.html#daia-simple)). The filter
+ * returns a simple object with simple key-value pairs, such as:
+ *
+ * <pre class="prettyprint linenums">
+ * { status: "openaccess" }
+ * { status: "loan" }
+ * { status: "presentation" }
+ * { status: "expected" }
+ * { status: "expected", expected: "2014-12-07" }
+ * { status: "openaccess", href: "http://dx.doi.org/10.1901%2Fjaba.1974.7-497a" }
+ * { status: "none" }
+ * </pre>
+ *
+ * The filter can also be used with parameter `daia-filter` at directive
+ * {@link ng-daia.directive:daiaApi daiaApi}.
+ *
+ * To customize the message, use **angular-translate** and the `translate` 
+ * directive. 
+ */
+ngDAIA.filter('daiaSimple',function(){
+  return function(input, option) {
+	
+  // extract list of items from input
+  var items = [];
+  if (angular.isObject(input)) {
+		if (angular.isArray(input.document)) {
+			angular.forEach(input.document,function(document) {
+				angular.forEach(document.item,function(item) {
+					items.push(item);
+				});
+			});
+		} else {
+			angular.forEach(input.item,function(item) {
+				items.push(item);
+			});
+    }
+  } else if(angular.isArray(input)) {
+		// TODO
+	}
+	
+	console.log("Items:");
+	console.log(items);
+	var response = { };
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'openaccess'){
+					response.status = "openaccess";
+					response.href = item.available[j].href;
+					return;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(1);
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'loan'){
+					response.status = "loan";
+					return response;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(2);
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'presentation'){
+					response.status = "presentation";
+					return response;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(3);
+	
+	angular.forEach(items,function(item) {
+		angular.forEach(item.unavailable,function(unavailable) {
+			if(unavailable.service == 'loan' && unavailable.expected) {
+				var exp = unavailable.expected;
+				if (response.expected) {
+					if (exp == "unknown") {
+						return;
+					} else if(response.expected != "unknown") {
+						if (exp > response.expected) {
+							return;
+						}
+					}
+				}
+				response.status = "expected";
+				response.expected = exp;
+			}
+		});
+	});
+	
+	if (!response.status) {
+		response.status = "none";
+	}
+
+	return response;
+  }
+});
+
 angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -150,12 +323,17 @@ angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/daia-item.html',
-    "<div ng-if=\"item.department.href.length\"><span class=\"daia-label\">Department:</span> <a href=\"{{item.department.href}}\">{{item.department.content}}</a></div><div><span class=\"daia-label\">Shelf mark:</span>{{item.label}}</div><span ng-if=\"!item.available && !item.unavailable\" class=\"daia-label\">Availability:</span><span ng-if=\"!item.available && !item.unavailable\">unknown</span><div daia-availability=\"item\"></div>"
+    "<div ng-if=\"item.department\"><span class=\"daia-label\">Department:</span> <a ng-if=\"item.department.href\" href=\"{{item.department.href}}\">{{item.department.content}}</a><span ng-if=\"!item.department.href\">{{item.department.content}}</span></div><div><span class=\"daia-label\">Shelf mark:</span>{{item.label}}</div><span ng-if=\"!item.available && !item.unavailable\" class=\"daia-label\">Availability:</span><span ng-if=\"!item.available && !item.unavailable\">unknown</span><div daia-availability=\"item\"></div>"
   );
 
 
   $templateCache.put('template/daia-response.html',
-    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a> <span ng-if=\"daia.institution.content.length & !daia.institution.href.length\">{{daia.institution.content}}</span></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
+    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
+  );
+
+
+  $templateCache.put('template/daia-simple.html',
+    "<span class=\"daia-label\">current status:</span> <span ng-if=\"status == 'openaccess'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'loan'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'presentation'\" class=\"availability availability-presentation\">{{status}}</span> <span ng-if=\"status != 'openaccess' && status != 'loan' && status != 'presentation'\" class=\"availability availability-unavailable\">{{status}}</span> <span ng-if=\"expected\" class=\"availability availability-unavailable\">until {{expected}}</span>"
   );
 
 }]);

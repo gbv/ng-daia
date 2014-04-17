@@ -1,0 +1,27 @@
+<h1><code ng:non-bindable="">daiaSimple</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">ng-daia</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-daia-directive-page ng-daia-directive-daiasimple-page"><p>This directive displays a DAIA response, document, or item in simplified
+form, as filtered by <a href="#/api/ng-daia.filter:daiaSimple">daiaSimple</a>). The
+default template <a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html">template/daia-simple.html</a>
+can be changed with the <code>template-url</code> parameter. The template&#39;s scope
+gets the variables</p>
+<ul>
+<li><code>daia</code>: DAIA response, document, or item as passed to the directive</li>
+<li><code>status</code>: simplified status (set to <code>none</code> by default)</li>
+<li><code>expected</code>, <code>delay</code>, <code>href</code>, <code>limitation</code>: optional additional information</li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY daia-simple
+     daia-item="{string}"
+     template-url="{string}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>daia-item</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiasimple-page"><p>DAIA response, document, or item to display</p>
+</div></td></tr><tr><td>template-url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-daia-directive-page ng-daia-directive-daiasimple-page"><p>Custom template URL to display daia result</p>
+</div></td></tr></tbody></table></div>
+</div>
