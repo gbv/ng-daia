@@ -6,11 +6,11 @@
  * @description
  * 
  * This directive displays a DAIA item, given as JSON object with parameter
- * <code>daia-item</code>. The item is injected into the template's scope
- * as <code>item</code>. The template <code>template/daia-item.html</code>
- * can be changed with the <code>template-url</code> parameter.
- *
- * See also {@link ng-daia.directive:daiaAvailability daiaAvailability} directive.
+ * `daia-item`. The item is injected into the template's scope as variable 
+ * `item`. The default template 
+ * [template/daia-item.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-item.html)
+ * makes use of directive {@link ng-daia.directive:daiaAvailability daiaAvailability}.
+ * The template can be changed with the `template-url` parameter.
  *
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result

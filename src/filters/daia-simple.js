@@ -3,21 +3,25 @@
  * @ngdoc filter
  * @name ng-daia.filter:daiaSimple
  * @function
- * @param {string=} preference what DAIA service(s) to ask for
  * @description
  * 
- * This filter can be used to transform a document or item from a DAIA 
- * response into a simple availability status.
+ * This filter can be used to transform a DAIA response, document, or item 
+ * into simple availability status ([DAIA 
+ * Simple](http://gbv.github.io/daiaspec/daia.html#daia-simple)). The filter
+ * returns a simple object with simple key-value pairs, such as:
  *
- *     {{ document | daiaSimple }}
+ * <pre class="prettyprint linenums">
+ * { status: "openaccess" }
+ * { status: "loan" }
+ * { status: "presentation" }
+ * { status: "expected" }
+ * { status: "expected", expected: "2014-12-07" }
+ * { status: "openaccess", href: "http://dx.doi.org/10.1901%2Fjaba.1974.7-497a" }
+ * { status: "none" }
+ * </pre>
  *
- * Possible return values:
- *
- * * `{ status: "openaccess" }`
- * * `{ status: "loan" }`
- * * `{ status: "presentation" }`
- * * `{ status: "expected" }`
- * * `{ status: "expected", expected: "..." }`
+ * The filter can also be used with parameter `daia-filter` at directive
+ * {@link ng-daia.directive:daiaApi daiaApi}.
  *
  * To customize the message, use **angular-translate** and the `translate` 
  * directive. 
