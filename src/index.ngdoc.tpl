@@ -3,21 +3,24 @@
 @id index
 @description
 
-# ng-daia - Documentation
+# <%= name %>
 
-<b>ng-daia</b> is an {@link http://angularjs.org/ AngularJS} module to
+> <%= description %>
+
+**ng-daia** is an {@link http://angularjs.org/ AngularJS} module to
 facilitate access to {@link http://purl.org/NET/DAIA Document Availability
 Information API} (DAIA) services and to display the responses given by a DAIA
 server.
-See  for an introduction of usage.
+
+The latest release of <%= name %> is version <%= version %>. Source code and issue tracker
+can be found at <<%= repository.url.replace(/^git:/,'https:').replace(/.git$/,'') %>>.
 
 ## Getting started
 
-The current release of ng-daia (version 0.0.1) can be [downloaded from this
+The current release of ng-daia (<%= version %>) can be [downloaded from this
 page](grunt-scripts/ng-daia.js). 
 
-
- The module is in a very early stage of
+The module is in a very early stage of
 development. To get started have a look at the documentation of the AngularJS
 directives provided by {@link ng-daia module ng-daia}.  
 
@@ -32,7 +35,8 @@ The following minmal example might help to include ng-daia into your website:
   <link href="ng-daia.css" rel="stylesheet" />
 </head>
 <body>
-  <div daia-api="http://your-daia-base-url" daia-id="your-document-id"/>
+  <div daia-api="http://your-daia-base-url" daia-id="your-document-id">
+  </div>
 </body>
 </html>
 </pre>
@@ -61,11 +65,13 @@ The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
 source code repository contains a more detailed sample application that makes
 use of ng-daia. The demo should be run from a server (e.g. localhost).
 
-## Source code and development
+## Author and Contributors
 
-The module is managed in a public git repository at
-<https://github.com/gbv/ng-daia>, licensed under AGPL. 
+* <%= author %>
+* <%= contributor %>
 
-Please use <https://github.com/gbv/ng-daia/issues> for bug reports and feature
-requests.
+## License
+
+Code licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0.html).
+Documentation licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
 

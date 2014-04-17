@@ -1,16 +1,18 @@
 'use strict';
 
 module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-ngdocs');
-    grunt.loadNpmTasks('grunt-version');
+    grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-angular-templates');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-ngdocs');
+    grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-version');
+    grunt.loadNpmTasks('grunt-template');
 
     grunt.initConfig({
-        foo: 123,
         pkg: require('./package.json'),
         version: {
             moduleVersion: {
@@ -19,16 +21,25 @@ module.exports = function(grunt) {
                 },
                 src: ['src/ng-daia.js']
             },
-            ngdocVersion: {
-                options: { prefix: 'version ' },
-                src: ['src/api.ngdoc']
+        },
+        template: {
+            index: {
+                options: {
+                     data: function() { 
+                        return grunt.config.get('pkg'); 
+                    }
+                },
+                files: {
+                    'src/index.ngdoc': ['src/index.ngdoc.tpl']
+                }
             }
         },
         ngdocs: {
             options: {
                 html5Mode: false,
+                titleLink: '#/api',
                 startPage: '/api',
-                navTemplate: 'src/docsnav.html',
+                navTemplate: 'src/docs-nav.html',
                 scripts: [
                     'angular.js',
                     'ng-daia.js',
@@ -87,16 +98,47 @@ module.exports = function(grunt) {
             }
         },
         shell: {
+            demo: {
+                // TODO: use ng-daia.min.js instead of partials
+                command: "rm -rf docs/demo && cp -r demo docs"
+            },
             site: {
                 command: "rm -rf site && mkdir site && cp -r docs/* site"
+            },
+            working_copy_must_be_clean: {
+                command: "if git status --porcelain 2>/dev/null | grep -q .; then exit 1; fi",
+                options: { failOnError: true } 
+            },
+            push_site: {
+                command: "git push origin gh-pages",
+                options: { failOnError: true } 
+            },
+            gh_pages: {
+                command: [
+                    'git checkout gh-pages',
+                    'git pull origin gh-pages',
+                    'cp -rf site/* .',
+                    'rm -rf site',
+                    'git add .',
+                    'git commit -m "updated site"',
+                    'git checkout master'
+                ].join('&&'),
+                options: { 
+                    stdout: true,
+                    stderr: true,
+                    failOnError: true
+                } 
             }
         }
     });
 
-    grunt.registerTask('default',['docs']); // TODO: test
+    grunt.registerTask('default',['docs']);
+    grunt.registerTask('ng-daia',['version','ngtemplates','concat']); // +'ngmin','uglify'
+    grunt.registerTask('docs',['clean','ng-daia','template','ngdocs','shell:demo']);
+    // TODO: test before release
+    grunt.registerTask('gh-pages', ['shell:working_copy_must_be_clean','site','shell:gh_pages']);
+    grunt.registerTask('push-site', ['gh-pages','shell:push_site']);
     grunt.registerTask('site', ['docs','shell:site']);
-    grunt.registerTask('ng-daia',['version','ngtemplates','concat']);
-    grunt.registerTask('docs',['clean','ng-daia','ngdocs']);
     grunt.registerTask('test',['karma:unit']);
     grunt.registerTask('watch',['karma:watch']);
 };
