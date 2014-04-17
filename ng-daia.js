@@ -37,14 +37,17 @@ ngDAIA.value('version', '0.0.1');
  *
  * @param {string} daia-api Base URL of DAIA server to query from
  * @param {string} daia-id Document identifier to query for
+ * @param {string} daia-filter AngularJS filter to process daia response, e.g.
+ *     {@link ng-daia.filter:daiasimple daiaSimple}.
  * @param {string} template-url Custom template to display DAIA result
  */
-ngDAIA.directive('daiaApi',function($http){
+ngDAIA.directive('daiaApi',function($http,$filter){
     return {
         restrict: 'A',
         scope: {
             api: '@daiaApi',
             id: '@daiaId',
+						filter: '@daiaFilter',
         },
         templateUrl: function(elem, attrs) {
             return attrs.templateUrl ? 
@@ -52,13 +55,19 @@ ngDAIA.directive('daiaApi',function($http){
         },
         link: function link(scope, element, attr, controller, transclude) {
 
+						console.log(scope.filter);
+						
             scope.daiaRequest = function() {
                 console.log(scope.api);
                 $http.jsonp( scope.api, {
                     params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }
                 ).success(function(response) {
                     //console.log(response);
-                    scope.daia = response;
+										if (scope.filter) {
+											scope.daia = $filter(scope.filter)(response);
+										} else {
+											scope.daia = response;
+										}
                 });
             };
 
@@ -141,6 +150,125 @@ ngDAIA.directive('daiaItem',function(){
     }
 });
 
+'use strict';
+/**
+ * @ngdoc filter
+ * @name ng-daia.filter:daiaSimple
+ * @function
+ * @param {string=} preference what DAIA service(s) to ask for
+ * @description
+ * 
+ * This filter can be used to transform a document or item from a DAIA 
+ * response into a simple availability status.
+ *
+ *     {{ document | daiaSimple }}
+ *
+ * Possible return values:
+ *
+ * * `{ status: "openaccess" }`
+ * * `{ status: "loan" }`
+ * * `{ status: "presentation" }`
+ * * `{ status: "expected" }`
+ * * `{ status: "expected", expected: "..." }`
+ *
+ * To customize the message, use **angular-translate** and the `translate` 
+ * directive. 
+ */
+ngDAIA.filter('daiaSimple',function(){
+  return function(input, option) {
+	
+  // extract list of items from input
+  var items = [];
+  if (angular.isObject(input)) {
+		if (angular.isArray(input.document)) {
+			angular.forEach(input.document,function(document) {
+				angular.forEach(document.item,function(item) {
+					items.push(item);
+				});
+			});
+		} else {
+			angular.forEach(input.item,function(item) {
+				items.push(item);
+			});
+    }
+  } else if(angular.isArray(input)) {
+		// TODO
+	}
+	
+	console.log("Items:");
+	console.log(items);
+	var response = { };
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'openaccess'){
+					response.status = "openaccess";
+					response.href = item.available[j].href;
+					return;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(1);
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'loan'){
+					response.status = "loan";
+					return response;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(2);
+	
+	angular.forEach(items,function(item) {
+		if (angular.isArray(item.available)) {
+			for(var j=0; j<item.available.length; j++){
+				if(item.available[j].service == 'presentation'){
+					response.status = "presentation";
+					return response;
+				}
+			}
+		}
+	});
+	if (response.status) return response;
+	
+	console.log(3);
+	
+	angular.forEach(items,function(item) {
+		angular.forEach(item.unavailable,function(unavailable) {
+			if(unavailable.service == 'loan' && unavailable.expected) {
+				var exp = unavailable.expected;
+				if (response.expected) {
+					if (exp == "unknown") {
+						return;
+					} else if(response.expected != "unknown") {
+						if (exp > response.expected) {
+							return;
+						}
+					}
+				}
+				response.status = "expected";
+				response.expected = exp;
+			}
+		});
+	});
+	
+	if (!response.status) {
+		response.status = "none";
+	}
+
+	return response;
+  }
+});
+
 angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -155,7 +283,7 @@ angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/daia-response.html',
-    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a> <span ng-if=\"daia.institution.content.length & !daia.institution.href.length\">{{daia.institution.content}}</span></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
+    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
   );
 
 }]);
