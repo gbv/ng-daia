@@ -7,12 +7,17 @@ angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/daia-item.html',
-    "<div ng-if=\"item.department.href.length\"><span class=\"daia-label\">Department:</span> <a href=\"{{item.department.href}}\">{{item.department.content}}</a></div><div><span class=\"daia-label\">Shelf mark:</span>{{item.label}}</div><span ng-if=\"!item.available && !item.unavailable\" class=\"daia-label\">Availability:</span><span ng-if=\"!item.available && !item.unavailable\">unknown</span><div daia-availability=\"item\"></div>"
+    "<div ng-if=\"item.department\"><span class=\"daia-label\">Department:</span> <a ng-if=\"item.department.href\" href=\"{{item.department.href}}\">{{item.department.content}}</a><span ng-if=\"!item.department.href\">{{item.department.content}}</span></div><div><span class=\"daia-label\">Shelf mark:</span>{{item.label}}</div><span ng-if=\"!item.available && !item.unavailable\" class=\"daia-label\">Availability:</span><span ng-if=\"!item.available && !item.unavailable\">unknown</span><div daia-availability=\"item\"></div>"
   );
 
 
   $templateCache.put('template/daia-response.html',
     "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
+  );
+
+
+  $templateCache.put('template/daia-simple.html',
+    "<span class=\"daia-label\">current status:</span> <span ng-if=\"status == 'openaccess'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'loan'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'presentation'\" class=\"availability availability-presentation\">{{status}}</span> <span ng-if=\"status != 'openaccess' && status != 'loan' && status != 'presentation'\" class=\"availability availability-unavailable\">{{status}}</span> <span ng-if=\"expected\" class=\"availability availability-unavailable\">until {{expected}}</span>"
   );
 
 }]);
