@@ -70,8 +70,7 @@
 		<span ng-if="daia.status == 'openaccess'" class="availability availability-available">{{daia.status}}</span>
 		<span ng-if="daia.status == 'loan'" class="availability availability-available">{{daia.status}}</span>		
 		<span ng-if="daia.status == 'presentation'" class="availability availability-presentation">{{daia.status}}</span>
-		<span ng-if="daia.status == 'none'" class="availability availability-unavailable">{{daia.status}}</span>
-		<span ng-if="daia.status == 'expected'" class="availability availability-unavailable">{{daia.status}}</span>		
+		<span ng-if="daia.status != 'openaccess' && daia.status != 'loan' && daia.status != 'presentation'" class="availability availability-unavailable">{{daia.status}}</span>
 		<span ng-if="daia.expected" class="availability availability-unavailable"> until {{daia.expected}}</span>
 	</div>
 </script>
