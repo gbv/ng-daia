@@ -60,16 +60,32 @@
         <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
           <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
         </div>
+				<div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="daia-simple"></div>
 				<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
+
+<script type="text/ng-template" id="daia-simple">
+	<h3>Simple availability via filter</h3>
+	<div class="daia-result">
+		<span class="daia-label">current status: </span>
+		<span ng-if="daia.status == 'openaccess'" class="availability availability-available">{{daia.status}}</span>
+		<span ng-if="daia.status == 'loan'" class="availability availability-available">{{daia.status}}</span>		
+		<span ng-if="daia.status == 'presentation'" class="availability availability-presentation">{{daia.status}}</span>
+		<span ng-if="daia.status == 'none'" class="availability availability-unavailable">{{daia.status}}</span>
+		<span ng-if="daia.status == 'expected'" class="availability availability-unavailable">{{daia.status}}</span>		
+		<span ng-if="daia.expected" class="availability availability-unavailable"> until {{daia.expected}}</span>
+	</div>
+</script>
+
 <script type="text/ng-template" id="debug">
 	<h3>DAIA response via AngularJS template </h3>
-    <p>Short status: {{daia | daiaSimple}}</p>
 	<div class="well">
 		api: {{api}}<br>
 		id: {{id}}<br>
-		daia: {{daia | json}}
+		daia: {{daia | json}}<br>
+		daia: {{daia | daiaSimple | json}}		
 	</div>	
 </script>
+
       </div>
     </div>
   </div>
