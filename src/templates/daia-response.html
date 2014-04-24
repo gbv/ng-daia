@@ -5,8 +5,7 @@
 		<a ng-if="daia.institution.href.length" href="{{daia.institution.href}}">{{daia.institution.content}}</a>
 	</div>
 	<div ng-if="daia.document[0].href.length">
-		<span class="daia-label" translate="CAT">Catalogue entry:</span>
-		<a href="{{daia.document[0].href}}">Link</a>
+		<a translate="CAT" href="{{daia.document[0].href}}">Catalogue entry</a>
 	</div>
 	<div>
 		<span ng-if="!daia.document.length" translate="NR">no records found</span>

@@ -6,6 +6,6 @@
 <div>
 <span class="daia-label" translate="SGN">Shelf mark:</span>  {{item.label}}
 </div>
-<span ng-if="!item.available && !item.unavailable" class="daia-label" translate="AVB">Availability: </span><span ng-if="!item.available && !item.unavailable">{{unknown | translate}}</span></p>
+<span ng-if="!item.available && !item.unavailable" class="daia-label" translate="AVB">Availability: </span><span ng-if="!item.available && !item.unavailable" translate="unknown">unknown</span></p>
 <div daia-availability="item"></div>
 

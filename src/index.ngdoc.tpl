@@ -63,7 +63,7 @@ The templates are using the following classes:
 
 The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
 source code repository contains a more detailed sample application that makes
-use of ng-daia. The demo should be run from a server (e.g. localhost).
+use of ng-daia as well as [angular-translate](http://angular-translate.github.io/docs/#/guide/02_getting-started). The demo should be run from a server (e.g. localhost).
 
 ## Author and Contributors
 

@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']);
 app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en', {
         INST: 'Queried institution:',
-        CAT: 'Catalogue entry:',
+        CAT: 'Catalogue entry',
         DEP: 'Department:',
         SGN: 'Shelf mark:',
         NR: 'no records found',
@@ -15,15 +15,16 @@ app.config(['$translateProvider', function ($translateProvider) {
         loan: 'loan',
         interloan: 'interloan',
         expected: 'expected',
-        EXP: 'expected back',
+        EXP: 'expected back:',
         RES: 'place reservation',
+        ACC: 'access via:',
         STATUS: 'Current status',
         BUTTON_LANG_DE: 'German',
         BUTTON_LANG_EN: 'English',
     });
     $translateProvider.translations('de', {
         INST: 'Institution:',
-        CAT: 'Katalogeintrag:',
+        CAT: 'Katalogeintrag',
         DEP: 'Abteilung:',
         SGN: 'Signatur:',
         NR: 'Keine Treffer',
@@ -35,13 +36,15 @@ app.config(['$translateProvider', function ($translateProvider) {
         loan: 'Ausleihe',
         interloan: 'Fernleihe',
         expected: 'erwartet',
-        EXP: 'Ausgeliehen bis',
+        EXP: 'Ausgeliehen bis:',
         RES: 'Vorkmerken',
+        ACC: 'Volltext:',
         STATUS: 'Aktueller Status',
         BUTTON_LANG_DE: 'Deutsch',
         BUTTON_LANG_EN: 'Englisch',
     });
-    $translateProvider.preferredLanguage('de');
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.fallbackLanguage('en');
 }]);
 app.controller('myController', ['$translate', '$scope', function ($translate, $scope) {
  
