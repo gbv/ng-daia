@@ -116,7 +116,7 @@ module.exports = function(grunt) {
         },
         shell: {
             maps: {
-                command: "cp -f lib/1.2.7/*.map docs/js"
+                command: "cp lib/1.2.7/*.map docs/js; cp ng-daia.js docs/grunt-scripts"
             },
             demo: {
                 // TODO: use ng-daia.min.js instead of partials in demo

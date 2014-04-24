@@ -15,9 +15,8 @@
  * * {@link ng-daia.directive:daiaAvailability daiaAvailability}
  *
  */
-var ngDAIA = angular.module('ngDAIA',[]);
+var ngDAIA = angular.module('ngDAIA', []);
 ngDAIA.value('version', '0.0.1');
-
 'use strict';
 /**
  * @ngdoc directive
@@ -41,38 +40,47 @@ ngDAIA.value('version', '0.0.1');
  *     {@link ng-daia.filter:daiaSimple daiaSimple}
  * @param {string} template-url Custom template to display DAIA result
  */
-ngDAIA.directive('daiaApi',function($http,$filter){
+ngDAIA.directive('daiaApi', [
+  '$http',
+  '$filter',
+  function ($http, $filter) {
     return {
-        restrict: 'A',
-        scope: {
-            api: '@daiaApi',
-            id: '@daiaId',
-                        filter: '@daiaFilter',
-        },
-        templateUrl: function(elem, attrs) {
-            return attrs.templateUrl ? 
-                   attrs.templateUrl : 'template/daia-response.html';
-        },
-        link: function link(scope, element, attr, controller, transclude) {
-            scope.daiaRequest = function() {
-                $http.jsonp( scope.api, {
-                    params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }
-                ).success(function(response) {
-                    if (scope.filter) {
-                        scope.daia = $filter(scope.filter)(response);
-                    } else {
-                        scope.daia = response;
-                    }
-                });
-            };
-
-            // TODO: don't call twice
-            scope.$watch('api',function(){ scope.daiaRequest() });
-            scope.$watch('id',function(){ scope.daiaRequest() });
-        }
+      restrict: 'A',
+      scope: {
+        api: '@daiaApi',
+        id: '@daiaId',
+        filter: '@daiaFilter'
+      },
+      templateUrl: function (elem, attrs) {
+        return attrs.templateUrl ? attrs.templateUrl : 'template/daia-response.html';
+      },
+      link: function link(scope, element, attr, controller, transclude) {
+        scope.daiaRequest = function () {
+          $http.jsonp(scope.api, {
+            params: {
+              id: scope.id,
+              format: 'json',
+              callback: 'JSON_CALLBACK'
+            }
+          }).success(function (response) {
+            if (scope.filter) {
+              scope.daia = $filter(scope.filter)(response);
+            } else {
+              scope.daia = response;
+            }
+          });
+        };
+        // TODO: don't call twice
+        scope.$watch('api', function () {
+          scope.daiaRequest();
+        });
+        scope.$watch('id', function () {
+          scope.daiaRequest();
+        });
+      }
     };
-});
-
+  }
+]);
 'use strict';
 /**
  * @ngdoc directive
@@ -94,27 +102,23 @@ ngDAIA.directive('daiaApi',function($http,$filter){
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
  */
-ngDAIA.directive('daiaAvailability',function(){
-    return {
-        restrict: 'A',
-        scope: {
-            item: '=daiaAvailability',
-        },
-        templateUrl: function(elem, attrs) {
-            return attrs.templateUrl ? 
-                   attrs.templateUrl : 'template/daia-availability.html';
-        },
-        link: function(scope, elem, attrs) {
-            if (scope.item.available && scope.item.available.length) {
-                scope.available = scope.item.available;
-            }
-            if (scope.item.unavailable && scope.item.unavailable.length) {
-                scope.unavailable = scope.item.unavailable;
-            }
-        }
+ngDAIA.directive('daiaAvailability', function () {
+  return {
+    restrict: 'A',
+    scope: { item: '=daiaAvailability' },
+    templateUrl: function (elem, attrs) {
+      return attrs.templateUrl ? attrs.templateUrl : 'template/daia-availability.html';
+    },
+    link: function (scope, elem, attrs) {
+      if (scope.item.available && scope.item.available.length) {
+        scope.available = scope.item.available;
+      }
+      if (scope.item.unavailable && scope.item.unavailable.length) {
+        scope.unavailable = scope.item.unavailable;
+      }
     }
+  };
 });
-
 'use strict';
 /**
  * @ngdoc directive
@@ -132,19 +136,15 @@ ngDAIA.directive('daiaAvailability',function(){
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
  */
-ngDAIA.directive('daiaItem',function(){
-    return {
-        restrict: 'A',
-        scope: {
-            item: '=daiaItem',
-        },
-        templateUrl: function(elem, attrs) {
-            return attrs.templateUrl ? 
-                   attrs.templateUrl : 'template/daia-item.html';
-        },
+ngDAIA.directive('daiaItem', function () {
+  return {
+    restrict: 'A',
+    scope: { item: '=daiaItem' },
+    templateUrl: function (elem, attrs) {
+      return attrs.templateUrl ? attrs.templateUrl : 'template/daia-item.html';
     }
+  };
 });
-
 'use strict';
 /**
  * @ngdoc directive
@@ -165,32 +165,36 @@ ngDAIA.directive('daiaItem',function(){
  * @param {string} daia-item DAIA response, document, or item to display
  * @param {string} template-url Custom template URL to display daia result
  */
-ngDAIA.directive('daiaSimple',function($filter){
+ngDAIA.directive('daiaSimple', [
+  '$filter',
+  function ($filter) {
     return {
-        restrict: 'A',
-        scope: {
-            daia: '=daiaSimple',
-        },
-        templateUrl: function(elem, attrs) {
-            return attrs.templateUrl ? 
-                   attrs.templateUrl : 'template/daia-simple.html';
-        },
-        link: function(scope, elem, attrs) {
-            var simple = $filter('daiaSimple')(scope.daia);
-
-            angular.forEach(
-                ['status','expected','delay','href','limitation'],
-                function(key) { scope[key] = simple[key]; }
-            );
-
-            var s = scope.status;
-            if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
-                scope.status = 'none';
-            }
-        }
-    }
-});
-
+      restrict: 'A',
+      scope: { daia: '=daiaSimple' },
+      templateUrl: function (elem, attrs) {
+        return attrs.templateUrl ? attrs.templateUrl : 'template/daia-simple.html';
+      },
+      link: function (scope, elem, attrs) {
+        scope.$watch('daia', function () {
+          var simple = $filter('daiaSimple')(scope.daia);
+          angular.forEach([
+            'status',
+            'expected',
+            'delay',
+            'href',
+            'limitation'
+          ], function (key) {
+            scope[key] = simple[key];
+          });
+          var s = scope.status;
+          if (s != 'openaccess' && s != 'loan' && s != 'presentation' && s != 'expected') {
+            scope.status = 'none';
+          }
+        });
+      }
+    };
+  }
+]);
 'use strict';
 /**
  * @ngdoc filter
@@ -219,121 +223,93 @@ ngDAIA.directive('daiaSimple',function($filter){
  * To customize the message, use **angular-translate** and the `translate` 
  * directive. 
  */
-ngDAIA.filter('daiaSimple',function(){
-  return function(input, option) {
-	
-  // extract list of items from input
-  var items = [];
-  if (angular.isObject(input)) {
-		if (angular.isArray(input.document)) {
-			angular.forEach(input.document,function(document) {
-				angular.forEach(document.item,function(item) {
-					items.push(item);
-				});
-			});
-		} else {
-			angular.forEach(input.item,function(item) {
-				items.push(item);
-			});
+ngDAIA.filter('daiaSimple', function () {
+  return function (input, option) {
+    // extract list of items from input
+    var items = [];
+    if (angular.isObject(input)) {
+      if (angular.isArray(input.document)) {
+        angular.forEach(input.document, function (document) {
+          angular.forEach(document.item, function (item) {
+            items.push(item);
+          });
+        });
+      } else {
+        angular.forEach(input.item, function (item) {
+          items.push(item);
+        });
+      }
+    } else if (angular.isArray(input)) {
     }
-  } else if(angular.isArray(input)) {
-		// TODO
-	}
-	
-	console.log("Items:");
-	console.log(items);
-	var response = { };
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'openaccess'){
-					response.status = "openaccess";
-					response.href = item.available[j].href;
-					return;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	console.log(1);
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'loan'){
-					response.status = "loan";
-					return response;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	console.log(2);
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'presentation'){
-					response.status = "presentation";
-					return response;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	console.log(3);
-	
-	angular.forEach(items,function(item) {
-		angular.forEach(item.unavailable,function(unavailable) {
-			if(unavailable.service == 'loan' && unavailable.expected) {
-				var exp = unavailable.expected;
-				if (response.expected) {
-					if (exp == "unknown") {
-						return;
-					} else if(response.expected != "unknown") {
-						if (exp > response.expected) {
-							return;
-						}
-					}
-				}
-				response.status = "expected";
-				response.expected = exp;
-			}
-		});
-	});
-	
-	if (!response.status) {
-		response.status = "none";
-	}
-
-	return response;
-  }
+    var response = {};
+    angular.forEach(items, function (item) {
+      if (angular.isArray(item.available)) {
+        for (var j = 0; j < item.available.length; j++) {
+          if (item.available[j].service == 'openaccess') {
+            response.status = 'openaccess';
+            response.href = item.available[j].href;
+            return;
+          }
+        }
+      }
+    });
+    if (response.status)
+      return response;
+    angular.forEach(items, function (item) {
+      if (angular.isArray(item.available)) {
+        for (var j = 0; j < item.available.length; j++) {
+          if (item.available[j].service == 'loan') {
+            response.status = 'loan';
+            return response;
+          }
+        }
+      }
+    });
+    if (response.status)
+      return response;
+    angular.forEach(items, function (item) {
+      if (angular.isArray(item.available)) {
+        for (var j = 0; j < item.available.length; j++) {
+          if (item.available[j].service == 'presentation') {
+            response.status = 'presentation';
+            return response;
+          }
+        }
+      }
+    });
+    if (response.status)
+      return response;
+    angular.forEach(items, function (item) {
+      angular.forEach(item.unavailable, function (unavailable) {
+        if (unavailable.service == 'loan' && unavailable.expected) {
+          var exp = unavailable.expected;
+          if (response.expected) {
+            if (exp == 'unknown') {
+              return;
+            } else if (response.expected != 'unknown') {
+              if (exp > response.expected) {
+                return;
+              }
+            }
+          }
+          response.status = 'expected';
+          response.expected = exp;
+        }
+      });
+    });
+    if (!response.status) {
+      response.status = 'none';
+    }
+    return response;
+  };
 });
-
-angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
-  'use strict';
-
-  $templateCache.put('template/daia-availability.html',
-    "<ul class=\"availability\" ng-if=\"available || unavailable\"><li ng-if=\"available.length\" ng-repeat=\"a in available\"><span class=\"service-label\">{{a.service}}:</span> <span class=\"availability availability-available\">available</span> <span class=\"availability availability-limitation\" ng-if=\"a.limitation.length\">({{a.limitation[0].content}})</span></li><li ng-if=\"unavailable.length\" ng-repeat=\"u in unavailable\"><span class=\"service-label\" ng-if=\"u.expected.length\">{{u.service}}:</span> <span ng-if=\"u.expected.length\" class=\"availability availability-expected\">unavailable</span> <span class=\"service-label\" ng-if=\"!u.expected.length\">{{u.service}}:</span> <span ng-if=\"!u.expected.length\" class=\"availability availability-unavailable\">unavailable</span></li><div class=\"returning\"><li ng-if=\"unavailable[0].href.length && unavailable[0].expected.length\"><div ng-if=\"unavailable[0].expected.length\" class=\"returning returning-expected\">expected back: {{unavailable[0].expected}}</div><a href=\"{{unavailable[0].href}}\">place reservation</a></li></div></ul><div class=\"access\" ng-if=\"((available[1].service || available[0].service) == 'openaccess' || unavailable[0].service == 'openaccess')\">access via: <a ng-if=\"available[1].service == 'openaccess'\" href=\"{{available[1].href}}\">{{available[0].href}}</a> <a ng-if=\"unavailable[0].service == 'openaccess'\" href=\"{{unavailable[0].href}}\">{{available[0].href}}</a></div>"
-  );
-
-
-  $templateCache.put('template/daia-item.html',
-    "<div ng-if=\"item.department\"><span class=\"daia-label\">Department:</span> <a ng-if=\"item.department.href\" href=\"{{item.department.href}}\">{{item.department.content}}</a><span ng-if=\"!item.department.href\">{{item.department.content}}</span></div><div><span class=\"daia-label\">Shelf mark:</span>{{item.label}}</div><span ng-if=\"!item.available && !item.unavailable\" class=\"daia-label\">Availability:</span><span ng-if=\"!item.available && !item.unavailable\">unknown</span><div daia-availability=\"item\"></div>"
-  );
-
-
-  $templateCache.put('template/daia-response.html',
-    "<h3>Document availability</h3><div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\">Queried institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\">Catalogue entry:</span> <a href=\"{{daia.document[0].href}}\">Link</a></div><div><span ng-if=\"!daia.document.length\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
-  );
-
-
-  $templateCache.put('template/daia-simple.html',
-    "<span class=\"daia-label\">current status:</span> <span ng-if=\"status == 'openaccess'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'loan'\" class=\"availability availability-available\">{{status}}</span> <span ng-if=\"status == 'presentation'\" class=\"availability availability-presentation\">{{status}}</span> <span ng-if=\"status != 'openaccess' && status != 'loan' && status != 'presentation'\" class=\"availability availability-unavailable\">{{status}}</span> <span ng-if=\"expected\" class=\"availability availability-unavailable\">until {{expected}}</span>"
-  );
-
-}]);
+angular.module('ngDAIA').run([
+  '$templateCache',
+  function ($templateCache) {
+    'use strict';
+    $templateCache.put('template/daia-availability.html', '<ul class="availability" ng-if="available || unavailable"><li ng-if="available.length" ng-repeat="a in available"><span class="service-label">{{a.service | translate}}:</span> <span class="availability availability-available" translate="available"></span> <span class="availability availability-limitation" ng-if="a.limitation.length">({{a.limitation[0].content}})</span></li><li ng-if="unavailable.length" ng-repeat="u in unavailable"><span class="service-label" ng-if="u.expected.length">{{u.service | translate}}:</span> <span ng-if="u.expected.length" class="availability availability-expected" translate="unavailable"></span> <span class="service-label" ng-if="!u.expected.length">{{u.service | translate}}:</span> <span ng-if="!u.expected.length" class="availability availability-unavailable" translate="unavailable"></span></li><div class="returning"><li ng-if="unavailable[0].href.length && unavailable[0].expected.length"><div ng-if="unavailable[0].expected.length" class="returning returning-expected"><span translate="">EXP</span>: {{unavailable[0].expected}}</div><a href="{{unavailable[0].href}}" translate="RES">place reservation</a></li></div></ul><div class="access" ng-if="((available[1].service || available[0].service) == \'openaccess\' || unavailable[0].service == \'openaccess\')">access via: <a ng-if="available[1].service == \'openaccess\'" href="{{available[1].href}}">{{available[0].href}}</a> <a ng-if="unavailable[0].service == \'openaccess\'" href="{{unavailable[0].href}}">{{available[0].href}}</a></div>');
+    $templateCache.put('template/daia-item.html', '<div ng-if="item.department"><span class="daia-label" translate="DEP">Department:</span> <a ng-if="item.department.href" href="{{item.department.href}}">{{item.department.content}}</a><span ng-if="!item.department.href">{{item.department.content}}</span></div><div><span class="daia-label" translate="SGN">Shelf mark:</span> {{item.label}}</div><span ng-if="!item.available && !item.unavailable" class="daia-label" translate="AVB">Availability:</span><span ng-if="!item.available && !item.unavailable">{{unknown | translate}}</span><div daia-availability="item"></div>');
+    $templateCache.put('template/daia-response.html', '<h3>Document availability</h3><div class="daia-result"><div ng-if="daia.institution.content.length"><span class="daia-label" translate="INST">Queried institution:</span> <a ng-if="daia.institution.href.length" href="{{daia.institution.href}}">{{daia.institution.content}}</a></div><div ng-if="daia.document[0].href.length"><span class="daia-label" translate="CAT">Catalogue entry:</span> <a href="{{daia.document[0].href}}">Link</a></div><div><span ng-if="!daia.document.length" translate="NR">no records found</span></div><div ng-if="daia.document.length" daia-documents="daia.document"><div class="daia-document" ng-repeat="i in daia.document[0].item"><div daia-item="i"></div></div></div></div>');
+    $templateCache.put('template/daia-simple.html', '<span class="daia-label">current status:</span> <span ng-if="status == \'openaccess\'" class="availability availability-available">{{status}}</span> <span ng-if="status == \'loan\'" class="availability availability-available">{{status}}</span> <span ng-if="status == \'presentation\'" class="availability availability-presentation">{{status}}</span> <span ng-if="status != \'openaccess\' && status != \'loan\' && status != \'presentation\'" class="availability availability-unavailable">{{status}}</span> <span ng-if="expected" class="availability availability-unavailable">until {{expected}}</span>');
+  }
+]);
