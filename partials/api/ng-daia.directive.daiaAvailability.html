@@ -5,13 +5,19 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="ng-daia-directive-page ng-daia-directive-daiaavailability-page"><p>This directive displays the availability of a DAIA item, given as JSON 
-object with parameter <code>daia-availability</code>. The default template 
+object with parameter <code>daia-availability</code>. This directive is used by the 
+default template of directive <a href="#/api/ng-daia.directive:daiaItem">daiaItem</a>.
+The default template 
 <a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html">template/daia-availability.html</a>
-can be changed with the <code>template-url</code> parameter.</p>
-<p>The item is injected into the template&#39;s scope as <code>item</code>. 
-For easier access, its members <code>available</code> and 
-<code>unavailable</code> are provided as well, unless they are empty.</p>
-<p>See also <a href="#/api/ng-daia.directive:daiaItem">daiaItem</a> directive.</p>
+of this directive can be changed with the <code>template-url</code> parameter.</p>
+<h4 id="description_scope">Scope</h4>
+<p>The DAIA item is injected into the template&#39;s scope as variable <code>item</code>. 
+For easier access, its members <code>available</code> and <code>unavailable</code> are 
+provided as well, unless they are empty.</p>
+<h4 id="description_source-code">Source code</h4>
+<p>The most recent <a href="https://github.com/gbv/ng-daia/blob/master/src/directives/daiaAvailability.js">source 
+code</a>
+of this directive is available at GitHub.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY daia-availability

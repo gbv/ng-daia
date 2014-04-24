@@ -5,10 +5,20 @@
 <div><div class="ng-daia-page"><p>The <b>ngDAIA</b> module for AngularJS facilitates access to 
 <a href="http://purl.org/NET/DAIA">Document Availability Information API</a>
 (DAIA) services and to display the responses given by a DAIA server.</p>
-<p>The module provides three AngularJS directives:</p>
+<p>The module provides four AngularJS directives:</p>
 <ul>
-<li><a href="#/api/ng-daia.directive:daiaItem">daiaApi</a></li>
-<li><a href="#/api/ng-daia.directive:daiaItem">daiaItem</a></li>
-<li><a href="#/api/ng-daia.directive:daiaAvailability">daiaAvailability</a></li>
+<li><a href="#/api/ng-daia.directive:daiaApi">daiaApi</a> queries a DAIA server
+and displays the result.</li>
+<li><a href="#/api/ng-daia.directive:daiaItem">daiaItem</a> 
+displays a DAIA item with department, shelf mark and availability.</li>
+<li><a href="#/api/ng-daia.directive:daiaAvailability">daiaAvailability</a>
+displays the availability of a DAIA item.</li>
+<li><a href="#/api/ng-daia.directive:daiaSimple">daiaSimple</a> displays a simplified 
+availability status of a DAIA response, document, or item.</li>
+</ul>
+<p>The <code>daiaSimple</code> directive is based on a filter with the same name:</p>
+<ul>
+<li><a href="#/api/ng-daia.filter:daiaSimple">daiaSimple</a> transforms a DAIA 
+response, document, or item into simple availability status.</li>
 </ul>
 </div></div>

@@ -7,7 +7,7 @@
 <div class="description"><div class="ng-daia-filter-page ng-daia-filter-daiasimple-page"><p>This filter can be used to transform a DAIA response, document, or item 
 into simple availability status (<a href="http://gbv.github.io/daiaspec/daia.html#daia-simple">DAIA 
 Simple</a>). The filter
-returns a simple object with simple key-value pairs, such as:</p>
+returns a plain object with simple key-value pairs, such as:</p>
 <pre class="prettyprint linenums" class="prettyprint linenums">
 { status: "openaccess" }
 { status: "loan" }
@@ -17,10 +17,14 @@ returns a simple object with simple key-value pairs, such as:</p>
 { status: "openaccess", href: "http://dx.doi.org/10.1901%2Fjaba.1974.7-497a" }
 { status: "none" }
 </pre>
-<p>The filter can also be used with parameter <code>daia-filter</code> at directive
-<a href="#/api/ng-daia.directive:daiaApi">daiaApi</a>.</p>
-<p>To customize the message, use <strong>angular-translate</strong> and the <code>translate</code> 
-directive. </p>
+<p>The filter is used by directive <a href="#/api/ng-daia.directive:daiaSimple">daiaSimple</a>.
+It can also be used with directive
+<a href="#/api/ng-daia.directive:daiaApi">daiaApi</a> to query and display an 
+availability status.</p>
+<h4 id="description_source-code">Source code</h4>
+<p>The most recent <a href="https://github.com/gbv/ng-daia/blob/master/src/filters/daia-simple.js">source 
+code</a>
+of this filter is available at GitHub.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage"><h3 id="usage_in-html-template-binding">In HTML Template Binding</h3>

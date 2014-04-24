@@ -11,12 +11,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
 
   <!-- include ng-daia module from multiple files. Better use a single-file release for production! -->
-  <script src="../src/ng-daia.js"></script>
-  <script src="../src/directives/daiaApi.js"></script>
-  <script src="../src/directives/daiaItem.js"></script>
-  <script src="../src/directives/daiaAvailability.js"></script>
-  <script src="../src/filters/daia-simple.js"></script>
-
+    <script src="../src/ng-daia.js"></script>
+    <script src="../src/directives/daiaApi.js"></script>
+    <script src="../src/directives/daiaItem.js"></script>
+    <script src="../src/directives/daiaAvailability.js"></script>
+    <script src="../src/directives/daiaSimple.js"></script>
+    <script src="../src/filters/daia-simple.js"></script>
+    <script src="../lib/angular-translate.min.js"></script>
   <!-- short JavaScript snippet to active ng-daia -->
   <script src="app.js"></script>
 </head>
@@ -49,39 +50,50 @@
         </form>
         <span class="daia-label">More examples for daia-ids:</span>
         <ul>
-					<li>opac-de-89:ppn:532043140  (different availabilities + limitation)</li>
-					<li>opac-de-960:ppn:0717619370  (several copies available)</li>
-					<li>opac-de-18:ppn:726541982  (online ressource, no open access)</li>
-				</ul>
+			<li>opac-de-89:ppn:532043140  (different availabilities + limitation)</li>
+			<li>opac-de-960:ppn:0717619370  (several copies available)</li>
+			<li>opac-de-18:ppn:726541982  (online ressource, no open access)</li>
+		</ul>
       </div>
       <div class="col-md-12">
         <label>DAIA query URL</label>
         <div><a href="{{myAPI}}?id={{myID}}&format=xml">{{myAPI}}?id={{myID}}</a></div>
-        <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
-          <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
+        <h3>Document availability</h3>
+        <div style="margin:10px 0px 10px 0px;">
+        <button ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
         </div>
-				<div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="daia-simple"></div>
-				<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
+        <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
+            <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
+        </div>
+		<div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="daia-simple"></div>
+		<div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
 
 <script type="text/ng-template" id="daia-simple">
 	<h3>Simple availability</h3>
+	<h4>Via filter</h4>
 	<div class="daia-result">
-		<span class="daia-label">current status: </span>
-		<span ng-if="daia.status == 'openaccess'" class="availability availability-available">{{daia.status}}</span>
-		<span ng-if="daia.status == 'loan'" class="availability availability-available">{{daia.status}}</span>		
-		<span ng-if="daia.status == 'presentation'" class="availability availability-presentation">{{daia.status}}</span>
-		<span ng-if="daia.status != 'openaccess' && daia.status != 'loan' && daia.status != 'presentation'" class="availability availability-unavailable">{{daia.status}}</span>
-		<span ng-if="daia.expected" class="availability availability-unavailable"> until {{daia.expected}}</span>
+		<span class="daia-label" translate="STATUS">current status</span>:
+		<span ng-if="daia.status == 'openaccess'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
+		<span ng-if="daia.status == 'loan'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
+		<span ng-if="daia.status == 'presentation'" class="availability availability-presentation" translate="{{daia.status}}">{{daia.status}}</span>
+		<span ng-if="daia.status != 'openaccess' && daia.status != 'loan' && daia.status != 'presentation' && daia.status != 'expected'" class="availability availability-unavailable" translate="{{daia.status}}" translate="{{daia.status}}">{{daia.status}}</span>
+		<span ng-if="daia.expected" class="availability availability-unavailable" translate="EXP"> until </span>
+		<span ng-if="daia.expected" class="availability availability-unavailable">{{daia.expected}}</span>
 	</div>
 </script>
 
 <script type="text/ng-template" id="debug">
-	<h3>DAIA response via AngularJS template </h3>
+    <h4>Via directory</h4>
+	<p>
+    <div class="daia-result" daia-simple="daia"></div>
+    </p>
+    <h3>DAIA response via AngularJS template </h3>
 	<div class="well">
 		api: {{api}}<br>
 		id: {{id}}<br>
 		daia: {{daia | json}}<br>
-		daia: {{daia | daiaSimple | json}}		
+		daia: {{daia | daiaSimple | json}}
 	</div>	
 </script>
 

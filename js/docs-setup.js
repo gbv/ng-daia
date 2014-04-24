@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "Documentation",
       "shortDescription": "ng-daia",
-      "keywords": "access access-link angular angularjs api application author availability availability-available availability-expected availability-limitation availability-unavailable brackets classes code concerning contributors copy corresponding css current daia daia-api daia-document daia-id daia-label daia-response daia-result de default demo descriptions detailed development directives directory display document documentation early example expected facilitate files gnu help horn href html http include included issue jakob js labels latest layout license licensed limitations link localhost message min minmal module moritz myapp ng-app ng-daia ngdaia org overview preordering provided rel release repository response responses result returning returning-expected sample server service-label services source src stage started status style styled stylesheet template templates tracker unavailable version vo website your-document-id"
+      "keywords": "acc access access-link angular angular-translate angularjs api application author availability availability-available availability-expected availability-limitation availability-unavailable avb brackets bug cat classes code concerning contribute contributors copy corresponding css current customization daia daia-api daia-document daia-id daia-label daia-response daia-result de default demo dep descriptions detailed development directives directory display document documentation download early entries example exp expected facilitate feature feedback file files fully gettings github gnu guidline help horn href html http include included inst interloan internationalization io issue jakob js labels latest license licensed likes limitations link loan localhost md message min minified minmal module moritz myapp ng-app ng-daia ngdaia nr org original overview preordering prepared presentation production provide provided readme rel release report reports repository requests res response responses result returning returning-expected sample server service-label services sgn source src stage stars started status style styled stylesheet table template templates tracker translation unavailable unknown version vo website your-document-id"
     },
     {
       "section": "api",
@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "ng-daia",
       "shortDescription": "The ngDAIA module for AngularJS facilitates access to ",
-      "keywords": "access angularjs api availability daia daiaapi daiaavailability daiaitem directive directives display document facilitates http module ng-daia org overview responses server services three"
+      "keywords": "access angularjs api availability based daia daiaapi daiaavailability daiaitem daiasimple department directive directives display displays document facilitates filter http item mark module ng-daia org overview queries response responses result server services shelf simple simplified status transforms"
     },
     {
       "section": "api",
@@ -28,7 +28,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "ng-daia",
       "shortDescription": "This directive queries a DAIA server, each time one of its parameters",
-      "keywords": "angularjs api base changed custom daia daia-api daia-filter daia-id daiaavailability daiaitem daiasimple default directive directives display document filter filtered html identifier injected ng-daia parameter parameters process queries query response result scope server template template-url time url variable"
+      "keywords": "angularjs api base changed code custom daia daia-api daia-filter daia-id daiaavailability daiaitem daiasimple default directive directives display document filter filtered github html identifier injected instance js ng-daia optionally parameter parameters process queries query response result scope server source template template-url time url variable"
     },
     {
       "section": "api",
@@ -37,7 +37,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "ng-daia",
       "shortDescription": "This directive displays the availability of a DAIA item, given as JSON ",
-      "keywords": "access api availability changed custom daia daia-availability daia-item daiaitem default directive display displays easier empty html injected item json members ng-daia object parameter provided result scope template template-url unavailable url"
+      "keywords": "access api availability changed code custom daia daia-availability daia-item daiaitem default directive display displays easier empty github html injected item js json members ng-daia object parameter provided result scope source template template-url unavailable url variable"
     },
     {
       "section": "api",
@@ -46,7 +46,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "ng-daia",
       "shortDescription": "This directive displays a DAIA item, given as JSON object with parameter",
-      "keywords": "api changed custom daia daia-item daiaavailability default directive display displays html injected item json ng-daia object parameter result scope template template-url url variable"
+      "keywords": "api changed code custom daia daia-item daiaavailability default directive display displays github html injected item js json ng-daia object parameter result scope source template template-url url variable"
     },
     {
       "section": "api",
@@ -55,7 +55,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "ng-daia",
       "shortDescription": "This directive displays a DAIA response, document, or item in simplified",
-      "keywords": "additional api changed custom daia daia-item daiasimple default delay directive display displays document expected filter filtered form href html item limitation ng-daia optional parameter passed response result scope simplified status template template-url url variables"
+      "keywords": "additional api changed code custom daia daia-item daiasimple default delay directive display displays document expected fields filter filtered form github href html injected item js limitation ng-daia optional parameter passed provided response result scope simple simplified source status template template-url url variable variables"
     },
     {
       "section": "api",
@@ -64,7 +64,7 @@ NG_DOCS={
       "type": "filter",
       "moduleName": "ng-daia",
       "shortDescription": "This filter can be used to transform a DAIA response, document, or item ",
-      "keywords": "api availability class customize daia daia-filter daia-simple daiaapi directive document doi expected filter github href html http io item key-value linenums loan message ng-daia object openaccess org pairs parameter presentation prettyprint response returns simple status transform translate"
+      "keywords": "api availability class code daia daia-simple daiaapi daiasimple directive display document doi expected filter github href html http io item js key-value linenums loan ng-daia object openaccess org pairs plain presentation prettyprint query response returns simple source status transform"
     }
   ],
   "apis": {
@@ -74,6 +74,6 @@ NG_DOCS={
   "startPage": "/api",
   "scripts": [
     "angular.min.js",
-    "ng-daia.js"
+    "ng-daia.min.js"
   ]
 };
