@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                 navTemplate: 'src/docs-nav.html',
                 scripts: [
                     'angular.js',
-                    'ng-daia.js',
+                    'ng-daia.min.js',
                 ]
             },
             api: {
@@ -97,9 +97,29 @@ module.exports = function(grunt) {
                 } 
             }
         },
+        ngmin: {
+            angular: {
+                src: ['ng-daia.js'],
+                dest: 'ng-daia.js',
+            }
+        },
+        uglify : {
+            options: {
+                report: 'min',
+                mangle: false
+            },
+            my_target : {
+                files : {
+                    'ng-daia.min.js' : ['ng-daia.js']
+                }
+            }
+        },
         shell: {
+            maps: {
+                command: "cp -f lib/1.2.7/*.map docs/js"
+            },
             demo: {
-                // TODO: use ng-daia.min.js instead of partials
+                // TODO: use ng-daia.min.js instead of partials in demo
                 command: "rm -rf docs/demo && cp -r demo docs"
             },
             site: {
@@ -133,8 +153,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default',['docs']);
-    grunt.registerTask('ng-daia',['version','ngtemplates','concat']); // +'ngmin','uglify'
-    grunt.registerTask('docs',['clean','ng-daia','template','ngdocs','shell:demo']);
+    grunt.registerTask('ng-daia',['version','ngtemplates','concat','ngmin','uglify']);
+    grunt.registerTask('docs',['clean','ng-daia','template','ngdocs','shell:maps','shell:demo']);
     // TODO: test before release
     grunt.registerTask('gh-pages', ['shell:working_copy_must_be_clean','site','shell:gh_pages']);
     grunt.registerTask('push-site', ['gh-pages','shell:push_site']);
