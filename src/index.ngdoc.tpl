@@ -15,10 +15,14 @@ server.
 The latest release of <%= name %> is version <%= version %>. Source code and issue tracker
 can be found at <<%= repository.url.replace(/^git:/,'https:').replace(/.git$/,'') %>>.
 
-## Getting started
+## Download
 
-The current release of ng-daia (<%= version %>) can be [downloaded from this
-page](grunt-scripts/ng-daia.js). 
+The current release of ng-daia is version <%= version %>:
+
+* [ng-daia.min.js](grunt-scripts/ng-daia.min.js): minified version for production
+* [ng-daia.js](grunt-scripts/ng-daia.js): original source code for development
+
+## Getting started
 
 The module is in a very early stage of
 development. To get started have a look at the documentation of the AngularJS
@@ -30,7 +34,7 @@ The following minmal example might help to include ng-daia into your website:
 <html ng-app="myApp">
 <head>
   <script src="angular.min.js"></script>
-  <script src="ng-daia.js"></script>
+  <script src="ng-daia.min.js"></script>
   <script>angular.module('myApp', ['ngDAIA']);</script>
   <link href="ng-daia.css" rel="stylesheet" />
 </head>

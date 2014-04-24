@@ -43,11 +43,7 @@ when pushed to GitHub.
 
 Documentation is written using
 [ngdoc](https://github.com/angular/angular.js/wiki/Writing-AngularJS-Documentation)
-with module [grunt-ngdocs].
-
-[grunt-ngdocs]: https://www.npmjs.org/package/grunt-ngdoc
-
-Just call
+with module [grunt-ngdocs](https://www.npmjs.org/package/grunt-ngdoc). Just call
 
     grunt docs
 
