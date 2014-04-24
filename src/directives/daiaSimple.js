@@ -29,17 +29,19 @@ ngDAIA.directive('daiaSimple',function($filter){
                    attrs.templateUrl : 'template/daia-simple.html';
         },
         link: function(scope, elem, attrs) {
-            var simple = $filter('daiaSimple')(scope.daia);
+						scope.$watch('daia',function(){
+							var simple = $filter('daiaSimple')(scope.daia);
+							
+							angular.forEach(
+									['status','expected','delay','href','limitation'],
+									function(key) { scope[key] = simple[key]; }
+							);
 
-            angular.forEach(
-                ['status','expected','delay','href','limitation'],
-                function(key) { scope[key] = simple[key]; }
-            );
-
-            var s = scope.status;
-            if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
-                scope.status = 'none';
-            }
+							var s = scope.status;
+							if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
+									scope.status = 'none';
+							}
+						});
         }
     }
 });

@@ -1,20 +1,20 @@
 <!-- default template used by daiaAvailability directive in module ng-daia -->
 <ul class="availability" ng-if="available || unavailable">
     <li ng-if="available.length" ng-repeat="a in available">
-        <span class ="service-label">{{a.service}}:</span>
-        <span class="availability availability-available"> available</span>
+        <span class ="service-label">{{a.service | translate}}:</span>
+        <span class="availability availability-available" translate="available"></span>
         <span class="availability availability-limitation" ng-if="a.limitation.length"> ({{a.limitation[0].content}})</span>
     </li>
     <li ng-if="unavailable.length" ng-repeat="u in unavailable">
-        <span class ="service-label" ng-if="u.expected.length">{{u.service}}:</span>
-        <span ng-if="u.expected.length" class="availability availability-expected"> unavailable </span>
-        <span class ="service-label" ng-if="!u.expected.length">{{u.service}}:</span>
-        <span ng-if="!u.expected.length" class="availability availability-unavailable"> unavailable</span>
+        <span class ="service-label" ng-if="u.expected.length">{{u.service | translate}}:</span>
+        <span ng-if="u.expected.length" class="availability availability-expected" translate="unavailable"></span>
+        <span class ="service-label" ng-if="!u.expected.length">{{u.service | translate}}:</span>
+        <span ng-if="!u.expected.length" class="availability availability-unavailable" translate="unavailable"> </span>
     </li>
-		<div class="returning">       
+		<div class="returning">
       <li ng-if="unavailable[0].href.length && unavailable[0].expected.length">
-          <div ng-if="unavailable[0].expected.length" class="returning returning-expected"> expected back: {{unavailable[0].expected}} </div>
-          <a href="{{unavailable[0].href}}">place reservation</a>
+          <div ng-if="unavailable[0].expected.length" class="returning returning-expected"><span translate>EXP</span>: {{unavailable[0].expected}} </div>
+          <a href="{{unavailable[0].href}}" translate="RES">place reservation</a>
       </li>
     </div>
 </ul>

@@ -46,9 +46,6 @@ ngDAIA.filter('daiaSimple',function(){
   } else if(angular.isArray(input)) {
 		// TODO
 	}
-	
-	console.log("Items:");
-	console.log(items);
 	var response = { };
 	
 	angular.forEach(items,function(item) {
@@ -64,7 +61,6 @@ ngDAIA.filter('daiaSimple',function(){
 	});
 	if (response.status) return response;
 	
-	console.log(1);
 	
 	angular.forEach(items,function(item) {
 		if (angular.isArray(item.available)) {
@@ -78,7 +74,6 @@ ngDAIA.filter('daiaSimple',function(){
 	});
 	if (response.status) return response;
 	
-	console.log(2);
 	
 	angular.forEach(items,function(item) {
 		if (angular.isArray(item.available)) {
@@ -92,7 +87,6 @@ ngDAIA.filter('daiaSimple',function(){
 	});
 	if (response.status) return response;
 	
-	console.log(3);
 	
 	angular.forEach(items,function(item) {
 		angular.forEach(item.unavailable,function(unavailable) {
