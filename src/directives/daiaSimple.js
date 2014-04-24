@@ -15,6 +15,18 @@
  * * `status`: simplified status (set to `none` by default)
  * * `expected`, `delay`, `href`, `limitation`: optional additional information
  *
+ * ## Scope
+ *
+ * The DAIA response, document, or item is injected into the template's scope as
+ * variable `variable`. The DAIA simple response is provided with its fields
+ * `status`, `expected`, `delay`, `href`, and `limitation`.
+
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaSimple.js)
+ * of this directive is available at GitHub.
+
  * @param {string} daia-item DAIA response, document, or item to display
  * @param {string} template-url Custom template URL to display daia result
  */
@@ -29,19 +41,19 @@ ngDAIA.directive('daiaSimple',function($filter){
                    attrs.templateUrl : 'template/daia-simple.html';
         },
         link: function(scope, elem, attrs) {
-						scope.$watch('daia',function(){
-							var simple = $filter('daiaSimple')(scope.daia);
-							
-							angular.forEach(
-									['status','expected','delay','href','limitation'],
-									function(key) { scope[key] = simple[key]; }
-							);
+            scope.$watch('daia',function(){
+                var simple = $filter('daiaSimple')(scope.daia);
+                
+                angular.forEach(
+                    ['status','expected','delay','href','limitation'],
+                    function(key) { scope[key] = simple[key]; }
+                );
 
-							var s = scope.status;
-							if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
-									scope.status = 'none';
-							}
-						});
+                var s = scope.status;
+                if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
+                        scope.status = 'none';
+                }
+            });
         }
     }
 });

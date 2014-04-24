@@ -6,19 +6,27 @@
  * @description
  * 
  * This directive queries a DAIA server, each time one of its parameters
- * `daia-api` or `daia-id` is changed. The DAIA response (optionally filtered
- * by a filter such as {@link ng-daia.filter:daiaSimple daiaSimple}) is injected 
- * into the template's scope as variable `daia`. 
- *
+ * `daia-api` or `daia-id` is changed. The DAIA response can optionally be 
+ * filtered, for instance with {@link ng-daia.filter:daiaSimple daiaSimple}.
  * The default template [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
  * makes use of the directives {@link ng-daia.directive:daiaItem daiaItem}
  * and {@link ng-daia.directive:daiaAvailability daiaAvailability}. The 
  * template can be changed with the `template-url` parameter.
  *
+ * ## Scope
+ *
+ * The DAIA response is injected into the template's scope as variable `daia`.
+ *
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaApi.js)
+ * of this directive is available at GitHub.
+ 
  * @param {string} daia-api Base URL of DAIA server to query from
  * @param {string} daia-id Document identifier to query for
  * @param {string} daia-filter AngularJS filter to process daia response, e.g.
- *     {@link ng-daia.filter:daiaSimple daiaSimple}
+ *                 {@link ng-daia.filter:daiaSimple daiaSimple}
  * @param {string} template-url Custom template to display DAIA result
  */
 ngDAIA.directive('daiaApi',function($http,$filter){
@@ -27,7 +35,7 @@ ngDAIA.directive('daiaApi',function($http,$filter){
         scope: {
             api: '@daiaApi',
             id: '@daiaId',
-                        filter: '@daiaFilter',
+            filter: '@daiaFilter',
         },
         templateUrl: function(elem, attrs) {
             return attrs.templateUrl ? 

@@ -21,6 +21,8 @@ The current release of ng-daia is version <%= version %>:
 
 * [ng-daia.min.js](grunt-scripts/ng-daia.min.js): minified version for production
 * [ng-daia.js](grunt-scripts/ng-daia.js): original source code for development
+* [ng-daia.css](https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css):
+  stylesheet for the default templates
 
 ## Getting started
 
@@ -45,11 +47,10 @@ The following minmal example might help to include ng-daia into your website:
 </html>
 </pre>
  
-The default template files, included in `ng-daia.js`, can be styled with CSS classes.
-Try [`ng-daia.css`](https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css) for a
-default layout.
+## Customization
 
-The templates are using the following classes:
+The default template files, included in `ng-daia.js`, can be styled with the following
+CSS classes:
 
 * `daia-response`: the whole response
 * `daia-result`: the whole result
@@ -65,9 +66,43 @@ The templates are using the following classes:
 * `returning-expected`: style for message concerning 'expected' date
 * `access`: style for display of possible access-link
 
+The default templates are fully prepared for internationalization (i18n) with
+[angular-translate](http://angular-translate.github.io/docs/#/guide/02_getting-started).
+Just include this module in your application and provide translation table with
+the following entries:
+
+* `unknown`
+* `available`
+* `unavailable`
+* `presentation`
+* `loan`
+* `interloan`
+* `none`
+* `expected`
+* `INST`
+* `CAT`
+* `DEP`
+* `SGN`
+* `NR`
+* `AVB`
+* `EXP`
+* `RES`
+* `ACC`
+
+## Demo
+
 The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
 source code repository contains a more detailed sample application that makes
-use of ng-daia as well as [angular-translate](http://angular-translate.github.io/docs/#/guide/02_getting-started). The demo should be run from a server (e.g. localhost).
+use of `ng-daia` as well as angular-translate. The demo should be run from a server
+(e.g. localhost).
+
+## Feedback
+
+Please report feature requests and bug reports at
+<https://github.com/gbv/ng-daia/issues> or contribute to the source code. The
+file `README.md` contains a guidline for gettings started. Likes and stars at
+<https://github.com/gbv/ng-daia> and <http://ngmodules.org/modules/ng-daia> are
+also welcome!
 
 ## Author and Contributors
 

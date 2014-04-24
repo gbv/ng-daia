@@ -8,7 +8,7 @@
  * This filter can be used to transform a DAIA response, document, or item 
  * into simple availability status ([DAIA 
  * Simple](http://gbv.github.io/daiaspec/daia.html#daia-simple)). The filter
- * returns a simple object with simple key-value pairs, such as:
+ * returns a plain object with simple key-value pairs, such as:
  *
  * <pre class="prettyprint linenums">
  * { status: "openaccess" }
@@ -20,11 +20,17 @@
  * { status: "none" }
  * </pre>
  *
- * The filter can also be used with parameter `daia-filter` at directive
- * {@link ng-daia.directive:daiaApi daiaApi}.
+ * The filter is used by directive {@link ng-daia.directive:daiaSimple daiaSimple}.
+ * It can also be used with directive
+ * {@link ng-daia.directive:daiaApi daiaApi} to query and display an 
+ * availability status.
  *
- * To customize the message, use **angular-translate** and the `translate` 
- * directive. 
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/filters/daia-simple.js)
+ * of this filter is available at GitHub.
+
  */
 ngDAIA.filter('daiaSimple',function(){
   return function(input, option) {

@@ -6,15 +6,23 @@
  * @description
  * 
  * This directive displays the availability of a DAIA item, given as JSON 
- * object with parameter `daia-availability`. The default template 
+ * object with parameter `daia-availability`. This directive is used by the 
+ * default template of directive {@link ng-daia.directive:daiaItem daiaItem}.
+ * The default template 
  * [template/daia-availability.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html)
- * can be changed with the `template-url` parameter.
+ * of this directive can be changed with the `template-url` parameter.
  *
- * The item is injected into the template's scope as `item`. 
- * For easier access, its members `available` and 
- * `unavailable` are provided as well, unless they are empty.
+ * ## Scope
  *
- * See also {@link ng-daia.directive:daiaItem daiaItem} directive.
+ * The DAIA item is injected into the template's scope as variable `item`. 
+ * For easier access, its members `available` and `unavailable` are 
+ * provided as well, unless they are empty.
+ *
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaAvailability.js)
+ * of this directive is available at GitHub.
  *
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result

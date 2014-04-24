@@ -8,15 +8,25 @@
  * {@link http://purl.org/NET/DAIA Document Availability Information API}
  * (DAIA) services and to display the responses given by a DAIA server.
  *
- * The module provides three AngularJS directives:
+ * The module provides four AngularJS directives:
  *
- * * {@link ng-daia.directive:daiaItem daiaApi}
- * * {@link ng-daia.directive:daiaItem daiaItem}
+ * * {@link ng-daia.directive:daiaApi daiaApi} queries a DAIA server
+ *   and displays the result.
+ * * {@link ng-daia.directive:daiaItem daiaItem} 
+ *   displays a DAIA item with department, shelf mark and availability.
  * * {@link ng-daia.directive:daiaAvailability daiaAvailability}
+ *   displays the availability of a DAIA item.
+ * * {@link ng-daia.directive:daiaSimple daiaSimple} displays a simplified 
+ *   availability status of a DAIA response, document, or item.
+ *
+ * The `daiaSimple` directive is based on a filter with the same name:
+ *
+ * * {@link ng-daia.filter:daiaSimple daiaSimple} transforms a DAIA 
+ *   response, document, or item into simple availability status.
  *
  */
 var ngDAIA = angular.module('ngDAIA', []);
-ngDAIA.value('version', '0.0.1');
+ngDAIA.value('version', '0.1.0');
 'use strict';
 /**
  * @ngdoc directive
@@ -25,19 +35,27 @@ ngDAIA.value('version', '0.0.1');
  * @description
  * 
  * This directive queries a DAIA server, each time one of its parameters
- * `daia-api` or `daia-id` is changed. The DAIA response (optionally filtered
- * by a filter such as {@link ng-daia.filter:daiaSimple daiaSimple}) is injected 
- * into the template's scope as variable `daia`. 
- *
+ * `daia-api` or `daia-id` is changed. The DAIA response can optionally be 
+ * filtered, for instance with {@link ng-daia.filter:daiaSimple daiaSimple}.
  * The default template [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
  * makes use of the directives {@link ng-daia.directive:daiaItem daiaItem}
  * and {@link ng-daia.directive:daiaAvailability daiaAvailability}. The 
  * template can be changed with the `template-url` parameter.
  *
+ * ## Scope
+ *
+ * The DAIA response is injected into the template's scope as variable `daia`.
+ *
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaApi.js)
+ * of this directive is available at GitHub.
+ 
  * @param {string} daia-api Base URL of DAIA server to query from
  * @param {string} daia-id Document identifier to query for
  * @param {string} daia-filter AngularJS filter to process daia response, e.g.
- *     {@link ng-daia.filter:daiaSimple daiaSimple}
+ *                 {@link ng-daia.filter:daiaSimple daiaSimple}
  * @param {string} template-url Custom template to display DAIA result
  */
 ngDAIA.directive('daiaApi', [
@@ -89,15 +107,23 @@ ngDAIA.directive('daiaApi', [
  * @description
  * 
  * This directive displays the availability of a DAIA item, given as JSON 
- * object with parameter `daia-availability`. The default template 
+ * object with parameter `daia-availability`. This directive is used by the 
+ * default template of directive {@link ng-daia.directive:daiaItem daiaItem}.
+ * The default template 
  * [template/daia-availability.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html)
- * can be changed with the `template-url` parameter.
+ * of this directive can be changed with the `template-url` parameter.
  *
- * The item is injected into the template's scope as `item`. 
- * For easier access, its members `available` and 
- * `unavailable` are provided as well, unless they are empty.
+ * ## Scope
  *
- * See also {@link ng-daia.directive:daiaItem daiaItem} directive.
+ * The DAIA item is injected into the template's scope as variable `item`. 
+ * For easier access, its members `available` and `unavailable` are 
+ * provided as well, unless they are empty.
+ *
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaAvailability.js)
+ * of this directive is available at GitHub.
  *
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
@@ -133,6 +159,16 @@ ngDAIA.directive('daiaAvailability', function () {
  * makes use of directive {@link ng-daia.directive:daiaAvailability daiaAvailability}.
  * The template can be changed with the `template-url` parameter.
  *
+ * ## Scope
+ *
+ * The DAIA item is injected into the template's scope as variable `item`. 
+ *
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaItem.js)
+ * of this directive is available at GitHub.
+ *
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
  */
@@ -162,6 +198,18 @@ ngDAIA.directive('daiaItem', function () {
  * * `status`: simplified status (set to `none` by default)
  * * `expected`, `delay`, `href`, `limitation`: optional additional information
  *
+ * ## Scope
+ *
+ * The DAIA response, document, or item is injected into the template's scope as
+ * variable `variable`. The DAIA simple response is provided with its fields
+ * `status`, `expected`, `delay`, `href`, and `limitation`.
+
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaSimple.js)
+ * of this directive is available at GitHub.
+
  * @param {string} daia-item DAIA response, document, or item to display
  * @param {string} template-url Custom template URL to display daia result
  */
@@ -205,7 +253,7 @@ ngDAIA.directive('daiaSimple', [
  * This filter can be used to transform a DAIA response, document, or item 
  * into simple availability status ([DAIA 
  * Simple](http://gbv.github.io/daiaspec/daia.html#daia-simple)). The filter
- * returns a simple object with simple key-value pairs, such as:
+ * returns a plain object with simple key-value pairs, such as:
  *
  * <pre class="prettyprint linenums">
  * { status: "openaccess" }
@@ -217,11 +265,17 @@ ngDAIA.directive('daiaSimple', [
  * { status: "none" }
  * </pre>
  *
- * The filter can also be used with parameter `daia-filter` at directive
- * {@link ng-daia.directive:daiaApi daiaApi}.
+ * The filter is used by directive {@link ng-daia.directive:daiaSimple daiaSimple}.
+ * It can also be used with directive
+ * {@link ng-daia.directive:daiaApi daiaApi} to query and display an 
+ * availability status.
  *
- * To customize the message, use **angular-translate** and the `translate` 
- * directive. 
+ * ## Source code
+ *
+ * The most recent [source 
+ * code](https://github.com/gbv/ng-daia/blob/master/src/filters/daia-simple.js)
+ * of this filter is available at GitHub.
+
  */
 ngDAIA.filter('daiaSimple', function () {
   return function (input, option) {
