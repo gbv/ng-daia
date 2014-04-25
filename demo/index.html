@@ -73,12 +73,11 @@
 	<h3>Simple availability</h3>
 	<h4>Via filter</h4>
 	<div class="daia-result">
-		<span class="daia-label" translate="STATUS">current status</span>:
 		<span ng-if="daia.status == 'openaccess'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
 		<span ng-if="daia.status == 'loan'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
 		<span ng-if="daia.status == 'presentation'" class="availability availability-presentation" translate="{{daia.status}}">{{daia.status}}</span>
 		<span ng-if="daia.status != 'openaccess' && daia.status != 'loan' && daia.status != 'presentation' && daia.status != 'expected'" class="availability availability-unavailable" translate="{{daia.status}}" translate="{{daia.status}}">{{daia.status}}</span>
-		<span ng-if="daia.expected" class="availability availability-unavailable" translate="EXP"> until </span>
+		<span ng-if="daia.expected" class="availability availability-unavailable" translate="EXPECTED_BACK"> until </span>
 		<span ng-if="daia.expected" class="availability availability-unavailable">{{daia.expected}}</span>
 	</div>
 </script>

@@ -1,14 +1,14 @@
 
 <div class="daia-result">
 	<div ng-if="daia.institution.content.length">
-		<span class="daia-label" translate="INST">Queried institution:</span>  
+		<span class="daia-label" translate="INSTITUTION">institution:</span>  
 		<a ng-if="daia.institution.href.length" href="{{daia.institution.href}}">{{daia.institution.content}}</a>
 	</div>
 	<div ng-if="daia.document[0].href.length">
-		<a translate="CAT" href="{{daia.document[0].href}}">Catalogue entry</a>
+		<a translate="CATALOG_ENTRY" href="{{daia.document[0].href}}">Catalogue entry</a>
 	</div>
 	<div>
-		<span ng-if="!daia.document.length" translate="NR">no records found</span>
+		<span ng-if="!daia.document.length" translate="NO_RECORDS">no records found</span>
 	</div>
 	<div ng-if="daia.document.length" daia-documents="daia.document">
 		<div class="daia-document" ng-repeat="i in daia.document[0].item">
