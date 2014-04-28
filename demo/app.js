@@ -3,6 +3,7 @@ var app = angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']);
 app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en', {
         INSTITUTION: 'institution:',
+        DOCUMENT: 'document:',
         CATALOG_ENTRY: 'catalog entry',
         DEPARTMENT: 'department:',
         SIGNATURE: 'shelf mark:',
@@ -24,7 +25,8 @@ app.config(['$translateProvider', function ($translateProvider) {
         BUTTON_LANG_EN: 'English',
     });
     $translateProvider.translations('de', {
-        INST: 'Institution:',
+        INSTITUTION: 'Institution:',
+        DOCUMENT: 'Dokument:',
         CATALOG_ENTRY: 'Katalogeintrag',
         DEPARTMENT: 'Abteilung:',
         SIGNATURE: 'Signatur:',
