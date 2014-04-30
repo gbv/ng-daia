@@ -20,7 +20,7 @@
  * ## Source code
  *
  * The most recent [source 
- * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaApi.js)
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daia-api.js)
  * of this directive is available at GitHub.
  
  * @param {string} daia-api Base URL of DAIA server to query from
@@ -41,7 +41,7 @@ ngDAIA.directive('daiaApi',function($http,$filter){
             return attrs.templateUrl ? 
                    attrs.templateUrl : 'template/daia-response.html';
         },
-        link: function link(scope, element, attr, controller, transclude) {
+        link: function link(scope, element, attr) {
             scope.daiaRequest = function() {
                 $http.jsonp( scope.api, {
                     params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }

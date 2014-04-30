@@ -44,13 +44,13 @@ ngDAIA.filter('daiaSimple',function(){
 					items.push(item);
 				});
 			});
-		} else {
+		} else if (angular.isArray(input.item)) {
 			angular.forEach(input.item,function(item) {
 				items.push(item);
 			});
-    }
-  } else if(angular.isArray(input)) {
-		// TODO
+        } else {
+            items.push(input);
+        }
 	}
 	var response = { };
 	
@@ -67,7 +67,6 @@ ngDAIA.filter('daiaSimple',function(){
 	});
 	if (response.status) return response;
 	
-	
 	angular.forEach(items,function(item) {
 		if (angular.isArray(item.available)) {
 			for(var j=0; j<item.available.length; j++){
@@ -80,7 +79,6 @@ ngDAIA.filter('daiaSimple',function(){
 	});
 	if (response.status) return response;
 	
-	
 	angular.forEach(items,function(item) {
 		if (angular.isArray(item.available)) {
 			for(var j=0; j<item.available.length; j++){
@@ -92,7 +90,6 @@ ngDAIA.filter('daiaSimple',function(){
 		}
 	});
 	if (response.status) return response;
-	
 	
 	angular.forEach(items,function(item) {
 		angular.forEach(item.unavailable,function(unavailable) {
