@@ -1,31 +1,28 @@
-**ng-daia** is an [AngularJS](http://angularjs.org/) module to facilitate access to DAIA services.
+# ng-daia [![Build Status](https://travis-ci.org/gbv/ng-daia.png?branch=master)](https://travis-ci.org/gbv/ng-daia)
 
-[![Build Status](https://travis-ci.org/gbv/ng-daia.png?branch=master)](https://travis-ci.org/gbv/ng-daia)
+> [AngularJS](http://angularjs.org/) module to facilitate access to DAIA services
 
-# Requirements
+## Usage and documentation
+ 
+See <http://gbv.github.io/ng-daia/>.
 
-Require AngularJS >= 1.2.
+## Requirements
 
-# Development
+AngularJS >= 1.2
 
-First, install Node.js unless it is already installed. Node.js includes `npm`
-to install additional packages. For global installation one might require to
-call npm via `sudo -H`.
+## Development
 
-Second, locally install Grunt and all npm modules listed in `package.json`:
+First, **clone** the repository from <https://github.com/gbv/ng-daia>.
 
-    npm install grunt 
+Second, install Node.js unless it is already installed. Node.js includes `npm`
+to install additional packages. Locally **install all required packages**
+listed in `package.json` (for global installation call `npm` via `sudo -H`):
+
+    npm install -g grunt-cli
     npm install
 
-## Running unit tests
-
-First install Karma using npm:
-
-    npm install -g karma
-
-Testing is configured in `karma.conf.js` and all tests are located in the
-`test` directory. Unit tests are written with
-[Jasmine](http://pivotal.github.io/jasmine/).
+Testing is configured in `karma.conf.js` and **unit tests** are located in
+directory `test` written with [Jasmine](http://pivotal.github.io/jasmine/). 
 
 To execute of all unit tests call:
 
@@ -36,14 +33,12 @@ For contious testing (tests are re-run on changes), call:
     grunt watch
 
 As configured in `.travis.yml` the tests are automatically 
-[executed at travis-ci](https://travis-ci.org/gbv/ng-skos)
+[executed at travis-ci](https://travis-ci.org/gbv/ng-daia)
 when pushed to GitHub.
 
-## Documentation
-
-Documentation is written using
-[ngdoc](https://github.com/angular/angular.js/wiki/Writing-AngularJS-Documentation)
-with module [grunt-ngdocs](https://www.npmjs.org/package/grunt-ngdoc). Just call
+To build the **documentation**, written using
+[ngdoc](https://github.com/angular/angular.js/wiki/Writing-AngularJS-Documentation),
+call
 
     grunt docs
 
