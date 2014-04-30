@@ -79,15 +79,17 @@ the following entries:
 * `interloan`
 * `none`
 * `expected`
-* `INST`
-* `CAT`
-* `DEP`
-* `SGN`
-* `NR`
-* `AVB`
-* `EXP`
-* `RES`
-* `ACC`
+* `INSTITUTION`
+* `DOCUMENT`
+* `CATALOG_ENTRY`
+* `DEPARTMENT`
+* `SIGNATURE`
+* `NO_RECORDS`
+* `AVAILABILITY`
+* `EXPECTED_BACK`
+* `RESERVATION`
+* `ACCESS`
+* `STATUS`
 
 ## Demo
 
