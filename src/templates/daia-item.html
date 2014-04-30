@@ -1,11 +1,14 @@
 <!-- default template used by daiaItem directive in module ng-daia -->
 
 <div ng-if="item.department">
-  <span class="daia-label" translate="DEPARTMENT">Department:</span> <a ng-if="item.department.href" href="{{item.department.href}}">  {{item.department.content}}</a><span ng-if="!item.department.href">  {{item.department.content}}</span>
+    <span class="daia-label" translate="DEPARTMENT">Department:</span> 
+    <a ng-if="item.department.href" href="{{item.department.href}}">  {{item.department.content}}</a>
+    <span ng-if="!item.department.href">  {{item.department.content}}</span>
 </div>
 <div ng-if="item.label.length">
-<span class="daia-label" translate="SIGNATURE">Shelf mark:</span>  {{item.label}}
+    <span class="daia-label" translate="SIGNATURE">Shelf mark:</span>  {{item.label}}
 </div>
-<span ng-if="!item.available && !item.unavailable" class="daia-label" translate="AVAILABILITY">Availability: </span><span ng-if="!item.available && !item.unavailable" translate="unknown">unknown</span></p>
+    <span ng-if="!item.available && !item.unavailable" class="daia-label" translate="AVAILABILITY">Availability: </span>
+    <span ng-if="!item.available && !item.unavailable" translate="unknown">unknown</span>
 <div daia-availability="item"></div>
 
