@@ -19,7 +19,7 @@
  * ## Source code
  *
  * The most recent [source 
- * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daia-item.js)
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaItem.js)
  * of this directive is available at GitHub.
  *
  * @param {string} daia-item The DAIA item to display

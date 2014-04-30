@@ -28,9 +28,8 @@
  * ## Source code
  *
  * The most recent [source 
- * code](https://github.com/gbv/ng-daia/blob/master/src/filters/daia-simple.js)
+ * code](https://github.com/gbv/ng-daia/blob/master/src/filters/daiaSimple.js)
  * of this filter is available at GitHub.
-
  */
 ngDAIA.filter('daiaSimple',function(){
   return function(input, option) {

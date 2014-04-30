@@ -24,7 +24,7 @@
  * ## Source code
  *
  * The most recent [source 
- * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daia-simple.js)
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaSimple.js)
  * of this directive is available at GitHub.
 
  * @param {string} daia-item DAIA response, document, or item to display
