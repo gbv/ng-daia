@@ -49,8 +49,16 @@ The following minmal example might help to include ng-daia into your website:
  
 ## Customization
 
-The default template files, included in `ng-daia.js`, can be styled with the following
-CSS classes:
+The default templates, included in in `ng-daia.js`, can be styled with CSS,
+translated with angular-translate, and replaced with the `template-url`
+parameter:
+
+* [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
+* [template/daia-availability.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html)
+* [template/daia-item.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-item.html)
+* [template/daia-simple.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html)
+  
+The following CSS classes are used:
 
 * `daia-response`: the whole response
 * `daia-result`: the whole result
@@ -79,7 +87,7 @@ the following entries:
 * `interloan`
 * `none`
 * `expected`
-* `INSTITUTION`
+* `INSTITUTION`: label before the institution of a DAIA response
 * `DOCUMENT`
 * `CATALOG_ENTRY`
 * `DEPARTMENT`
