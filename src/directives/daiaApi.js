@@ -41,7 +41,7 @@ ngDAIA.directive('daiaApi',function($http,$filter){
             return attrs.templateUrl ? 
                    attrs.templateUrl : 'template/daia-response.html';
         },
-        link: function link(scope, element, attr, controller, transclude) {
+        link: function link(scope, element, attr) {
             scope.daiaRequest = function() {
                 $http.jsonp( scope.api, {
                     params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }

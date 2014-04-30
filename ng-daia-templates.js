@@ -12,7 +12,7 @@ angular.module('ngDAIA').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('template/daia-response.html',
-    "<div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\" translate=\"INSTITUTION\">institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><a translate=\"CATALOG_ENTRY\" href=\"{{daia.document[0].href}}\">Catalogue entry</a></div><div><span ng-if=\"!daia.document.length\" translate=\"NO_RECORDS\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
+    "<div class=\"daia-result\"><div ng-if=\"daia.institution.content.length\"><span class=\"daia-label\" translate=\"INSTITUTION\">institution:</span> <a ng-if=\"daia.institution.href.length\" href=\"{{daia.institution.href}}\">{{daia.institution.content}}</a></div><div ng-if=\"daia.document[0].href.length\"><span class=\"daia-label\" translate=\"DOCUMENT\">document</span> <a translate=\"CATALOG_ENTRY\" href=\"{{daia.document[0].href}}\">Catalog entry</a></div><div><span ng-if=\"!daia.document.length\" translate=\"NO_RECORDS\">no records found</span></div><div ng-if=\"daia.document.length\" daia-documents=\"daia.document\"><div class=\"daia-document\" ng-repeat=\"i in daia.document[0].item\"><div daia-item=\"i\"></div></div></div></div>"
   );
 
 
