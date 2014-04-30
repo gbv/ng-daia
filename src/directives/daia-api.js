@@ -20,7 +20,7 @@
  * ## Source code
  *
  * The most recent [source 
- * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaApi.js)
+ * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daia-api.js)
  * of this directive is available at GitHub.
  
  * @param {string} daia-api Base URL of DAIA server to query from
