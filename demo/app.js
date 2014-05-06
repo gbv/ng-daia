@@ -43,7 +43,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         expected: 'erwartet',
         openaccess: 'Open Access',
         EXPECTED_BACK: ' Ausgeliehen bis:',
-        RESERVATION: 'Vorkmerken',
+        RESERVATION: 'Vormerken',
         ACCESS: 'Volltext:',
         STATUS: 'Aktueller Status',
         BUTTON_LANG_DE: 'Deutsch',

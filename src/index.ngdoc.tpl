@@ -79,6 +79,8 @@ The default templates are fully prepared for internationalization (i18n) with
 Just include this module in your application and provide translation table with
 the following entries:
 
+---daia-response terms---
+
 * `unknown`
 * `available`
 * `unavailable`
@@ -87,17 +89,21 @@ the following entries:
 * `interloan`
 * `none`
 * `expected`
-* `INSTITUTION`: label before the institution of a DAIA response
-* `DOCUMENT`
-* `CATALOG_ENTRY`
-* `DEPARTMENT`
-* `SIGNATURE`
-* `NO_RECORDS`
-* `AVAILABILITY`
-* `EXPECTED_BACK`
-* `RESERVATION`
-* `ACCESS`
-* `STATUS`
+* `openaccess`
+
+---labels and other text---
+
+* `INSTITUTION` : reference label to holding institution
+* `DOCUMENT` : reference label for searched document
+* `CATALOG_ENTRY` : reference label for document link
+* `DEPARTMENT` : label for specific part of the institution
+* `SIGNATURE` : label for alternative id (like shelf mark for physical medium)
+* `NO_RECORDS`: message shown when no items can be displayed
+* `AVAILABILITY` : label used before `unknown` if no items can be displayed
+* `EXPECTED_BACK` : message 
+* `RESERVATION` : displayed link text for reservation link
+* `ACCESS` : label displayed if a direct document link exists
+* `STATUS` : label text for `daia-simple` output
 
 ## Demo
 

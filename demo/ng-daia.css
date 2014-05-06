@@ -1,6 +1,11 @@
 /* Standard stylesheet for ng-daia module templates */
 
 /* Full response of daiaAPI directive */
+
+.daia-response {
+}
+/* used in daia-response template */
+
 .daia-result {
 	display:inline-block;
 	border:1px solid #E1E1E1;
@@ -8,10 +13,8 @@
 	background:#f5f5f5;
 	padding:15px;
 }
+/* Single items of the response */
 
-/* used in daia-response template * */
-.daia-response {
-}
 .daia-document{
 	margin-top:10px;
 	border:1px solid #E1E1E1;
@@ -51,6 +54,9 @@
 .availability-presentation{
 	color:#EDCC37;
 	left:140px;
+}
+.daia-simple-icon{
+    margin-top:-5px;
 }
 .returning{
 	margin:8px 0px 8px 0px;
