@@ -49,8 +49,15 @@ app.config(['$translateProvider', function ($translateProvider) {
         BUTTON_LANG_DE: 'Deutsch',
         BUTTON_LANG_EN: 'Englisch',
     });
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
+    'en_US': 'en',
+    'en_UK': 'en',
+    'de_DE': 'de',
+    'de_AT': 'de',
+    'de_CH': 'de',
+    })
     $translateProvider.fallbackLanguage('en');
+    $translateProvider.determinePreferredLanguage();
 }]);
 app.controller('myController', ['$translate', '$scope', function ($translate, $scope) {
  
