@@ -31,7 +31,7 @@ The module is in a very early stage of
 development. To get started have a look at the documentation of the AngularJS
 directives provided by {@link ng-daia module ng-daia}.  
 
-The following minmal example might help to include ng-daia into your website:
+The following minimal example might help to include ng-daia into your website:
 
 <pre>
 <html ng-app="myApp">
@@ -50,7 +50,7 @@ The following minmal example might help to include ng-daia into your website:
  
 ## Customization
 
-The default templates, included in in `ng-daia.js`, can be styled with CSS,
+The default templates, included in `ng-daia.js`, can be styled with CSS,
 translated with angular-translate, and replaced with the `template-url`
 parameter:
 
@@ -80,8 +80,35 @@ The following CSS classes are used:
 
 The default templates are fully prepared for internationalization (i18n) with
 [angular-translate](http://angular-translate.github.io/docs/#/guide/02_getting-started).
-Just include this module in your application and provide translation table with
-the following entries:
+To use the translations module, first include the following in your html:
+
+<pre>
+<script src="../lib/angular-translate.min.js"></script>
+</pre>
+
+There are several ways to manage translations with angular-translate. You might want to add them directly into your `myApp` module, or the translations can be put into their own json files and retrieved by your app, which will require an additional package:
+
+<pre>
+<script src="../lib/angular-translate-loader-static-files.min.js"></script>
+</pre>
+
+You then have to extend the app module to enable loading the translations (the filenames would in this case have the format "lang-en.json", etc.):
+
+<pre>
+angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']).config(['$translateProvider', function ($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: '../src/translations/lang-',
+        suffix: '.json'
+    });
+    $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
+    'en_US':'en','en_UK':'en','de_DE':'de','de_AT':'de','de_CH':'de',
+    })
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.determinePreferredLanguage();
+}]);
+</pre>
+
+As well as exporting the translation tables, this example shows the support for automatic language-detection. The default templates are using the following translation terms:
 
 ### daia-response terms
 
