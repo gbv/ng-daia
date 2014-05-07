@@ -16,50 +16,62 @@
 /* Single items of the response */
 
 .daia-document{
-	margin-top:10px;
-	border:1px solid #E1E1E1;
-	padding:10px;
-	background:#f8f8f8;
+    margin-top:10px;
+    border:1px solid #E1E1E1;
+    padding:10px;
+    background:#f8f8f8;
 }
 .daia-label{
-	font-weight:bold;
+    font-weight:bold;
 }
 .service-label{
-  float:left;
-  width:100px;
+    float:left;
+    width:100px;
 }
 .availability{
-  margin-bottom:-8px;
+    margin-bottom:-8px;
 }
 .availability li{
-	list-style-type:none;
-  margin-left:-40px;
+    list-style-type:none;
+    margin-left:-40px;
 }
 .availability-available{
-	color:green;
-  left:140px;
+    color:green;
+    left:140px;
 }
 .availability-expected{
-	color:red;
-  left:140px;
+    color:red;
+    left:140px;
 }
 .availability-unavailable{
-	color:red;
-  left:140px;
+    color:red;
+    left:140px;
 }
 .availability-limitation{
-	font-style:italic;
-	color:black;
+    font-style:italic;
+    color:black;
 }
 .availability-presentation{
-	color:#EDCC37;
-	left:140px;
+    color:#EDA41C;
+    left:140px;
 }
-.daia-simple-icon{
-    margin-top:-5px;
+.simple-openaccess:before{
+    content:url(../src/icons/daia_openaccess_16.png);
+    margin-right:5px;
+    vertical-align:-7%;
+}
+.simple-loan:before{
+    content:url(../src/icons/daia_loan_16.png);
+    margin-right:5px;
+    vertical-align:-7%;
+}
+.simple-presentation:before{
+    content:url(../src/icons/daia_presentation_16.png);
+    margin-right:5px;
+    vertical-align:-7%;
 }
 .returning{
-	margin:8px 0px 8px 0px;
+    margin:8px 0px 8px 0px;
 }
 .returning-expected{
   margin-bottom:0px;

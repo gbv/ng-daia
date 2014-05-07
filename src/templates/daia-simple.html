@@ -1,9 +1,6 @@
-<img ng-if="status == 'openaccess'" class="daia-simple-icon" src="../src/icons/daia_openaccess_16.png"></img>
-<span ng-if="status == 'openaccess'" class="availability availability-available" translate="{{status}}">{{status}}</span>
-<img ng-if="status == 'loan'" class="daia-simple-icon" src="../src/icons/daia_loan_16.png"></img>
-<span ng-if="status == 'loan'" class="availability availability-available" translate="{{status}}">{{status}}</span>
-<img ng-if="status == 'presentation'" class="daia-simple-icon" src="../src/icons/daia_presentation_16.png"></img>
-<span ng-if="status == 'presentation'" class="availability availability-presentation" translate="{{status}}">{{status}}</span>
+<span ng-if="status == 'openaccess'" class="availability availability-available simple-openaccess" translate="{{status}}">{{status}}</span>
+<span ng-if="status == 'loan'" class="availability availability-available simple-loan" translate="{{status}}">{{status}}</span>
+<span ng-if="status == 'presentation'" class="availability availability-presentation simple-presentation" translate="{{status}}">{{status}}</span>
 <span ng-if="status != 'openaccess' && status != 'loan' && status != 'presentation' && status != 'expected'" class="availability availability-unavailable" translate="{{status}}">{{status}}</span>
 <span ng-if="expected" class="availability availability-unavailable" translate="EXPECTED_BACK"> expected back: </span> 
 <span ng-if="expected" class="availability availability-unavailable"> {{expected}}</span>

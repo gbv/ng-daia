@@ -73,13 +73,16 @@ The following CSS classes are used:
 * `returning`: overall style for message concerning 'expected' date and link for preordering
 * `returning-expected`: style for message concerning 'expected' date
 * `access`: style for display of possible access-link
+* `simple-openaccess`: style for simple availability "openaccess"
+* `simple-loan`: style for simple availability "loan"
+* `simple-presentation`: style for simple availability "presentation"
 
 The default templates are fully prepared for internationalization (i18n) with
 [angular-translate](http://angular-translate.github.io/docs/#/guide/02_getting-started).
 Just include this module in your application and provide translation table with
 the following entries:
 
----daia-response terms---
+--- daia-response terms ---
 
 * `unknown`
 * `available`
@@ -91,7 +94,7 @@ the following entries:
 * `expected`
 * `openaccess`
 
----labels and other text---
+--- labels and other text ---
 
 * `INSTITUTION` : reference label to holding institution
 * `DOCUMENT` : reference label for searched document
