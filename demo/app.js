@@ -54,7 +54,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 }]);
 app.controller('myController', ['$translate', '$scope', function ($translate, $scope) {
  
-    $scope.myAPI = "http://daia.gbv.de/";
+    $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:0685460711";
     $scope.changeLanguage = function (langKey) {
         $translate.use(langKey);

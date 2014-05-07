@@ -21,8 +21,9 @@ The current release of ng-daia is version <%= version %>:
 
 * [ng-daia.min.js](grunt-scripts/ng-daia.min.js): minified version for production
 * [ng-daia.js](grunt-scripts/ng-daia.js): original source code for development
-* [ng-daia.css](https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css):
-  stylesheet for the default templates
+* [ng-daia.css](https://github.com/gbv/ng-daia/raw/master/src/ng-daia.css):
+  stylesheet for the default templates, including DAIA icons 
+  (based on <a href="https://picol.org/">PICOL</a>)
 
 ## Getting started
 
@@ -82,7 +83,7 @@ The default templates are fully prepared for internationalization (i18n) with
 Just include this module in your application and provide translation table with
 the following entries:
 
---- daia-response terms ---
+### daia-response terms
 
 * `unknown`
 * `available`
@@ -94,7 +95,7 @@ the following entries:
 * `expected`
 * `openaccess`
 
---- labels and other text ---
+### labels and other text
 
 * `INSTITUTION` : reference label to holding institution
 * `DOCUMENT` : reference label for searched document

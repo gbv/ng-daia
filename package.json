@@ -1,6 +1,6 @@
 {
   "name": "ng-daia",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Jakob Voß <voss@gbv.de>",
   "contributor": ["Moritz Horn <moritz.horn@gmail.com>"], 
   "description": "AngularJS module to facilitate access to DAIA services",

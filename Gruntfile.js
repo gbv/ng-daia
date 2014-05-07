@@ -120,7 +120,10 @@ module.exports = function(grunt) {
             },
             demo: {
                 // TODO: use ng-daia.min.js instead of partials in demo
-                command: "rm -rf docs/demo && cp -r demo docs"
+                command: [
+                    "rm -rf docs/demo",
+                    "cp -r demo docs",
+                ].join('&&')
             },
             site: {
                 command: "rm -rf site && mkdir site && cp -r docs/* site"
