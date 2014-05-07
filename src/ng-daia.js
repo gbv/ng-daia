@@ -26,4 +26,4 @@
  *
  */
 var ngDAIA = angular.module('ngDAIA',[]);
-ngDAIA.value('version', '0.1.0');
+ngDAIA.value('version', '0.1.1');
