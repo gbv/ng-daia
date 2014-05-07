@@ -9,15 +9,16 @@
 <p><strong>ng-daia</strong> is an <a href="http://angularjs.org/">AngularJS</a> module to
 facilitate access to <a href="http://purl.org/NET/DAIA">Document Availability Information API</a> (DAIA) services and to display the responses given by a DAIA
 server.</p>
-<p>The latest release of ng-daia is version 0.1.0. Source code and issue tracker
+<p>The latest release of ng-daia is version 0.1.1. Source code and issue tracker
 can be found at <a href="https://github.com/gbv/ng-daia">https://github.com/gbv/ng-daia</a>.</p>
 <h3 id="ng-daia_download">Download</h3>
-<p>The current release of ng-daia is version 0.1.0:</p>
+<p>The current release of ng-daia is version 0.1.1:</p>
 <ul>
 <li><a href="grunt-scripts/ng-daia.min.js">ng-daia.min.js</a>: minified version for production</li>
 <li><a href="grunt-scripts/ng-daia.js">ng-daia.js</a>: original source code for development</li>
-<li><a href="https://github.com/gbv/ng-daia/raw/master/demo/ng-daia.css">ng-daia.css</a>:
-stylesheet for the default templates</li>
+<li><a href="https://github.com/gbv/ng-daia/raw/master/src/ng-daia.css">ng-daia.css</a>:
+stylesheet for the default templates, including DAIA icons 
+(based on <a href="https://picol.org/">PICOL</a>)</li>
 </ul>
 <h3 id="ng-daia_getting-started">Getting started</h3>
 <p>The module is in a very early stage of
@@ -39,8 +40,16 @@ directives provided by <a href="#/api/ng-daia">module ng-daia</a>.  </p>
 &lt;/html&gt;
 </pre>
 <h3 id="ng-daia_customization">Customization</h3>
-<p>The default template files, included in <code>ng-daia.js</code>, can be styled with the following
-CSS classes:</p>
+<p>The default templates, included in in <code>ng-daia.js</code>, can be styled with CSS,
+translated with angular-translate, and replaced with the <code>template-url</code>
+parameter:</p>
+<ul>
+<li><a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html">template/daia-response.html</a></li>
+<li><a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-availability.html">template/daia-availability.html</a></li>
+<li><a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-item.html">template/daia-item.html</a></li>
+<li><a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html">template/daia-simple.html</a></li>
+</ul>
+<p>The following CSS classes are used:</p>
 <ul>
 <li><code>daia-response</code>: the whole response</li>
 <li><code>daia-result</code>: the whole result</li>
@@ -55,11 +64,15 @@ CSS classes:</p>
 <li><code>returning</code>: overall style for message concerning &#39;expected&#39; date and link for preordering</li>
 <li><code>returning-expected</code>: style for message concerning &#39;expected&#39; date</li>
 <li><code>access</code>: style for display of possible access-link</li>
+<li><code>simple-openaccess</code>: style for simple availability &quot;openaccess&quot;</li>
+<li><code>simple-loan</code>: style for simple availability &quot;loan&quot;</li>
+<li><code>simple-presentation</code>: style for simple availability &quot;presentation&quot;</li>
 </ul>
 <p>The default templates are fully prepared for internationalization (i18n) with
 <a href="http://angular-translate.github.io/docs/#/guide/02_getting-started">angular-translate</a>.
 Just include this module in your application and provide translation table with
 the following entries:</p>
+<h4 id="ng-daia_customization_daia-response-terms">daia-response terms</h4>
 <ul>
 <li><code>unknown</code></li>
 <li><code>available</code></li>
@@ -69,15 +82,21 @@ the following entries:</p>
 <li><code>interloan</code></li>
 <li><code>none</code></li>
 <li><code>expected</code></li>
-<li><code>INST</code></li>
-<li><code>CAT</code></li>
-<li><code>DEP</code></li>
-<li><code>SGN</code></li>
-<li><code>NR</code></li>
-<li><code>AVB</code></li>
-<li><code>EXP</code></li>
-<li><code>RES</code></li>
-<li><code>ACC</code></li>
+<li><code>openaccess</code></li>
+</ul>
+<h4 id="ng-daia_customization_labels-and-other-text">labels and other text</h4>
+<ul>
+<li><code>INSTITUTION</code> : reference label to holding institution</li>
+<li><code>DOCUMENT</code> : reference label for searched document</li>
+<li><code>CATALOG_ENTRY</code> : reference label for document link</li>
+<li><code>DEPARTMENT</code> : label for specific part of the institution</li>
+<li><code>SIGNATURE</code> : label for alternative id (like shelf mark for physical medium)</li>
+<li><code>NO_RECORDS</code>: message shown when no items can be displayed</li>
+<li><code>AVAILABILITY</code> : label used before <code>unknown</code> if no items can be displayed</li>
+<li><code>EXPECTED_BACK</code> : message </li>
+<li><code>RESERVATION</code> : displayed link text for reservation link</li>
+<li><code>ACCESS</code> : label displayed if a direct document link exists</li>
+<li><code>STATUS</code> : label text for <code>daia-simple</code> output</li>
 </ul>
 <h3 id="ng-daia_demo">Demo</h3>
 <p>The <a href="https://github.com/gbv/ng-daia/tree/master/demo">demo directory</a> of the
@@ -92,8 +111,8 @@ file <code>README.md</code> contains a guidline for gettings started. Likes and 
 also welcome!</p>
 <h3 id="ng-daia_author-and-contributors">Author and Contributors</h3>
 <ul>
-<li>Jakob Voß <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#118;&#111;&#x73;&#115;&#64;&#x67;&#98;&#x76;&#46;&#100;&#101;">&#118;&#111;&#x73;&#115;&#64;&#x67;&#98;&#x76;&#46;&#100;&#101;</a></li>
-<li>Moritz Horn <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x6d;&#111;&#x72;&#x69;&#x74;&#122;&#x2e;&#104;&#x6f;&#x72;&#110;&#64;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x6d;&#111;&#x72;&#x69;&#x74;&#122;&#x2e;&#104;&#x6f;&#x72;&#110;&#64;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></li>
+<li>Jakob Voß <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#118;&#x6f;&#115;&#x73;&#64;&#103;&#98;&#x76;&#46;&#100;&#101;">&#118;&#x6f;&#115;&#x73;&#64;&#103;&#98;&#x76;&#46;&#100;&#101;</a></li>
+<li>Moritz Horn <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#109;&#111;&#x72;&#x69;&#116;&#122;&#46;&#104;&#111;&#x72;&#110;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#111;&#x72;&#x69;&#116;&#122;&#46;&#104;&#111;&#x72;&#110;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
 </ul>
 <h3 id="ng-daia_license">License</h3>
 <p>Code licensed under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">AGPL</a>.
