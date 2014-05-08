@@ -6,8 +6,8 @@ app.config(['$translateProvider', function ($translateProvider) {
         suffix: '.json'
     });
     $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
-    'en_US':'en','en_UK':'en','de_DE':'de','de_AT':'de','de_CH':'de',
-    })
+    'en_US':'en','en_UK':'en','de_DE':'de','de_AT':'de','de_CH':'de'
+    });
     $translateProvider.fallbackLanguage('en');
     $translateProvider.determinePreferredLanguage();
 }]);
