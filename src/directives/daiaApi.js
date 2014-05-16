@@ -22,7 +22,7 @@
  * The most recent [source 
  * code](https://github.com/gbv/ng-daia/blob/master/src/directives/daiaApi.js)
  * of this directive is available at GitHub.
- 
+ * 
  * @param {string} daia-api Base URL of DAIA server to query from
  * @param {string} daia-id Document identifier to query for
  * @param {string} daia-filter AngularJS filter to process daia response, e.g.
