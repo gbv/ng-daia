@@ -12,6 +12,8 @@ AngularJS >= 1.2
 
 ## Development
 
+Requires OS with POSIX symlinks
+
 First, **clone** the repository from <https://github.com/gbv/ng-daia>.
 
 Second, install Node.js unless it is already installed. Node.js includes `npm`
