@@ -54,12 +54,6 @@ module.exports = function(grunt) {
                 ],
             },
         },
-        connect: {
-            options: {
-                keepalive: true
-            },
-            server: {}
-        },
         clean: ['docs'],
         karma: {
             unit: {
