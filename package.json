@@ -1,14 +1,17 @@
 {
   "name": "ng-daia",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Jakob Voß <voss@gbv.de>",
   "contributor": ["Moritz Horn <moritz.horn@gmail.com>"], 
   "description": "AngularJS module to facilitate access to DAIA services",
+  "keywords": ["angular","angularjs","daia","availability"],
   "license": "AGPL",
+  "homepage": "http://gbv.github.io/ng-daia/",
   "repository": {
     "type": "git",
     "url": "git://github.com/gbv/ng-daia.git"
   },
+  "main": "ng-daia.min.js",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-angular-templates": "~0.5.4",
@@ -23,5 +26,8 @@
     "grunt-version": "~0.3.0",
     "karma": "~0.10.9",
     "karma-jasmine": "~0.1.5"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }

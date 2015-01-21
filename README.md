@@ -2,15 +2,23 @@
 
 > [AngularJS](http://angularjs.org/) module to facilitate access to DAIA services
 
-## Usage and documentation
- 
-See <http://gbv.github.io/ng-daia/>.
+See <http://gbv.github.io/ng-daia/> for documentation and usage examples.
 
-## Requirements
+## Installation
 
-AngularJS >= 1.2
+Install **ng-daia** as a dependency in your Node.js project:
+
+    npm install ng-daia --safe
+
+Then *require* it in your client-side JavaScript files:
+
+    var ng_daia = require('ng-daia');
 
 ## Development
+
+*Stop reading here unless you want to modify the source code of ng-daia!*
+
+Requires AngularJS >= 1.2.
 
 Requires OS with POSIX symlinks
 
