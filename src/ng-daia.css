@@ -29,7 +29,6 @@
     width:100px;
 }
 .availability{
-    margin-bottom:-8px;
 }
 .availability li{
     list-style-type:none;
@@ -37,23 +36,20 @@
 }
 .availability-available{
     color:green;
-    left:140px;
 }
 .availability-expected{
     color:red;
-    left:140px;
 }
 .availability-unavailable{
     color:red;
-    left:140px;
 }
 .availability-limitation{
-    font-style:italic;
     color:black;
+    font-style:italic;
 }
+
 .availability-presentation{
     color:#EDA41C;
-    left:140px;
 }
 .simple-openaccess:before{
     content:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARdJREFUeNqk069LQ1EUwPGLTk2yMNC0ZBA0azOvCLIkKGa7CkZNxv0FZqvVujJwVjcwmISBQdAyNhGe3zO+k4s/QHgHPruXe84Z9937Xko/YxttFN+0zf0ZCxhnDUPca5itj62dxIzjHEZ4RdO1Bi7VcK1pzcier4iFgfMObp2fKLnWcT6wZxI7vzzvf0Vv6uIGNVyYWEYdV6q7VlhTs6db4WcD63jBG/p4dncPjk+OfWui9gi9ioljPGIPazhH5HazQ/4wd4BZrOS3UCoK/zniNLaV5c40jZ41yZ4itnmHFvZRNREHNo9Vi+MQ381VPcSWveWvsdSLNL2FRbcY13eIa2x58sn5pq9y1Cz5iOU/plT2c/4UYACtjnkdowglFAAAAABJRU5ErkJggg==);

@@ -8,14 +8,20 @@
  * This directive queries a DAIA server, each time one of its parameters
  * `daia-api` or `daia-id` is changed. The DAIA response can optionally be 
  * filtered, for instance with {@link ng-daia.filter:daiaSimple daiaSimple}.
+ *
  * The default template [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
  * makes use of the directives {@link ng-daia.directive:daiaItem daiaItem}
  * and {@link ng-daia.directive:daiaAvailability daiaAvailability}. The 
- * template can be changed with the `template-url` parameter.
+ * template can be changed with the `template-url` parameter. If parameter
+ * `daia-filter` is set to `daiaSimple`, the default template 
+ * The default template [template/daia-response.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-response.html)
+ *
  *
  * ## Scope
  *
- * The DAIA response is injected into the template's scope as variable `daia`.
+ * Without `daia-filter`, the DAIA response is injected into the template's 
+ * scope as variable `daia`. With `daia-filter` the filtered response is used
+ * as scope.
  *
  * ## Source code
  *
@@ -38,8 +44,13 @@ ngDAIA.directive('daiaApi',function($http,$filter){
             filter: '@daiaFilter',
         },
         templateUrl: function(elem, attrs) {
-            return attrs.templateUrl ? 
-                   attrs.templateUrl : 'template/daia-response.html';
+            if (attrs.templateUrl) {
+                return attrs.templateUrl;
+            } else {
+                return attrs.daiaFilter == 'daiaSimple'
+                    ? 'template/daia-simple.html'
+                    : 'template/daia-response.html';
+            }
         },
         link: function link(scope, element, attr) {
             scope.daiaRequest = function() {
@@ -47,9 +58,9 @@ ngDAIA.directive('daiaApi',function($http,$filter){
                     params: { id: scope.id, format:'json', callback:'JSON_CALLBACK' } }
                 ).success(function(response) {
                     if (scope.filter) {
-                        var simple = $filter(scope.filter)(response);
-                        angular.forEach(['status','expected','delay','href','limitation'],
-                            function(key) { scope[key] = simple[key]; }
+                        var filtered = $filter(scope.filter)(response);
+                        angular.forEach(filtered,
+                            function(value, key) { scope[key] = value }
                         );
                     } else {
                         scope.daia = response;

@@ -19,7 +19,7 @@
  *
  * The DAIA response, document, or item is injected into the template's scope as
  * variable `variable`. The DAIA simple response is provided with its fields
- * `status`, `expected`, `delay`, `href`, and `limitation`.
+ * `status`, `expected`, `delay`, `href`, and `limitation`, and `queue`.
 
  * ## Source code
  *
@@ -43,14 +43,14 @@ ngDAIA.directive('daiaSimple',function($filter){
         link: function(scope, elem, attrs) {
             scope.$watch('daia',function(){
                 var simple = $filter('daiaSimple')(scope.daia);
+                var s = simple.status;
+                if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
+                    simple.status = 'none';
+                }
                 angular.forEach(
-                    ['status','expected','delay','href','limitation'],
+                    ['status','expected','delay','href','limitation','queue'],
                     function(key) { scope[key] = simple[key]; }
                 );
-                var s = scope.status;
-                if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
-                        scope.status = 'none';
-                }
             });
         }
     }

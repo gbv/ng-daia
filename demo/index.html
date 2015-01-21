@@ -23,22 +23,29 @@
     <script src="app.js"></script>
 </head>
 <body ng-controller="myController">
-    <header class="hero-unit" id="overview">
-        <div class="container">
-            <h1>
-                AngularJS module for DAIA-Services
-            </h1>
-            <!--p>...subtitle...</p-->
-        </div>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../">ng-daia</a>
+                </div>
+                <form class="navbar-form navbar-right">
+                    <button ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
+                    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+                </form>
+            </div>
+        </nav>
     </header>
     <div class="container">
+<section>
+        <div class="page-header">
+            <h1>Demo</h1>
+            <p>
+              See documentation at 
+              <a href="https://gbv.github.io/ng-daia">https://gbv.github.io/ng-daia</a>
+            </p>
+        </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h1>daia-api <small>automatically query DAIA-Server</small></h1>
-                    <span>documentation at <a href="https://gbv.github.io/ng-daia">https://gbv.github.io/ng-daia</a></span>
-                </div>
-            </div>
             <div class="col-md-6">
                 <form role="form">
                     <div class="form-group">
@@ -60,34 +67,102 @@
             <div class="col-md-12">
                 <label>DAIA query URL</label>
                 <div><a href="{{myAPI}}?id={{myID}}&format=xml">{{myAPI}}?id={{myID}}</a></div>
-                <h3>Document availability</h3>
-                <div style="margin:10px 0px 10px 0px;">
-                    <button ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
-                    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
-                </div>
-                <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="page-header">
+            <h2>daia-api</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>code</h4>
+                <pre>
+&lt;div class="daia-response" 
+     daia-api="{{myAPI}}"
+     daia-id="{{myID}}" 
+     daia-loading="daiaLoading">
+    &lt;i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
+&lt;/div></pre>
+            </div>
+            <div class="col-md-6">
+                <h4>result</h4>
+                <div class="daia-response" 
+                     daia-api="{{myAPI}}"
+                     daia-id="{{myID}}" 
+                     daia-loading="daiaLoading">
                     <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
                 </div>
             </div>
+        </div>
+    </section>
+    <section>
+        <div class="page-header">
+            <h2>daia-simple</h2>
+        </div>
+        <div class="row">
             <div class="col-md-12">
-                <h3>Simple availability</h3>
-                <h4>Via filter</h4>
-                <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="template/daia-simple.html"></div>
-                <h4>Via directive</h4>
-                <div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
-
-<script type="text/ng-template" id="debug">
-    <p>
-    <div class="daia-result" daia-simple="daia"></div>
-    </p>
-    <h3>DAIA response via AngularJS template </h3>
-    <div class="well">
-        api: {{api}}<br>
-        id: {{id}}<br>
-        daia: {{daia | json}}<br>
-        daia: {{daia | daiaSimple | json}}
-    </div>
-</script>
+                <p>
+                ng-daia includes 
+                <a href="../#/api/ng-daia.filter:daiaSimple">a filter</a>,
+                a template (<code>template/daia-simple.html</code>), and
+                <a href="../#/api/ng-daia.directive:daiaSimple">a directive</a> to
+                handle
+                <a href="http://gbv.github.io/daiaspec/daia.html#daia-simple">DAIA Simple format</a>.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>code</h4>
+                <pre>
+&lt;div daia-api="{{myAPI}}" 
+     daia-id="{{myID}}" 
+     daia-filter="daiaSimple">&lt;/div></pre>
+            </div>
+            <div class="col-md-6">
+                <h4>result</h4>
+                <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <pre>
+&lt;div daia-simple="daiaResponse">&lt;/div></pre>
+            </div>
+            <!--div class="col-md-6">
+                <div daia-simple="daiaResponse"></div>
+            </div-->
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-6">
+                <pre>{{daiaResponse | daiaSimple | json}}</pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <pre ng-non-bindable>
+&lt;div ng-repeat="doc in daiaResponse.document">
+    &lt;div ng-repeat="item in doc.item">
+        {{item.label}}:
+        &lt;span daia-simple="item">&lt;/span>
+    &lt;div>
+&lt;/div></pre>
+            </div>
+            <!--div class="col-md-6">
+                <div ng-repeat="doc in daiaResponse.document">
+                    <div ng-repeat="item in doc.item">
+                        {{item.label}}:
+                        <span daia-simple="item"></span>
+                    </div>
+                </div>
+            </div-->
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <pre>daia: {{daiaResponse | json}}</pre>
             </div>
         </div>
     </div>

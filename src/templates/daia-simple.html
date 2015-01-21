@@ -1,6 +1,40 @@
-<span ng-if="status == 'openaccess'" class="availability availability-available simple-openaccess" translate="{{status}}">{{status}}</span>
-<span ng-if="status == 'loan'" class="availability availability-available simple-loan" translate="{{status}}">{{status}}</span>
-<span ng-if="status == 'presentation'" class="availability availability-presentation simple-presentation" translate="{{status}}">{{status}}</span>
-<span ng-if="status != 'openaccess' && status != 'loan' && status != 'presentation' && status != 'expected'" class="availability availability-unavailable" translate="{{status}}">{{status}}</span>
-<span ng-if="expected" class="availability availability-unavailable" translate="EXPECTED_BACK"> expected back: </span> 
-<span ng-if="expected" class="availability availability-unavailable"> {{expected}}</span>
+<!-- openaccess -->
+<span ng-if="status == 'openaccess'" class="availability availability-available" translate="{{status}}">{{status}}
+<a ng-if="href" href="{{href}}">frei verfügbar als Open Access</a>
+<span ng-if="!href">frei verfügbar als Open Access</span>
+</span>
+<!-- loan -->
+<span ng-if="status == 'loan'">
+<span class="availability availability-available">verfügbar</span>
+<span ng-if="delay || href">
+    bitte bestellen
+    <span ng-if="delay">
+      (Wartezeit etwa {{delay}})
+    </span>
+</span>
+<span ng-if="limitation"> ! {{limitation}} </span>
+</span>
+<!-- expected (for loan or openaccess) -->
+<span ng-if="status == 'expected'">
+<span class="availability availability-unavailable">nicht verfügbar</span>
+<span ng-if="expected">bis voraussichtlich {{expected}}. </span>
+<span ng-if="href">bitte bestellen! </span>
+<span ng-if="limitation">{{limitation}}!</span>
+</span>
+<!-- Neither OA, nor LOAN but PRESENTATION -->
+<span ng-if="status == 'presentation'">
+<span class="availability availability-available">verfügbar</span>
+<span>nicht ausleihbar</span>
+<span ng-if="delay || href">
+    bitte bestellen
+    (delay {{delay}}, href {{href}})
+</span>
+<span ng-if="limitation"> ! {{limitation}} </span>
+</span>
+<!-- none -->
+<span ng-if="status == 'none'">
+<span class="availability availability-unavailable">nicht verfügbar</span>
+<span ng-if="expected">bis voraussichtlich {{expected}}. </span>
+<span ng-if="href">bitte bestellen! </span>
+<span ng-if="limitation">{{limitation}}!</span>
+</span>
