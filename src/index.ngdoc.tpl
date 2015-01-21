@@ -27,9 +27,9 @@ The current release of ng-daia is version <%= version %>:
 
 ## Getting started
 
-The module is in a very early stage of
-development. To get started have a look at the documentation of the AngularJS
-directives provided by {@link ng-daia module ng-daia}.  
+The [demo](demo) illustrates display of availability information with
+directives and filters provided by {@link ng-daia module ng-daia}. Please have
+a look at the documentation of each directive/filter.
 
 The following minimal example might help to include ng-daia into your website:
 
@@ -47,7 +47,7 @@ The following minimal example might help to include ng-daia into your website:
 </body>
 </html>
 </pre>
- 
+
 ## Customization
 
 The default templates, included in `ng-daia.js`, can be styled with CSS,
@@ -138,9 +138,10 @@ As well as exporting the translation tables, this example shows the support for 
 
 ## Demo
 
-The [demo directory](https://github.com/gbv/ng-daia/tree/master/demo) of the
-source code repository contains a more detailed sample application that makes
-use of `ng-daia` as well as angular-translate. The demo should be run from a server
+The [demo](demo) (see [demo
+directory](https://github.com/gbv/ng-daia/tree/master/demo) of source code
+repository) contains a more detailed sample application that makes use of
+`ng-daia` as well as angular-translate. The demo should be run from a server
 (e.g. localhost).
 
 ## Feedback
