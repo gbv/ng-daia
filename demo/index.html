@@ -11,13 +11,14 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
 
     <!-- include ng-daia module from multiple files. Better use a single-file release for production! -->
-        <script src="../src/ng-daia.js"></script>
-        <script src="../src/directives/daiaApi.js"></script>
-        <script src="../src/directives/daiaItem.js"></script>
-        <script src="../src/directives/daiaAvailability.js"></script>
-        <script src="../src/directives/daiaSimple.js"></script>
-        <script src="../src/filters/daiaSimple.js"></script>
-        <script src="../lib/angular-translate.min.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/ng-daia.js"></script>
+        <script src="../grunt-scripts/angular-translate.min.js"></script>
+        <script src="../grunt-scripts/angular-translate-loader-static-files.min.js"></script>
     <!-- short JavaScript snippet to active ng-daia -->
     <script src="app.js"></script>
 </head>
@@ -51,7 +52,7 @@
                 </form>
                 <span class="daia-label">More examples for daia-ids:</span>
                 <ul>
-                    <li><a style="cursor:pointer" ng-click="myID = 'opac-de-89:ppn:532043140'">opac-de-89:ppn:532043140 </a> (different availabilities + limitation)</span></li>
+                    <li><a style="cursor:pointer" ng-click="myID = 'opac-de-89:ppn:532043140'">opac-de-89:ppn:532043140 </a> (different availabilities + limitation)</li>
                     <li><a style="cursor:pointer" ng-click="myID = 'opac-de-960:ppn:717619370'">opac-de-960:ppn:717619370 </a> (several copies available)</li>
                     <li><a style="cursor:pointer" ng-click="myID = 'opac-de-18:ppn:726541982'">opac-de-18:ppn:726541982 </a> (online ressource, no open access)</li>
                 </ul>

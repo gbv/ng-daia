@@ -1,0 +1,25 @@
+<!-- default template used by daiaAvailability directive in module ng-daia -->
+<ul class="availability" ng-if="available || unavailable">
+    <li ng-if="available" ng-repeat="a in available">
+        <span class ="service-label" translate="{{a.service}}">{{a.service}}</span>
+        <span class="availability availability-available" translate="available">available</span>
+        <span class="availability availability-limitation" ng-if="a.limitation"> ({{a.limitation[0].content}})</span>
+    </li>
+    <li ng-if="unavailable" ng-repeat="u in unavailable">
+        <span class ="service-label" ng-if="u.expected" translate="{{u.service}}">{{u.service}}</span>
+        <span ng-if="u.expected" class="availability availability-expected" translate="expected">expected</span>
+        <span class ="service-label" ng-if="!u.expected" translate="{{u.service}}">{{u.service}}</span>
+        <span ng-if="!u.expected" class="availability availability-unavailable" translate="unavailable">unavailable</span>
+    </li>
+		<div class="returning">
+            <li ng-if="unavailable[0].href && unavailable[0].expected">
+                <div ng-if="unavailable[0].expected" class="returning returning-expected"><span translate="EXPECTED_BACK">expected back:</span> {{unavailable[0].expected}} </div>
+                <a href="{{unavailable[0].href}}" translate="RESERVATION">place reservation</a>
+            </li>
+        </div>
+</ul>
+<div class="access" ng-if="((available[1].service || available[0].service) == 'openaccess' || unavailable[0].service == 'openaccess')">
+  <span translate="ACCESS">access via:</span> 
+  <a ng-if="available[1].service == 'openaccess'" href="{{available[1].href}}">{{available[1].href}}</a>
+  <a ng-if="unavailable[0].service == 'openaccess'" href="{{unavailable[0].href}}">{{available[0].href}}</a>
+</div>
