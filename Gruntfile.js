@@ -113,10 +113,14 @@ module.exports = function(grunt) {
                 command: "cp lib/1.2.7/*.map docs/js; cp ng-daia.js docs/grunt-scripts"
             },
             demo: {
-                // TODO: use ng-daia.min.js instead of partials in demo
                 command: [
                     "rm -rf docs/demo",
-                    "cp -r demo docs",
+                    "cp -Lr demo docs",
+                    "cp ng-daia.js docs/grunt-scripts",
+                    "mkdir docs/src && cp -r src/translations/ docs/src",
+                    "cp lib/angular-translate* docs/grunt-scripts",
+                    "perl -pi -e 's|<script src=\"\\.\\./src.+|<script src=\"../grunt-scripts/ng-daia.js\"></script>|' docs/demo/*.html", 
+                    "perl -pi -e 's|<script src=\"\\.\\./lib|<script src=\"../grunt-scripts|' docs/demo/*.html"                    
                 ].join('&&')
             },
             site: {
