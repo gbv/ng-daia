@@ -68,24 +68,15 @@
                 <div class="daia-response" daia-api="{{myAPI}}" daia-id="{{myID}}" daia-loading="daiaLoading">
                     <i ng-show="daiaLoading" class="glyphicon glyphicon-refresh"></i>
                 </div>
-                <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="daia-simple"></div>
+            </div>
+            <div class="col-md-12">
+                <h3>Simple availability</h3>
+                <h4>Via filter</h4>
+                <div daia-api="{{myAPI}}" daia-id="{{myID}}" daia-filter="daiaSimple" template-url="template/daia-simple.html"></div>
+                <h4>Via directive</h4>
                 <div daia-api="{{myAPI}}" daia-id="{{myID}}" template-url="debug"></div>
 
-<script type="text/ng-template" id="daia-simple">
-    <h3>Simple availability</h3>
-    <h4>Via filter</h4>
-    <div class="daia-result">
-        <span ng-if="daia.status == 'openaccess'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
-        <span ng-if="daia.status == 'loan'" class="availability availability-available" translate="{{daia.status}}">{{daia.status}}</span>
-        <span ng-if="daia.status == 'presentation'" class="availability availability-presentation" translate="{{daia.status}}">{{daia.status}}</span>
-        <span ng-if="daia.status != 'openaccess' && daia.status != 'loan' && daia.status != 'presentation' && daia.status != 'expected'" class="availability availability-unavailable" translate="{{daia.status}}" translate="{{daia.status}}">{{daia.status}}</span>
-        <span ng-if="daia.expected" class="availability availability-unavailable" translate="EXPECTED_BACK"> until </span>
-        <span ng-if="daia.expected" class="availability availability-unavailable">{{daia.expected}}</span>
-    </div>
-</script>
-
 <script type="text/ng-template" id="debug">
-    <h4>Via directive</h4>
     <p>
     <div class="daia-result" daia-simple="daia"></div>
     </p>

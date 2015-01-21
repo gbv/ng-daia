@@ -44,10 +44,13 @@ ngDAIA.directive('daiaApi',function($http,$filter){
         link: function link(scope, element, attr) {
             scope.daiaRequest = function() {
                 $http.jsonp( scope.api, {
-                    params: { id: scope.id, format:'json',callback:'JSON_CALLBACK' } }
+                    params: { id: scope.id, format:'json', callback:'JSON_CALLBACK' } }
                 ).success(function(response) {
                     if (scope.filter) {
-                        scope.daia = $filter(scope.filter)(response);
+                        var simple = $filter(scope.filter)(response);
+                        angular.forEach(['status','expected','delay','href','limitation'],
+                            function(key) { scope[key] = simple[key]; }
+                        );
                     } else {
                         scope.daia = response;
                     }

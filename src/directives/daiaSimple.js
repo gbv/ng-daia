@@ -43,12 +43,10 @@ ngDAIA.directive('daiaSimple',function($filter){
         link: function(scope, elem, attrs) {
             scope.$watch('daia',function(){
                 var simple = $filter('daiaSimple')(scope.daia);
-                
                 angular.forEach(
                     ['status','expected','delay','href','limitation'],
                     function(key) { scope[key] = simple[key]; }
                 );
-
                 var s = scope.status;
                 if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
                         scope.status = 'none';
