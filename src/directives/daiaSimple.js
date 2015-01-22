@@ -8,19 +8,14 @@
  * This directive displays a DAIA response, document, or item in simplified
  * form, as filtered by {@link ng-daia.filter:daiaSimple daiaSimple}). The
  * default template [template/daia-simple.html](https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html)
- * can be changed with the `template-url` parameter. The template's scope
- * gets the variables
- *
- * * `daia`: DAIA response, document, or item as passed to the directive
- * * `status`: simplified status (set to `none` by default)
- * * `expected`, `delay`, `href`, `limitation`: optional additional information
+ * can be changed with the `template-url` parameter.
  *
  * ## Scope
  *
  * The DAIA response, document, or item is injected into the template's scope as
  * variable `variable`. The DAIA simple response is provided with its fields
- * `status`, `expected`, `delay`, `href`, and `limitation`, and `queue`.
-
+ * `service`, `available`, `expected`, `delay`, `href`, `limitation`, and `queue`.
+ *
  * ## Source code
  *
  * The most recent [source 
@@ -43,12 +38,8 @@ ngDAIA.directive('daiaSimple',function($filter){
         link: function(scope, elem, attrs) {
             scope.$watch('daia',function(){
                 var simple = $filter('daiaSimple')(scope.daia);
-                var s = simple.status;
-                if (s!='openaccess' && s!='loan' && s!='presentation' && s!= 'expected') {
-                    simple.status = 'none';
-                }
                 angular.forEach(
-                    ['status','expected','delay','href','limitation','queue'],
+                    ['service','available','expected','delay','href','limitation','queue'],
                     function(key) { scope[key] = simple[key]; }
                 );
             });

@@ -31,88 +31,89 @@
  * code](https://github.com/gbv/ng-daia/blob/master/src/filters/daiaSimple.js)
  * of this filter is available at GitHub.
  */
-ngDAIA.filter('daiaSimple',function(){
+ngDAIA.filter('daiaSimple', function() {
   return function(input, option) {
+    var services = ['openaccess','loan','presentation'];
 	
-  // extract list of items from input
-  var items = [];
-  if (angular.isObject(input)) {
-		if (angular.isArray(input.document)) {
-			angular.forEach(input.document,function(document) {
-				angular.forEach(document.item,function(item) {
-					items.push(item);
-				});
-			});
-		} else if (angular.isArray(input.item)) {
-			angular.forEach(input.item,function(item) {
-				items.push(item);
-			});
+    // collect list of items
+    var items = [];
+    if (angular.isObject(input)) {
+        if (angular.isArray(input.document)) {
+            angular.forEach(input.document,function(document) {
+                angular.forEach(document.item,function(item) {
+                    items.push(item);
+                });
+            });
+        } else if (angular.isArray(input.item)) {
+            angular.forEach(input.item,function(item) {
+                items.push(item);
+            });
         } else {
             items.push(input);
         }
-	}
-	var response = { };
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'openaccess'){
-					response.status = "openaccess";
-					response.href = item.available[j].href;
-					return;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'loan'){
-					response.status = "loan";
-					return response;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	angular.forEach(items,function(item) {
-		if (angular.isArray(item.available)) {
-			for(var j=0; j<item.available.length; j++){
-				if(item.available[j].service == 'presentation'){
-					response.status = "presentation";
-					return response;
-				}
-			}
-		}
-	});
-	if (response.status) return response;
-	
-	angular.forEach(items,function(item) {
-		angular.forEach(item.unavailable,function(unavailable) {
-			if(unavailable.service == 'loan' && unavailable.expected) {
-				var exp = unavailable.expected;
-				if (response.expected) {
-					if (exp == "unknown") {
-						return;
-					} else if(response.expected != "unknown") {
-						if (exp > response.expected) {
-							return;
-						}
-					}
-				}
-				response.status = "expected";
-				response.expected = exp;
-			}
-		});
-	});
-	
-	if (!response.status) {
-		response.status = "none";
-	}
+    }
 
-	return response;
-  }
+    // default DAIA simple response
+    var response = {
+        service: "none",
+        available: false
+    };
+    
+    // find any item with available openaccess 
+    // otherwise find any item with available loan
+    // otherwise find any item with available presentation
+    if ( services.some(function (service) {
+        return items.some( function (item) {
+            var a = angular.isArray(item.available) ? item.available : [];
+            return a.some( function (available) {
+                if (available.service != service) { 
+                    return;
+                }
+                response.available = true;
+                ['service','href','limitation','delay'].forEach(function (key) { 
+                    var value = available[key];
+                    if ( value || value == 0 ) { response[key] = value; }
+                });
+                if (response.limitation) { 
+                    response.limitation = response.limitation[0].content;
+                }
+                return true;
+            });
+        });
+    })) {
+        return response;
+    }
+    
+    // otherwise find item that is next expected
+    var expect;
+    items.forEach( function (item) {
+        var a = angular.isArray(item.unavailable) ? item.unavailable : [];
+        a.forEach( function (unavail) {
+            // any expected openaccess, loan, or presentation
+            var uexp = unavail.expected;
+            if (services.indexOf(unavail.service) != -1 && uexp) {
+                if (!expect || expect == "unknown" || 
+                    (uexp != "unknown" && uexp < expect)) {
+                    ['service','href','limitation','expected','queue'].forEach(function (key) {
+                        var value = unavail[key];
+                        if ( value || value == 0 ) { response[key] = value; }
+                    });
+                    if (response.limitation) {
+                        response.limitation = response.limitation[0].content;
+                    }
+                }
+            }
+        });
+    });
+    if (expect) {
+        return response;
+    }
+
+    // otherwise find any additional href or limitation
+    services.some(function (service) {
+        // TODO!!!
+    });
+      
+      return response;
+    }
 });

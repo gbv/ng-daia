@@ -59,6 +59,7 @@ ngDAIA.directive('daiaApi',function($http,$filter){
                 ).success(function(response) {
                     if (scope.filter) {
                         var filtered = $filter(scope.filter)(response);
+                        // FIXME: purge existing variables from scope
                         angular.forEach(filtered,
                             function(value, key) { scope[key] = value }
                         );

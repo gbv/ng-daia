@@ -129,9 +129,9 @@
                 <pre>
 &lt;div daia-simple="daiaResponse">&lt;/div></pre>
             </div>
-            <!--div class="col-md-6">
+            <div class="col-md-6">
                 <div daia-simple="daiaResponse"></div>
-            </div-->
+            </div>
         </div>
         <div class="row">
             <div class="col-md-1">
@@ -150,14 +150,14 @@
     &lt;div>
 &lt;/div></pre>
             </div>
-            <!--div class="col-md-6">
+            <div class="col-md-6">
                 <div ng-repeat="doc in daiaResponse.document">
                     <div ng-repeat="item in doc.item">
-                        {{item.label}}:
+                        <code>{{item.label}}</code>
                         <span daia-simple="item"></span>
                     </div>
                 </div>
-            </div-->
+            </div>
         </div>
         <hr>
         <div class="row">

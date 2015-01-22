@@ -1,40 +1,46 @@
-<!-- openaccess -->
-<span ng-if="status == 'openaccess'" class="availability availability-available" translate="{{status}}">{{status}}
-<a ng-if="href" href="{{href}}">frei verfügbar als Open Access</a>
-<span ng-if="!href">frei verfügbar als Open Access</span>
-</span>
-<!-- loan -->
-<span ng-if="status == 'loan'">
-<span class="availability availability-available">verfügbar</span>
-<span ng-if="delay || href">
-    bitte bestellen
+<span ng-if="available">
+    <!-- service, href, delay, limitation -->
+    <span ng-switch="service">
+        <span ng-switch-when="openaccess">
+            <span class="availability-available">frei verfügbar</span>
+            <a ng-if="href" href="{{href}}">aufrufen</a>
+        </span>
+        <span ng-switch-when="loan">
+            <span class="availability-available">ausleihbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+        <span ng-switch-when="presentation">
+            <span class="availability-available">vor Ort verfügbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+        <span ng-switch-default>
+            <span class="availability-available">verfügbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+    </span>
     <span ng-if="delay">
-      (Wartezeit etwa {{delay}})
+      (Wartezeit<span ng-if="delay != 'unknown'"> etwa {{delay}}</span>)
+    </span>
+    <span ng-if="limitation">
+        | <span class="daia-limitation">{{limitation}}</span>
     </span>
 </span>
-<span ng-if="limitation"> ! {{limitation}} </span>
-</span>
-<!-- expected (for loan or openaccess) -->
-<span ng-if="status == 'expected'">
-<span class="availability availability-unavailable">nicht verfügbar</span>
-<span ng-if="expected">bis voraussichtlich {{expected}}. </span>
-<span ng-if="href">bitte bestellen! </span>
-<span ng-if="limitation">{{limitation}}!</span>
-</span>
-<!-- Neither OA, nor LOAN but PRESENTATION -->
-<span ng-if="status == 'presentation'">
-<span class="availability availability-available">verfügbar</span>
-<span>nicht ausleihbar</span>
-<span ng-if="delay || href">
-    bitte bestellen
-    (delay {{delay}}, href {{href}})
-</span>
-<span ng-if="limitation"> ! {{limitation}} </span>
-</span>
-<!-- none -->
-<span ng-if="status == 'none'">
-<span class="availability availability-unavailable">nicht verfügbar</span>
-<span ng-if="expected">bis voraussichtlich {{expected}}. </span>
-<span ng-if="href">bitte bestellen! </span>
-<span ng-if="limitation">{{limitation}}!</span>
+<span ng-if="!available">
+    <!-- service, href, expected, queue, limitation -->
+    <span class="availability-unavailable">
+        <span ng-if="expected">momentan </span>
+        nicht verfügbar
+    </span>
+    <span ng-if="expected && expected != 'unknown'">
+        bis voraussichtlich {{expected}}
+    </span>
+    <span ng-if="href">
+        <a href="{{href}}">vormerken</a>
+    </span>
+    <span ng-if="queue">
+        ({{queue}} Vormerkungen)
+    </span>
+    <span ng-if="limitation">
+        | <span class="daia-limitation">{{limitation}}</span>
+    </span>
 </span>

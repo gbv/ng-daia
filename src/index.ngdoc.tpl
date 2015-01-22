@@ -25,6 +25,10 @@ The current release of ng-daia is version <%= version %>:
   stylesheet for the default templates, including DAIA icons 
   (based on <a href="https://picol.org/">PICOL</a>)
 
+Install from [npmjs](https://www.npmjs.com):
+
+    npm install ng-daia --safe
+
 ## Getting started
 
 The [demo](demo) illustrates display of availability information with
