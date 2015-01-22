@@ -12,11 +12,30 @@ app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.determinePreferredLanguage();
 }]);
 
-app.controller('myController', ['$translate', '$scope', function ($translate, $scope) {
+app.controller('myController', ['$translate', '$scope', '$http', 
+  function ($translate, $scope, $http) {
     $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:685460711";
     $scope.changeLanguage = function (langKey) {
         $translate.use(langKey);
     };
-}]);
 
+    // TODO: move into service
+    function query() {
+        $http.jsonp( $scope.myAPI, {
+            params: { id: $scope.myID, format:'json', callback:'JSON_CALLBACK' } }
+        ).success(function(response) {
+            $scope.daiaResponse = response;
+        });
+    }
+
+    function triggerQuery(newValue, oldValue) {
+        if (newValue != oldValue) {
+            query();
+        }
+    }
+    $scope.$watch("myID",triggerQuery);
+    $scope.$watch("myAPI",triggerQuery);
+
+    query();
+}]);

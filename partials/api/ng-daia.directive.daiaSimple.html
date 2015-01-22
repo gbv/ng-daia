@@ -7,17 +7,11 @@
 <div class="description"><div class="ng-daia-directive-page ng-daia-directive-daiasimple-page"><p>This directive displays a DAIA response, document, or item in simplified
 form, as filtered by <a href="#/api/ng-daia.filter:daiaSimple">daiaSimple</a>). The
 default template <a href="https://github.com/gbv/ng-daia/blob/master/src/templates/daia-simple.html">template/daia-simple.html</a>
-can be changed with the <code>template-url</code> parameter. The template&#39;s scope
-gets the variables</p>
-<ul>
-<li><code>daia</code>: DAIA response, document, or item as passed to the directive</li>
-<li><code>status</code>: simplified status (set to <code>none</code> by default)</li>
-<li><code>expected</code>, <code>delay</code>, <code>href</code>, <code>limitation</code>: optional additional information</li>
-</ul>
+can be changed with the <code>template-url</code> parameter.</p>
 <h4 id="description_scope">Scope</h4>
 <p>The DAIA response, document, or item is injected into the template&#39;s scope as
 variable <code>variable</code>. The DAIA simple response is provided with its fields
-<code>status</code>, <code>expected</code>, <code>delay</code>, <code>href</code>, and <code>limitation</code>.</p>
+<code>service</code>, <code>available</code>, <code>expected</code>, <code>delay</code>, <code>href</code>, <code>limitation</code>, and <code>queue</code>.</p>
 <h4 id="description_source-code">Source code</h4>
 <p>The most recent <a href="https://github.com/gbv/ng-daia/blob/master/src/directives/daiaSimple.js">source 
 code</a>

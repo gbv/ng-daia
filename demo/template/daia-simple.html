@@ -1,6 +1,46 @@
-<span ng-if="status == 'openaccess'" class="availability availability-available simple-openaccess" translate="{{status}}">{{status}}</span>
-<span ng-if="status == 'loan'" class="availability availability-available simple-loan" translate="{{status}}">{{status}}</span>
-<span ng-if="status == 'presentation'" class="availability availability-presentation simple-presentation" translate="{{status}}">{{status}}</span>
-<span ng-if="status != 'openaccess' && status != 'loan' && status != 'presentation' && status != 'expected'" class="availability availability-unavailable" translate="{{status}}">{{status}}</span>
-<span ng-if="expected" class="availability availability-unavailable" translate="EXPECTED_BACK"> expected back: </span> 
-<span ng-if="expected" class="availability availability-unavailable"> {{expected}}</span>
+<span ng-if="available">
+    <!-- service, href, delay, limitation -->
+    <span ng-switch="service">
+        <span ng-switch-when="openaccess">
+            <span class="availability-available">frei verfügbar</span>
+            <a ng-if="href" href="{{href}}">aufrufen</a>
+        </span>
+        <span ng-switch-when="loan">
+            <span class="availability-available">ausleihbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+        <span ng-switch-when="presentation">
+            <span class="availability-available">vor Ort verfügbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+        <span ng-switch-default>
+            <span class="availability-available">verfügbar</span>
+            <a ng-if="href" href="{{href}}">bestellen</a>
+        </span>
+    </span>
+    <span ng-if="delay">
+      (Wartezeit<span ng-if="delay != 'unknown'"> etwa {{delay}}</span>)
+    </span>
+    <span ng-if="limitation">
+        | <span class="daia-limitation">{{limitation}}</span>
+    </span>
+</span>
+<span ng-if="!available">
+    <!-- service, href, expected, queue, limitation -->
+    <span class="availability-unavailable">
+        <span ng-if="expected">momentan </span>
+        nicht verfügbar
+    </span>
+    <span ng-if="expected && expected != 'unknown'">
+        bis voraussichtlich {{expected}}
+    </span>
+    <span ng-if="href">
+        <a href="{{href}}">vormerken</a>
+    </span>
+    <span ng-if="queue">
+        ({{queue}} Vormerkungen)
+    </span>
+    <span ng-if="limitation">
+        | <span class="daia-limitation">{{limitation}}</span>
+    </span>
+</span>
