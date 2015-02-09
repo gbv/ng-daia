@@ -25,4 +25,4 @@
  *   response, document, or item into simple availability status.
  */
 angular.module('ngDAIA',[])
-.value('ngDAIA.version', '0.1.2');
+.value('ngDAIA.version', '0.1.3');
