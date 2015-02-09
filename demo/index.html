@@ -4,23 +4,10 @@
     <meta charset="utf-8">
     <title>ng-daia demo</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="ng-daia.css" rel="stylesheet" />
+    <link href="../ng-daia.css" rel="stylesheet" />
     <link href="app.css" rel="stylesheet" />
-
-    <!-- first load angularjs -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
-
-    <!-- include ng-daia module from multiple files. Better use a single-file release for production! -->
-        <script src="../src/ng-daia.js"></script>
-        <script src="../src/directives/daiaApi.js"></script>
-        <script src="../src/directives/daiaItem.js"></script>
-        <script src="../src/directives/daiaAvailability.js"></script>
-        <script src="../src/directives/daiaSimple.js"></script>
-        <script src="../src/filters/daiaSimple.js"></script>
-        <script src="../lib/angular-translate.min.js"></script>
-        <script src="../lib/angular-translate-loader-static-files.min.js"></script>
-    <!-- short JavaScript snippet to active ng-daia -->
-    <script src="app.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.min.js"></script>
 </head>
 <body ng-controller="myController">
     <header>
@@ -41,8 +28,9 @@
         <div class="page-header">
             <h1>Demo</h1>
             <p>
-              See documentation at 
-              <a href="https://gbv.github.io/ng-daia">https://gbv.github.io/ng-daia</a>
+              This page illustrates features and use of AngularJS library ng-daia
+              (version {{version}}).
+              See the <a href="../">API reference</a> for details.
             </p>
         </div>
         <div class="row">
@@ -166,5 +154,14 @@
             </div>
         </div>
     </div>
+    <script src="../src/ng-daia.js"></script>
+    <script src="../src/directives/daiaApi.js"></script>
+    <script src="../src/directives/daiaItem.js"></script>
+    <script src="../src/directives/daiaAvailability.js"></script>
+    <script src="../src/directives/daiaSimple.js"></script>
+    <script src="../src/filters/daiaSimple.js"></script>
+    <script src="../node_modules/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="../node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

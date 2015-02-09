@@ -1,6 +1,5 @@
-var app = angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']);
-
-app.config(['$translateProvider', function ($translateProvider) {
+angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
+.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: '../src/translations/lang-',
         suffix: '.json'
@@ -10,10 +9,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     });
     $translateProvider.fallbackLanguage('en');
     $translateProvider.determinePreferredLanguage();
-}]);
+}])
+.controller('myController', ['$translate', '$scope', '$http', 'ngDAIA.version',
+  function ($translate, $scope, $http, version) {
+    $scope.version = version;
 
-app.controller('myController', ['$translate', '$scope', '$http', 
-  function ($translate, $scope, $http) {
     $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:685460711";
     $scope.changeLanguage = function (langKey) {

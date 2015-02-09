@@ -1,13 +1,12 @@
-describe('daiaSimple',function() {
+'use strict';
+describe('daiaSimple filter', function() {
     var filter;
 
-    beforeEach(function(){
-        module('ngDAIA');
-        inject(function($injector) {
-            var $filter = $injector.get('$filter');
-            filter = $filter('daiaSimple');
-        });
-    });
+    beforeEach(module('ngDAIA'));
+
+    beforeEach(inject(function(daiaSimpleFilter){
+        filter = daiaSimpleFilter;
+    }));
 
     it('Should return status none at undefined/null/number/string', function() {
         var simple = { service: "none", available: false }; 
@@ -20,7 +19,7 @@ describe('daiaSimple',function() {
         expect(filter("available")).toEqual(simple);
     });
 
-    it('Should return status on item/document', function() {
+    it('Should return status on item/document',  function() {
         var loan = { available: [ { service: "loan" } ] };
 
         var simple = { service: "loan", available: true }; 

@@ -35,7 +35,8 @@
  *                 {@link ng-daia.filter:daiaSimple daiaSimple}
  * @param {string} template-url Custom template to display DAIA result
  */
-ngDAIA.directive('daiaApi',function($http,$filter){
+angular.module('ngDAIA')
+.directive('daiaApi',function($http,$filter){
     return {
         restrict: 'A',
         scope: {

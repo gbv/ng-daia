@@ -25,7 +25,8 @@
  * @param {string} daia-item The DAIA item to display
  * @param {string} template-url Custom template URL to display daia result
  */
-ngDAIA.directive('daiaItem',function(){
+angular.module('ngDAIA')
+.directive('daiaItem',function(){
     return {
         restrict: 'A',
         scope: {

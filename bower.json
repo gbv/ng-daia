@@ -1,0 +1,34 @@
+{
+  "name": "ng-daia",
+  "version": "0.1.2",
+  "authors": [
+    "Jakob Voss <voss@gbv.de>",
+    "Moritz Horn <moritz.horn@gmail.com>"
+  ],
+  "description": "AngularJS module to access DAIA services",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "daia",
+    "availability",
+    "libraries",
+    "documents"
+  ],
+  "license": "AGPL",
+  "ignore": [
+    ".*",
+    "src",
+    "test",
+    "demo",
+    "docs",
+    "node_modules",
+    "Gruntfile.js",
+    "karma.conf.js"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+  },
+  "optionalDependencies": {
+    "angular-translate": "^2.1.0"
+  }
+}

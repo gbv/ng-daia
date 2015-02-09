@@ -4,7 +4,7 @@
  * @module ng-daia
  * @description
  *
- * The <b>ngDAIA</b> module for AngularJS facilitates access to 
+ * The **ngDAIA** module for AngularJS facilitates access to 
  * {@link http://purl.org/NET/DAIA Document Availability Information API}
  * (DAIA) services and to display the responses given by a DAIA server.
  *
@@ -23,7 +23,6 @@
  *
  * * {@link ng-daia.filter:daiaSimple daiaSimple} transforms a DAIA 
  *   response, document, or item into simple availability status.
- *
  */
-var ngDAIA = angular.module('ngDAIA',[]);
-ngDAIA.value('version', '0.1.2');
+angular.module('ngDAIA',[])
+.value('ngDAIA.version', '0.1.2');
