@@ -2,46 +2,45 @@
 <div><span class="hint"></span>
 </div>
 </h1>
-<div><div class="documentation-page"><h2 id="ng-daia">ng-daia</h2>
+<div><div class="index-page"><h2 id="ng-daia">ng-daia</h2>
 <blockquote>
-<p>AngularJS module to facilitate access to DAIA services</p>
+<p><a href="http://angularjs.org/">AngularJS</a> module to access <a href="http://purl.org/NET/DAIA">DAIA</a> services</p>
 </blockquote>
-<p><strong>ng-daia</strong> is an <a href="http://angularjs.org/">AngularJS</a> module to
-facilitate access to <a href="http://purl.org/NET/DAIA">Document Availability Information API</a> (DAIA) services and to display the responses given by a DAIA
-server.</p>
-<p>The latest release of ng-daia is version 0.1.2. Source code and issue tracker
-can be found at <a href="https://github.com/gbv/ng-daia">https://github.com/gbv/ng-daia</a>.</p>
-<h3 id="ng-daia_download">Download</h3>
-<p>The current release of ng-daia is version 0.1.2:</p>
-<ul>
-<li><a href="grunt-scripts/ng-daia.min.js">ng-daia.min.js</a>: minified version for production</li>
-<li><a href="grunt-scripts/ng-daia.js">ng-daia.js</a>: original source code for development</li>
-<li><a href="https://github.com/gbv/ng-daia/raw/master/src/ng-daia.css">ng-daia.css</a>:
-stylesheet for the default templates, including DAIA icons 
-(based on <a href="https://picol.org/">PICOL</a>)</li>
-</ul>
-<p>Install from <a href="https://www.npmjs.com">npmjs</a>:</p>
-<pre><code>npm install ng-daia --safe</code></pre>
-<h3 id="ng-daia_getting-started">Getting started</h3>
+<p><a href="https://www.npmjs.com/package/ng-daia"><img src="https://img.shields.io/npm/v/ng-daia.svg?style=flat" alt="npm version"></a>
+<a href="https://travis-ci.org/gbv/ng-daia"><img src="https://travis-ci.org/gbv/ng-daia.svg" alt="Build Status"></a>
+<a href="https://coveralls.io/r/gbv/ng-daia?branch=master"><img src="https://coveralls.io/repos/gbv/ng-daia/badge.svg?branch=master" alt="Test Coverage"></a>
+<a href="https://github.com/gbv/ng-daia/issues"><img src="https://img.shields.io/github/issues-raw/gbv/ng-daia.svg?style=flat" alt="GitHub Issues"></a></p>
+<p><strong>ng-daia</strong> is an <a href="http://angularjs.org/">AngularJS</a> module to facilitate
+access <a href="http://purl.org/NET/DAIA">Document Availability Information API (DAIA)</a>
+display DAIA responses.</p>
+<h3 id="ng-daia_install">Install</h3>
+<h4 id="ng-daia_install_npm">npm</h4>
+<pre><code class="lang-bash">npm install ng-daia --safe
+</code></pre>
+<h4 id="ng-daia_install_bower">bower</h4>
+<pre><code class="lang-bash">bower install ng-daia --safe
+</code></pre>
+<h3 id="ng-daia_usage">Usage</h3>
+<p>See <a href="https://gbv.github.io/ng-daia/">https://gbv.github.io/ng-daia/</a> for documentation and usage examples!</p>
+<h4 id="ng-daia_usage_getting-started">Getting started</h4>
 <p>The <a href="demo">demo</a> illustrates display of availability information with
-directives and filters provided by <a href="#/api/ng-daia">module ng-daia</a>. Please have
-a look at the documentation of each directive/filter.</p>
+directives and filters provided by module ng-daia}. Please have a look at the
+documentation of each directive/filter.</p>
 <p>The following minimal example might help to include ng-daia into your website:</p>
-<pre class="prettyprint linenums">
-&lt;html ng-app="myApp"&gt;
+<pre><code class="lang-.html">&lt;html ng-app=&quot;myApp&quot;&gt;
 &lt;head&gt;
-  &lt;script src="angular.min.js"&gt;&lt;/script&gt;
-  &lt;script src="ng-daia.min.js"&gt;&lt;/script&gt;
-  &lt;script&gt;angular.module('myApp', ['ngDAIA']);&lt;/script&gt;
-  &lt;link href="ng-daia.css" rel="stylesheet" /&gt;
+  &lt;script src=&quot;angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;ng-daia.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;angular.module(&#39;myApp&#39;, [&#39;ngDAIA&#39;]);&lt;/script&gt;
+  &lt;link href=&quot;ng-daia.css&quot; rel=&quot;stylesheet&quot; /&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div daia-api="http://your-daia-base-url" daia-id="your-document-id"&gt;
+  &lt;div daia-api=&quot;http://your-daia-base-url&quot; daia-id=&quot;your-document-id&quot;&gt;
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre>
-<h3 id="ng-daia_customization">Customization</h3>
+</code></pre>
+<h4 id="ng-daia_usage_customization">Customization</h4>
 <p>The default templates, included in <code>ng-daia.js</code>, can be styled with CSS,
 translated with angular-translate, and replaced with the <code>template-url</code>
 parameter:</p>
@@ -71,31 +70,28 @@ parameter:</p>
 <li><code>simple-presentation</code>: style for simple availability &quot;presentation&quot;</li>
 </ul>
 <p>The default templates are fully prepared for internationalization (i18n) with
-<a href="http://angular-translate.github.io/docs/#/guide/02_getting-started">angular-translate</a>.
+<a href="https://angular-translate.github.io/docs/#/guide/02_getting-started">angular-translate</a>.
 To use the translations module, first include the following in your html:</p>
-<pre class="prettyprint linenums">
-&lt;script src="../lib/angular-translate.min.js"&gt;&lt;/script&gt;
-</pre>
+<pre><code class="lang-.html">&lt;script src=&quot;../lib/angular-translate.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <p>There are several ways to manage translations with angular-translate. You might want to add them directly into your <code>myApp</code> module, or the translations can be put into their own json files and retrieved by your app, which will require an additional package:</p>
-<pre class="prettyprint linenums">
-&lt;script src="../lib/angular-translate-loader-static-files.min.js"&gt;&lt;/script&gt;
-</pre>
+<pre><code class="lang-.html">&lt;script src=&quot;../lib/angular-translate-loader-static-files.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
 <p>You then have to extend the app module to enable loading the translations (the filenames would in this case have the format &quot;lang-en.json&quot;, etc.):</p>
-<pre class="prettyprint linenums">
-angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']).config(['$translateProvider', function ($translateProvider) {
+<pre><code class="lang-.javascript">angular.module(&#39;myApp&#39;, [&#39;ngDAIA&#39;, &#39;pascalprecht.translate&#39;]).config([&#39;$translateProvider&#39;, function ($translateProvider) {
     $translateProvider.useStaticFilesLoader({
-        prefix: '../src/translations/lang-',
-        suffix: '.json'
+        prefix: &#39;../src/translations/lang-&#39;,
+        suffix: &#39;.json&#39;
     });
-    $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
-    'en_US':'en','en_UK':'en','de_DE':'de','de_AT':'de','de_CH':'de',
+    $translateProvider.registerAvailableLanguageKeys([&#39;en&#39;, &#39;de&#39;], {
+    &#39;en_US&#39;:&#39;en&#39;,&#39;en_UK&#39;:&#39;en&#39;,&#39;de_DE&#39;:&#39;de&#39;,&#39;de_AT&#39;:&#39;de&#39;,&#39;de_CH&#39;:&#39;de&#39;,
     })
-    $translateProvider.fallbackLanguage('en');
+    $translateProvider.fallbackLanguage(&#39;en&#39;);
     $translateProvider.determinePreferredLanguage();
 }]);
-</pre>
+</code></pre>
 <p>As well as exporting the translation tables, this example shows the support for automatic language-detection. The default templates are using the following translation terms:</p>
-<h4 id="ng-daia_customization_daia-response-terms">daia-response terms</h4>
+<h5 id="ng-daia_usage_customization_daia-response-terms">daia-response terms</h5>
 <ul>
 <li><code>unknown</code></li>
 <li><code>available</code></li>
@@ -107,7 +103,7 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']).config(['$translat
 <li><code>expected</code></li>
 <li><code>openaccess</code></li>
 </ul>
-<h4 id="ng-daia_customization_labels-and-other-text">labels and other text</h4>
+<h5 id="ng-daia_usage_customization_labels-and-other-text">labels and other text</h5>
 <ul>
 <li><code>INSTITUTION</code> : reference label to holding institution</li>
 <li><code>DOCUMENT</code> : reference label for searched document</li>
@@ -121,24 +117,24 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate']).config(['$translat
 <li><code>ACCESS</code> : label displayed if a direct document link exists</li>
 <li><code>STATUS</code> : label text for <code>daia-simple</code> output</li>
 </ul>
-<h3 id="ng-daia_demo">Demo</h3>
+<h4 id="ng-daia_usage_demo">Demo</h4>
 <p>The <a href="demo">demo</a> (see <a href="https://github.com/gbv/ng-daia/tree/master/demo">demo
 directory</a> of source code
 repository) contains a more detailed sample application that makes use of
 <code>ng-daia</code> as well as angular-translate. The demo should be run from a server
 (e.g. localhost).</p>
-<h3 id="ng-daia_feedback">Feedback</h3>
-<p>Please report feature requests and bug reports at
-<a href="https://github.com/gbv/ng-daia/issues">https://github.com/gbv/ng-daia/issues</a> or contribute to the source code. The
-file <code>README.md</code> contains a guidline for gettings started. Likes and stars at
-<a href="https://github.com/gbv/ng-daia">https://github.com/gbv/ng-daia</a> and <a href="http://ngmodules.org/modules/ng-daia">http://ngmodules.org/modules/ng-daia</a> are
-also welcome!</p>
-<h3 id="ng-daia_author-and-contributors">Author and Contributors</h3>
+<h3 id="ng-daia_contributing">Contributing</h3>
+<p>See <a href="#/api/contributing"><code>CONTRIBUTING.md</code></a> for development documentation.
+Contributions and <a href="https://github.com/gbv/ng-daia/issues">feedback</a> is
+appreciated!</p>
+<h3 id="ng-daia_contributors">Contributors</h3>
 <ul>
-<li>Jakob Voß <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#118;&#111;&#x73;&#115;&#64;&#103;&#98;&#x76;&#46;&#x64;&#101;">&#118;&#111;&#x73;&#115;&#64;&#103;&#98;&#x76;&#46;&#x64;&#101;</a></li>
-<li>Moritz Horn <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x6d;&#x6f;&#x72;&#x69;&#x74;&#x7a;&#46;&#104;&#111;&#114;&#110;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#x6d;&#x6f;&#x72;&#x69;&#x74;&#x7a;&#46;&#104;&#111;&#114;&#110;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></li>
+<li>Jakob Voß <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#118;&#111;&#x73;&#x73;&#64;&#x67;&#x62;&#118;&#46;&#x64;&#101;">&#118;&#111;&#x73;&#x73;&#64;&#x67;&#x62;&#118;&#46;&#x64;&#101;</a></li>
+<li>Moritz Horn <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x6d;&#111;&#x72;&#x69;&#x74;&#122;&#46;&#x68;&#x6f;&#x72;&#110;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x6d;&#111;&#x72;&#x69;&#x74;&#122;&#46;&#x68;&#x6f;&#x72;&#110;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></li>
 </ul>
 <h3 id="ng-daia_license">License</h3>
 <p>Code licensed under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">AGPL</a>.
-Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></p>
+Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+<p>DAIA icons (included in <code>daia.css</code>) are based on
+<a href="http://picol.org/">PICOL</a> icons, CC-BY Melih Bilgil.</p>
 </div></div>

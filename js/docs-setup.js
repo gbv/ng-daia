@@ -1,16 +1,25 @@
 NG_DOCS={
   "sections": {
-    "api": "API documentation"
+    "api": "Documentation"
   },
   "pages": [
     {
       "section": "api",
       "id": "index",
-      "shortName": "Documentation",
+      "shortName": "index",
       "type": "overview",
-      "moduleName": "Documentation",
+      "moduleName": "index",
       "shortDescription": "ng-daia",
-      "keywords": "$translateprovider access access-link add additional alternative angular angular-translate angularjs api app application author automatic availability availability-available availability-expected availability-limitation availability-unavailable brackets bug case catalog_entry classes code concerning config contribute contributors copy corresponding css current customization daia daia-api daia-document daia-id daia-label daia-response daia-result daia-simple de de_at de_ch de_de default demo department descriptions detailed determinepreferredlanguage development direct directive directives directly directory display displayed document documentation download en en_uk en_us enable example exists expected expected_back exporting extend facilitate fallbacklanguage feature feedback file filenames files filters format fully function gettings github gnu guidline help holding horn href html http https icons illustrates include included including install institution interloan internationalization io issue items jakob js json label labels lang-en language-detection latest license licensed likes limitations link loading loan localhost manage mark md medium message min minified minimal module moritz myapp ng-app ng-daia ngdaia no_records npm npmjs openaccess org original output overview package parameter pascalprecht physical prefix preordering prepared presentation production provided readme reference registeravailablelanguagekeys rel release replaced report reports repository requests require reservation response responses result retrieved returning returning-expected sample searched server service-label services shelf signature simple simple-loan simple-openaccess simple-presentation source specific src stars started status style styled stylesheet suffix support tables template-url templates terms text tracker translate translated translation translations unavailable unknown usestaticfilesloader version vo ways website your-document-id"
+      "keywords": "$translateprovider access access-link add additional alternative angular angular-translate api app application appreciated automatic availability availability-available availability-expected availability-limitation availability-unavailable based bash bilgil bower brackets case catalog_entry cc-by classes code concerning config contributing contributions contributors copy corresponding coverage css customization daia daia-api daia-document daia-id daia-label daia-response daia-result daia-simple de de_at de_ch de_de default demo department descriptions detailed determinepreferredlanguage development direct directive directives directly directory display displayed document documentation en en_uk en_us enable example examples exists expected expected_back exporting extend facilitate fallbacklanguage filenames files filters format fully function github gnu help holding horn href html http icons illustrates include included install institution interloan internationalization io issues items jakob javascript js json label labels lang-en language-detection license licensed limitations link loading loan localhost manage mark md medium melih message min minimal module moritz myapp ng-app ng-daia ngdaia no_records npm npmjs openaccess org output overview package parameter pascalprecht physical prefix preordering prepared presentation provided reference registeravailablelanguagekeys rel replaced repository require reservation response responses result retrieved returning returning-expected sample searched server service-label services shelf shields signature simple simple-loan simple-openaccess simple-presentation source specific src started status style styled stylesheet suffix support svg tables template-url templates terms text translate translated translation translations unavailable unknown usage usestaticfilesloader version vo ways website your-document-id"
+    },
+    {
+      "section": "api",
+      "id": "contributing",
+      "shortName": "Contributing",
+      "type": "overview",
+      "moduleName": "ng-daia",
+      "shortDescription": "Contributing",
+      "keywords": "api application automatically backwards break bug build bump bumped call changes code commit compatibility conf configured consists contributing demo dependencies developer docs documentation don execute executed existing features fixes git github global grunt grunt-cli includes increment install installation installing io issue js json karma listed major middle minor ng-daia node npm number numeric org overview package packages parts patch prepend publish pushed release released releases repository running sites source src sudo suffix task test testing tests three tracker travis travis-ci unit updated version versions written yml"
     },
     {
       "section": "api",
@@ -71,6 +80,7 @@ NG_DOCS={
     "api": true
   },
   "html5Mode": false,
+  "editExample": true,
   "startPage": "/api",
   "scripts": [
     "angular.min.js",
