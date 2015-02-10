@@ -141,7 +141,7 @@
             <div class="col-md-6">
                 <div ng-repeat="doc in daiaResponse.document">
                     <div ng-repeat="item in doc.item">
-                        <code>{{item.label}}</code>
+                        <code ng-if="item.label">{{item.label}}</code>
                         <span daia-simple="item"></span>
                     </div>
                 </div>
