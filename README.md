@@ -16,13 +16,13 @@ display DAIA responses.
 ### npm
 
 ```bash
-npm install ng-daia --safe
+npm install ng-daia --save
 ```
 
 ### bower
 
 ```bash
-bower install ng-daia --safe
+bower install ng-daia --save
 ```
 
 ## Usage
