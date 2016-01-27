@@ -37,13 +37,32 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
 
     $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:685460711";
+    $scope.cors = false;
 
-    // TODO: move into service
+    // TODO: move this into daia query service
+    // TODO: add patron and Authorization
     function query() {
-        $http.jsonp( $scope.myAPI, {
-            params: { id: $scope.myID, format:'json', callback:'JSON_CALLBACK' } }
-        ).success(function(response) {
+        var daiaQuery;
+        if ($scope.cors) {
+            daiaQuery = $http({
+                url: $scope.myAPI,
+                method: 'GET',
+                params: { id: $scope.myID, format: 'json' },
+                headers: {
+                    'Accept-Language': $translate.use(),
+                    // 'Authorization': access_token
+                }
+            });
+        } else {
+            // TODO: headers?
+            daiaQuery = $http.jsonp( $scope.myAPI, {
+                params: { id: $scope.myID, format: 'json', callback: 'JSON_CALLBACK' } }
+            )
+        }
+        daiaQuery.success(function(response) {
             $scope.daiaResponse = response;
+        }).error(function () {
+            $scope.daiaResponse = {};
         });
     }
 
@@ -54,6 +73,7 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
     }
     $scope.$watch("myID",triggerQuery);
     $scope.$watch("myAPI",triggerQuery);
+    $scope.$watch("cors",triggerQuery);
 
     query();
 }]);

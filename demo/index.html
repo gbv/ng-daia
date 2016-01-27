@@ -16,8 +16,11 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="../">ng-daia</a>
                 </div>
-                <form class="navbar-form navbar-right">
-                    <label for="language" translate>language</label>
+                <form class="navbar-form navbar-right form-inline">
+                    <input type="checkbox" ng-model="cors">
+                      <label for="cors">CORS</label>
+                    </input>
+                    &nbsp;
                     <select class="form-control" id="language" ng-model="selectedLanguage">
                         <option ng-repeat="l in availableLanguages" value="{{l}}">
                           {{l | translate}}
@@ -33,7 +36,8 @@
             <h1>Demo</h1>
             <p>
               This page illustrates features and use of AngularJS library ng-daia
-              (version {{version}}).
+              (version {{version}}) to query and display 
+              <a href ="http://purl.org/NET/DAIA">DAIA</a>.
               See the <a href="../">API reference</a> for details.
             </p>
         </div>
@@ -157,7 +161,7 @@
                 <pre>daia: {{daiaResponse | json}}</pre>
             </div>
         </div>
-    </div>
+    </section>
     <script src="../src/ng-daia.js"></script>
     <script src="../src/directives/daiaApi.js"></script>
     <script src="../src/directives/daiaItem.js"></script>
