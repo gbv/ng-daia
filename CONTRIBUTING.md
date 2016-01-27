@@ -42,6 +42,11 @@ call
 
     grunt docs
 
+## Updating the Demo
+
+    grunt gh-pages  # locally commits to gh-pages branch
+    grunt homepage  # pushes to GitHub pages
+
 ## Release
 
 The version number consists of three numeric parts:
