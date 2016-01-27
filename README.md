@@ -31,9 +31,9 @@ See <https://gbv.github.io/ng-daia/> for documentation and usage examples!
 
 ### Getting started
 
-The [demo](demo) illustrates display of availability information with
-directives and filters provided by module ng-daia}. Please have a look at the
-documentation of each directive/filter.
+The [demo](demo) (<https://gbv.github.io/ng-daia/demo>) illustrates display of
+availability information with directives and filters provided by module
+ng-daia}. Please have a look at the documentation of each directive/filter.
 
 The following minimal example might help to include ng-daia into your website:
 

@@ -17,8 +17,12 @@
                     <a class="navbar-brand" href="../">ng-daia</a>
                 </div>
                 <form class="navbar-form navbar-right">
-                    <button ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
-                    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+                    <label for="language" translate>language</label>
+                    <select class="form-control" id="language" ng-model="selectedLanguage">
+                        <option ng-repeat="l in availableLanguages" value="{{l}}">
+                          {{l | translate}}
+                        </option>
+                    </select>
                 </form>
             </div>
         </nav>

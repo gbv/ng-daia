@@ -1,24 +1,42 @@
 angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
+
 .config(['$translateProvider', function ($translateProvider) {
+    
+    // load translations
     $translateProvider.useStaticFilesLoader({
-        prefix: '../src/translations/lang-',
-        suffix: '.json'
-    });
-    $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
-        'en_US':'en','en_UK':'en','de_DE':'de','de_AT':'de','de_CH':'de'
-    });
-    $translateProvider.fallbackLanguage('en');
-    $translateProvider.determinePreferredLanguage();
+        files: [{   // ng-daia
+            prefix: '../src/translations/lang-',
+            suffix: '.json'
+        },{         // this demo
+            prefix: 'translations/',
+            suffix: '.json'
+        }]
+    })
+
+    // choose a language based on browser settings
+    .registerAvailableLanguageKeys(['en', 'de'], { 'en_*': 'en', 'de_*': 'de' })
+    .fallbackLanguage('en')
+    .determinePreferredLanguage();
+
 }])
+
 .controller('myController', ['$translate', '$scope', '$http', 'ngDAIA.version',
   function ($translate, $scope, $http, version) {
     $scope.version = version;
 
+    // get and watch current language
+    $translate.onReady(function() {
+        $scope.selectedLanguage = $translate.use()
+    });
+    // see https://github.com/angular-translate/angular-translate/issues/566
+    $scope.availableLanguages = ['en','de'];
+    $scope.$watch('selectedLanguage', function(value) {
+        $translate.use(value);
+    });
+
+
     $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:685460711";
-    $scope.changeLanguage = function (langKey) {
-        $translate.use(langKey);
-    };
 
     // TODO: move into service
     function query() {

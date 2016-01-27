@@ -46,6 +46,6 @@
     "test": "grunt test"
   },
   "optionalDependencies": {
-    "angular-translate": "^2.4.0"
+    "angular-translate": "^2.9.0"
   }
 }
