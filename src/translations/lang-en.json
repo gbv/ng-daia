@@ -18,7 +18,5 @@
     "EXPECTED_BACK": " expected back:",
     "RESERVATION": "place reservation",
     "ACCESS": "access via:",
-    "STATUS": "current status",
-    "BUTTON_LANG_DE": "German",
-    "BUTTON_LANG_EN": "English"
+    "STATUS": "current status"
 }

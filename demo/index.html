@@ -16,9 +16,16 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="../">ng-daia</a>
                 </div>
-                <form class="navbar-form navbar-right">
-                    <button ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
-                    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+                <form class="navbar-form navbar-right form-inline">
+                    <input type="checkbox" ng-model="cors">
+                      <label for="cors">CORS</label>
+                    </input>
+                    &nbsp;
+                    <select class="form-control" id="language" ng-model="selectedLanguage">
+                        <option ng-repeat="l in availableLanguages" value="{{l}}">
+                          {{l | translate}}
+                        </option>
+                    </select>
                 </form>
             </div>
         </nav>
@@ -29,7 +36,8 @@
             <h1>Demo</h1>
             <p>
               This page illustrates features and use of AngularJS library ng-daia
-              (version {{version}}).
+              (version {{version}}) to query and display 
+              <a href ="http://purl.org/NET/DAIA">DAIA</a>.
               See the <a href="../">API reference</a> for details.
             </p>
         </div>
@@ -54,7 +62,7 @@
             </div>
             <div class="col-md-12">
                 <label>DAIA query URL</label>
-                <div><a href="{{myAPI}}?id={{myID}}&format=xml">{{myAPI}}?id={{myID}}</a></div>
+                <div><a href="{{myAPI}}?id={{myID}}&format=json">{{myAPI}}?id={{myID}}&format=json</a></div>
             </div>
         </div>
     </section>
@@ -141,7 +149,7 @@
             <div class="col-md-6">
                 <div ng-repeat="doc in daiaResponse.document">
                     <div ng-repeat="item in doc.item">
-                        <code>{{item.label}}</code>
+                        <code ng-if="item.label">{{item.label}}</code>
                         <span daia-simple="item"></span>
                     </div>
                 </div>
@@ -153,7 +161,7 @@
                 <pre>daia: {{daiaResponse | json}}</pre>
             </div>
         </div>
-    </div>
+    </section>
     <script src="../grunt-scripts/ng-daia.js"></script>
     <script src="../grunt-scripts/ng-daia.js"></script>
     <script src="../grunt-scripts/ng-daia.js"></script>
