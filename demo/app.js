@@ -25,15 +25,15 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
     $scope.version = version;
 
     // get and watch current language
+    // see https://github.com/angular-translate/angular-translate/issues/566
+    $scope.availableLanguages = ['en','de'];
+    $scope.selectedLanguage = 'en';
     $translate.onReady(function() {
         $scope.selectedLanguage = $translate.use()
     });
-    // see https://github.com/angular-translate/angular-translate/issues/566
-    $scope.availableLanguages = ['en','de'];
     $scope.$watch('selectedLanguage', function(value) {
         $translate.use(value);
     });
-
 
     $scope.myAPI = "//daia.gbv.de/";
     $scope.myID = "opac-de-ma9:ppn:685460711";
@@ -68,6 +68,7 @@ angular.module('myApp', ['ngDAIA', 'pascalprecht.translate'])
 
     function triggerQuery(newValue, oldValue) {
         if (newValue != oldValue) {
+            $scope.daiaResponse = {};
             query();
         }
     }

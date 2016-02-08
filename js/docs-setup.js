@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "ng-daia",
       "shortDescription": "Contributing",
-      "keywords": "api application automatically backwards break bug build bump bumped call changes code commit compatibility conf configured consists contributing demo dependencies developer docs documentation don execute executed existing features fixes git github global grunt grunt-cli includes increment install installation installing io issue js json karma listed major middle minor ng-daia node npm number numeric org overview package packages parts patch prepend publish pushed release released releases repository running sites source src sudo suffix task test testing tests three tracker travis travis-ci unit updated version versions written yml"
+      "keywords": "api application automatically backwards branch break bug build bump bumped call changes code commit commits compatibility conf configured consists contributing demo dependencies developer docs documentation don execute executed existing features fixes gh-pages git github global grunt grunt-cli homepage includes increment install installation installing io issue js json karma listed locally major middle minor ng-daia node npm number numeric org overview package packages parts patch prepend publish pushed pushes release released releases repository running sites source src sudo suffix task test testing tests three tracker travis travis-ci unit updated updating version versions written yml"
     },
     {
       "section": "api",

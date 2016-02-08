@@ -83,14 +83,23 @@ angular.module('ngDAIA')
             }
         },
         link: function link(scope, element, attr) {
-            scope.daiaRequest = function() {
+            scope.daiaRequest = function() {                
+
+                // purge existing variables from scope
+                if (scope.filter) {
+                    angular.forEach( $filter(scope.filter)({}),
+                        function(value, key) { scope[key] = null; }
+                    );
+                } else {
+                    scope.daia = {};
+                }
+
+                // TODO: Support CORS
                 $http.jsonp( scope.api, {
                     params: { id: scope.id, format:'json', callback:'JSON_CALLBACK' } }
                 ).success(function(response) {
                     if (scope.filter) {
-                        var filtered = $filter(scope.filter)(response);
-                        // FIXME: purge existing variables from scope
-                        angular.forEach(filtered,
+                        angular.forEach( $filter(scope.filter)(response),
                             function(value, key) { scope[key] = value }
                         );
                     } else {
@@ -307,7 +316,12 @@ angular.module('ngDAIA')
     // default DAIA simple response
     var response = {
         service: "none",
-        available: false
+        available: false,
+        delay: null,
+        expected: null,
+        queue: null,
+        href: null,
+        limitation: null
     };
     
     // find any item with available openaccess 
