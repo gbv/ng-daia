@@ -57,7 +57,12 @@ angular.module('ngDAIA')
     // default DAIA simple response
     var response = {
         service: "none",
-        available: false
+        available: false,
+        delay: null,
+        expected: null,
+        queue: null,
+        href: null,
+        limitation: null
     };
     
     // find any item with available openaccess 
